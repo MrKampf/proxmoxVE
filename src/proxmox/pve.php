@@ -5,7 +5,6 @@
 namespace proxmox;
 
 use GuzzleHttp\Client;
-use proxmox\api\access;
 use proxmox\api\nodes;
 use proxmox\Exception\AuthenticationException;
 
@@ -54,12 +53,5 @@ class pve
      */
     public function nodes(){
         return new nodes($this->httpClient,$this->apiURL,$this->CSRFPreventionToken,$this->ticket,$this->hostname);
-    }
-
-    /**
-     * @return access
-     */
-    public function access(){
-        return new access($this->httpClient,$this->apiURL,$this->CSRFPreventionToken,$this->ticket,$this->hostname);
     }
 }
