@@ -43,7 +43,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/apt)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/apt
      * @param $node
      * @return apt
      */
@@ -52,7 +52,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/ceph)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/ceph
      * @param $node
      * @return ceph
      */
@@ -61,7 +61,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/certificates)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/certificates
      * @param $node
      * @return certificates
      */
@@ -70,7 +70,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/disks)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/disks
      * @param $node
      * @return disks
      */
@@ -79,16 +79,17 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc)
-     * @param $node
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc
+     * @param $node integer Node name
+     * @param $vmid integer VMID (unique) ID of the vm
      * @return lxc
      */
-    public function lxc($node){
-        return new lxc($this->httpClient,$this->apiURL.$node.'/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+    public function lxc($node,$vmid){
+        return new lxc($this->httpClient,$this->apiURL.$node.'/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie,$vmid);
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/qemu)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/qemu
      * @param $node
      * @return qemu
      */
@@ -101,15 +102,16 @@ class nodes
      */
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node})
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}
      * @return mixed
      */
     public function get(){
         return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
     }
 
+    //TODO//Delete on version 2.0.0<
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status
      * @param $node
      * @return mixed
      */
@@ -118,7 +120,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc
      * @param $node
      * @return mixed
      */
@@ -127,7 +129,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/aplinfo)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/aplinfo
      * @param $node
      * @return mixed
      */
@@ -136,7 +138,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/config)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/config
      * @param $node
      * @return mixed
      */
@@ -145,7 +147,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/dns
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/dns
      * @param $node
      * @return mixed
      */
@@ -154,7 +156,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/hosts)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/hosts
      * @param $node
      * @return mixed
      */
@@ -163,7 +165,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/journal)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/journal
      * @param $node
      * @param $param
      * @return mixed
@@ -173,7 +175,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/netstat)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/netstat
      * @param $node
      * @return mixed
      */
@@ -182,7 +184,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/report)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/report
      * @param $node
      * @return mixed
      */
@@ -191,7 +193,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/rrd)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/rrd
      * @param $node
      * @return mixed
      */
@@ -200,7 +202,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/rrddata)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/rrddata
      * @param $node
      * @param $param
      * @return mixed
@@ -210,7 +212,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status
      * @param $node
      * @return mixed
      */
@@ -219,7 +221,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/subscription)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/subscription
      * @param $node
      * @return mixed
      */
@@ -228,7 +230,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/syslog)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/syslog
      * @param $node
      * @param $param
      * @return mixed
@@ -238,7 +240,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/time)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/time
      * @param $node
      * @return mixed
      */
@@ -247,7 +249,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/version)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/version
      * @param $node
      * @return mixed
      */
@@ -256,7 +258,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/vncwebsocket)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/vncwebsocket
      * @param $node
      * @param $param
      * @return mixed
@@ -270,7 +272,7 @@ class nodes
      */
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/dns)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/dns
      * @param $node
      * @param $commands
      * @return mixed
@@ -281,7 +283,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/migrateall)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/migrateall
      * @param $node
      * @param $param
      * @return mixed
@@ -291,7 +293,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/spiceshell)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/spiceshell
      * @param $node
      * @param $param
      * @return mixed
@@ -301,7 +303,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/startall)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/startall
      * @param $node
      * @param $param
      * @return mixed
@@ -311,7 +313,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/stopall)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/stopall
      * @param $node
      * @param $param
      * @return mixed
@@ -321,7 +323,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/termproxy)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/termproxy
      * @param $node
      * @param $param
      * @return mixed
@@ -331,7 +333,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/vncshell)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/vncshell
      * @param $node
      * @param $param
      * @return mixed
@@ -341,7 +343,7 @@ class nodes
     }
 
     /**
-     * API path - (https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/wakeonlan)
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/wakeonlan
      * @param $node
      * @return mixed
      */
