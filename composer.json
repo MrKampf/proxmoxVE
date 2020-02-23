@@ -1,15 +1,15 @@
 {
-    "name": "mrkampf/proxmox-ve",
+    "name": "mrkampf/proxmoxVE",
     "description": "Proxmox VE API",
     "type": "library",
-    "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization"],
+    "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization", "PHP"],
     "version": "0.1.0",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
         {
             "name": "MrKampf",
-            "email": "6299113+MrKampf@users.noreply.github.com",
+            "email": "hello@mrkampf.com",
             "homepage": "https://mrkampf.com",
             "role": "Developer"
         }

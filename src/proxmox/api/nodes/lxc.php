@@ -2,7 +2,7 @@
 /**
  * @copyright 2019 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace proxmox\api;
+namespace proxmox\api\nodes;
 
 use proxmox\api\nodes\lxc\firewall;
 use proxmox\helper\connection;
