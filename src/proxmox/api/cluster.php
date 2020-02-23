@@ -1,10 +1,13 @@
 <?php
 /**
- * @copyright 2019 Daniel Engelschalk <hello@mrkampf.com>
+ * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 namespace proxmox\api;
 
-
+/**
+ * Class cluster
+ * @package proxmox\api
+ */
 class cluster
 {
 

@@ -30,7 +30,7 @@ class qemu
      */
     public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
-        $this->apiURL = $apiURL.'qemu/'; //Save api url in class variable and change this to current api path
+        $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
         $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
         $this->ticket = $ticket; //Save auth ticket in class variable
         $this->hostname = $hostname; //Save hostname in class variable

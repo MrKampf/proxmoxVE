@@ -1,12 +1,16 @@
 <?php
 /**
- * @copyright 2019 Daniel Engelschalk <hello@mrkampf.com>
+ * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 namespace proxmox\api\nodes;
 
 use proxmox\api\nodes\lxc\firewall;
 use proxmox\helper\connection;
 
+/**
+ * Class lxc
+ * @package proxmox\api\nodes
+ */
 class lxc
 {
     private $httpClient, //The http client for connection to proxmox
@@ -27,7 +31,7 @@ class lxc
      */
     public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
-        $this->apiURL = $apiURL.'lxc/'; //Save api url in class variable and change this to current api path
+        $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
         $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
         $this->ticket = $ticket; //Save auth ticket in class variable
         $this->hostname = $hostname; //Save hostname in class variable
