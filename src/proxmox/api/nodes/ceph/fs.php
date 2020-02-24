@@ -24,7 +24,7 @@ class fs
      * @return mixed
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**

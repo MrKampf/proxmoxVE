@@ -4,6 +4,7 @@
  */
 namespace proxmox\api\nodes;
 
+use GuzzleHttp\Client;
 use proxmox\api\nodes\disks\zfs;
 use proxmox\helper\connection;
 
@@ -15,26 +16,17 @@ class disks
 {
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
      * disks constructor.
-     * @param $httpClient
-     * @param $apiURL
-     * @param $CSRFPreventionToken
-     * @param $ticket
-     * @param $hostname
-     * @param $cookie
+     * @param $httpClient Client
+     * @param $apiURL string
+     * @param $cookie mixed
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
+    public function __construct($httpClient,$apiURL,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
-        $this->ticket = $ticket; //Save auth ticket in class variable
-        $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = $cookie; //Save auth cookie in class variable
     }
 
@@ -42,21 +34,21 @@ class disks
      * @return mixed
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
      * @return zfs
      */
     public function zfs(){
-        return new zfs($this->httpClient,$this->apiURL.'/zfs/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new zfs($this->httpClient,$this->apiURL.'/zfs/',$this->cookie);
     }
 
     /**
      * @return mixed
      */
     public function getDirectory(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'directory',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'directory',$this->cookie));
     }
 
     /**

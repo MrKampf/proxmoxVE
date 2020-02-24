@@ -24,7 +24,7 @@ class mds
      * @return mixed
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
@@ -41,6 +41,6 @@ class mds
      * @return mixed
      */
     public function deleteName($name){
-        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURL.$name,$this->cookie,[]));
+        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURL.$name,$this->cookie));
     }
 }

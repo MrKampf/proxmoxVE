@@ -24,14 +24,14 @@ class pci
      * @return mixed|null
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
      * @return mixed|null
      */
     public function getPCIID($pciid){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$pciid,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$pciid,$this->cookie));
     }
 
     /**

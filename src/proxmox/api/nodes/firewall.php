@@ -42,21 +42,21 @@ class firewall
      * @return mixed|null
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
      * @return mixed|null
      */
     public function getLog(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'log',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'log',$this->cookie));
     }
 
     /**
      * @return mixed|null
      */
     public function getOptions(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'options',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'options',$this->cookie));
     }
 
     /**

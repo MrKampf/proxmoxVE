@@ -5,6 +5,8 @@
 namespace proxmox\api\nodes\lxc;
 
 use GuzzleHttp\Client;
+use proxmox\api\nodes\lxc\snapshot\snapname;
+use proxmox\helper\connection;
 
 /**
  * Class snapshot
@@ -14,26 +16,54 @@ class snapshot
 {
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
      * snapshot constructor.
      * @param $httpClient Client
      * @param $apiURL string
-     * @param $CSRFPreventionToken mixed
-     * @param $ticket mixed
-     * @param $hostname string
      * @param $cookie mixed
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
+    public function __construct($httpClient,$apiURL,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
-        $this->ticket = $ticket; //Save auth ticket in class variable
-        $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = $cookie; //Save auth cookie in class variable
+    }
+
+    /**
+     * -
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/snapshot/{snapname}
+     * @param $snapName string
+     * @return snapname
+     */
+    public function snapname($snapName){
+        return new snapname($this->httpClient,$this->apiURL.$snapName.'/',$this->cookie);
+    }
+
+    /**
+     * GET
+     */
+
+    /**
+     * Set Firewall options.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/snapshot
+     * @return mixed|null
+     */
+    public function get(){
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
+    }
+
+    /**
+     * POST
+     */
+
+    /**
+     * Set Firewall options.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/snapshot
+     * @param $params array
+     * @return mixed|null
+     */
+    public function post($params){
+        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL,$this->cookie,$params));
     }
 }

@@ -16,37 +16,28 @@ class ipSet
 {
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
-     * ipset constructor.
+     * ipSet constructor.
      * @param $httpClient Client
      * @param $apiURL string
-     * @param $CSRFPreventionToken mixed
-     * @param $ticket mixed
-     * @param $hostname string
      * @param $cookie mixed
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
+    public function __construct($httpClient,$apiURL,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
-        $this->ticket = $ticket; //Save auth ticket in class variable
-        $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = $cookie; //Save auth cookie in class variable
     }
 
     /**
      * List IPSet content
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/firewall/ipset/{name}
-     * @param $name
+     * @param $name string
      * @return name
      */
     public function name($name){
-        return new name($this->httpClient,$this->apiURL.$name.'/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new name($this->httpClient,$this->apiURL.$name.'/',$this->cookie);
     }
 
     /**
@@ -59,7 +50,7 @@ class ipSet
      * @return mixed|null
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**

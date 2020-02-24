@@ -6,6 +6,8 @@ namespace proxmox;
 
 use GuzzleHttp\Client;
 use proxmox\api\nodes;
+use proxmox\api\storage;
+use proxmox\api\version;
 use proxmox\Exception\AuthenticationException;
 use proxmox\helper\connection;
 
@@ -75,10 +77,29 @@ class pve
     }
 
     /**
-     * Get nodes
+     * Cluster node index.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes
      * @return nodes
      */
     public function nodes(){
-        return new nodes($this->httpClient,$this->apiURL,$this->CSRFPreventionToken,$this->ticket,$this->hostname);
+        return new nodes($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+    }
+
+    /**
+     * API version details. The result also includes the global datacenter confguration.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
+     * @return version
+     */
+    public function version(){
+        return new version($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+    }
+
+    /**
+     * Storage index.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
+     * @return storage
+     */
+    public function storage(){
+        return new storage($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 }

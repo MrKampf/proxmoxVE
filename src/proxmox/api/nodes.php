@@ -4,6 +4,7 @@
  */
 namespace proxmox\api;
 
+use GuzzleHttp\Client;
 use proxmox\api\nodes\apt;
 use proxmox\api\nodes\ceph;
 use proxmox\api\nodes\certificates;
@@ -12,6 +13,7 @@ use proxmox\api\nodes\lxc;
 use proxmox\api\nodes\qemu;
 use proxmox\helper\connection;
 
+//TODO//Fill the rest comments
 /**
  * Class nodes
  * @package proxmox\api
@@ -20,81 +22,84 @@ class nodes
 {
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
-        $CSRFPreventionToken, //CSRF token for auth
         $ticket, //Auth ticket
         $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
      * nodes constructor.
-     * @param $httpClient
-     * @param $apiURL
-     * @param $CSRFPreventionToken
-     * @param $ticket
-     * @param $hostname
+     * @param $httpClient Client
+     * @param $apiURL string
+     * @param $ticket string
+     * @param $hostname string
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname){
+    public function __construct($httpClient,$apiURL,$ticket,$hostname){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL.'/api2/json/nodes/'; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
         $this->ticket = $ticket; //Save auth ticket in class variable
         $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = connection::getCookies($this->ticket,$this->hostname); //Get auth cookie and save in class variable
     }
 
     /**
+     * Directory index for apt (Advanced Package Tool).
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/apt
      * @param $node
      * @return apt
      */
     public function apt($node){
-        return new apt($this->httpClient,$this->apiURL.$node.'/apt/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new apt($this->httpClient,$this->apiURL.$node.'/apt/',$this->cookie);
     }
 
     /**
+     * Directory index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/ceph
      * @param $node
      * @return ceph
      */
     public function ceph($node){
-        return new ceph($this->httpClient,$this->apiURL.$node.'/ceph/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new ceph($this->httpClient,$this->apiURL.$node.'/ceph/',$this->cookie);
     }
 
     /**
+     * Node index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/certificates
      * @param $node
      * @return certificates
      */
     public function certificates($node){
-        return new certificates($this->httpClient,$this->apiURL.$node.'/certificates/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new certificates($this->httpClient,$this->apiURL.$node.'/certificates/',$this->cookie);
     }
 
     /**
+     * Node index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/disks
      * @param $node
      * @return disks
      */
     public function disks($node){
-        return new disks($this->httpClient,$this->apiURL.$node.'/disks/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new disks($this->httpClient,$this->apiURL.$node.'/disks/',$this->cookie);
     }
 
     /**
+     * LXC container index (per node).
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc
      * @param $node integer Node name
      * @param $vmid integer VMID (unique) ID of the vm
      * @return lxc
      */
     public function lxc($node,$vmid){
-        return new lxc($this->httpClient,$this->apiURL.$node.'/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie,$vmid);
+        return new lxc($this->httpClient,$this->apiURL.$node.'/',$this->cookie,$vmid);
     }
 
     /**
+     * Virtual machine index (per node).
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/qemu
      * @param $node
      * @return qemu
      */
     public function qemu($node){
-        return new qemu($this->httpClient,$this->apiURL.$node.'/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new qemu($this->httpClient,$this->apiURL.$node.'/',$this->cookie);
     }
 
     /**
@@ -102,15 +107,17 @@ class nodes
      */
 
     /**
+     * Node index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}
      * @return mixed
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     //TODO//Delete on version 2.0.0<
     /**
+     * Read node status
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status
      * @param $node
      * @return mixed
@@ -125,46 +132,51 @@ class nodes
      * @return mixed
      */
     public function getLxc($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/lxc',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/lxc',$this->cookie));
     }
 
     /**
+     * Get list of appliances.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/aplinfo
      * @param $node
      * @return mixed
      */
     public function getAplinfo($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/aplinfo',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/aplinfo',$this->cookie));
     }
 
     /**
+     * Get node configuration options.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/config
      * @param $node
      * @return mixed
      */
     public function getConfig($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/config',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/config',$this->cookie));
     }
 
     /**
+     * Read DNS settings.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/dns
      * @param $node
      * @return mixed
      */
     public function getDNS($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/dns',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/dns',$this->cookie));
     }
 
     /**
+     * Get the content of /etc/hosts.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/hosts
      * @param $node
      * @return mixed
      */
     public function getHosts($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/hosts',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/hosts',$this->cookie));
     }
 
     /**
+     * Read Journal
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/journal
      * @param $node
      * @param $param
@@ -175,12 +187,13 @@ class nodes
     }
 
     /**
+     * Read tap/vm network device interface counters
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/netstat
      * @param $node
      * @return mixed
      */
     public function getNetstat($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/netstat',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/netstat',$this->cookie));
     }
 
     /**
@@ -189,7 +202,7 @@ class nodes
      * @return mixed
      */
     public function getReport($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/report',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/report',$this->cookie));
     }
 
     /**
@@ -198,7 +211,7 @@ class nodes
      * @return mixed
      */
     public function getRrd($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/rrd',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/rrd',$this->cookie));
     }
 
     /**
@@ -212,12 +225,13 @@ class nodes
     }
 
     /**
+     * Read node status
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/status
      * @param $node
      * @return mixed
      */
     public function getStatus($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/status',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/status',$this->cookie));
     }
 
     /**
@@ -226,7 +240,7 @@ class nodes
      * @return mixed
      */
     public function getSubscription($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/subscription',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/subscription',$this->cookie));
     }
 
     /**
@@ -245,7 +259,7 @@ class nodes
      * @return mixed
      */
     public function getTime($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/time',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/time',$this->cookie));
     }
 
     /**
@@ -254,7 +268,7 @@ class nodes
      * @return mixed
      */
     public function getVersion($node){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/version',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$node.'/version',$this->cookie));
     }
 
     /**
@@ -348,6 +362,6 @@ class nodes
      * @return mixed
      */
     public function postWakeonlan($node){
-        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL.$node.'/wakeonlan',$this->cookie,[]));
+        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL.$node.'/wakeonlan',$this->cookie));
     }
 }

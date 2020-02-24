@@ -7,6 +7,7 @@ namespace proxmox\api\nodes;
 use GuzzleHttp\Client;
 use proxmox\api\nodes\lxc\firewall;
 use proxmox\api\nodes\lxc\snapshot;
+use proxmox\api\nodes\lxc\status;
 use proxmox\helper\connection;
 
 /**
@@ -18,28 +19,19 @@ class lxc
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
         $apiURLWithVmid, //API url with vm id
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
      * lxc constructor.
      * @param $httpClient Client
      * @param $apiURL string
-     * @param $CSRFPreventionToken mixed
-     * @param $ticket mixed
-     * @param $hostname string
      * @param $cookie mixed
      * @param $vmid integer
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie,$vmid){
+    public function __construct($httpClient,$apiURL,$cookie,$vmid){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
         $this->apiURLWithVmid = $apiURL.$vmid.'/'; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
-        $this->ticket = $ticket; //Save auth ticket in class variable
-        $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = $cookie; //Save auth cookie in class variable
     }
 
@@ -49,7 +41,7 @@ class lxc
      * @return firewall
      */
     public function firewall(){
-        return new firewall($this->httpClient,$this->apiURLWithVmid.'firewall/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new firewall($this->httpClient,$this->apiURLWithVmid.'firewall/',$this->cookie);
     }
 
     /**
@@ -58,7 +50,16 @@ class lxc
      * @return snapshot
      */
     public function snapshot(){
-        return new snapshot($this->httpClient,$this->apiURLWithVmid.'snapshot/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new snapshot($this->httpClient,$this->apiURLWithVmid.'snapshot/',$this->cookie);
+    }
+
+    /**
+     * Directory index
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/status
+     * @return status
+     */
+    public function status(){
+        return new status($this->httpClient,$this->apiURLWithVmid.'status/',$this->cookie);
     }
 
     /**
@@ -71,7 +72,7 @@ class lxc
      * @return mixed
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
@@ -80,7 +81,7 @@ class lxc
      * @return mixed|null
      */
     public function getLxc(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURLWithVmid,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURLWithVmid,$this->cookie));
     }
 
     /**
@@ -251,6 +252,6 @@ class lxc
      * @return mixed|null
      */
     public function deleteLxc($vmid){
-        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURLWithVmid,$this->cookie,[]));
+        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURLWithVmid,$this->cookie));
     }
 }

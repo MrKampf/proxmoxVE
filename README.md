@@ -57,7 +57,6 @@ $proxmox = new pve($credentials);
 
 //Read all nodes
 print_r($proxmox->nodes()->get());
-
 ```
 
 [LICENSE]:./LICENSE

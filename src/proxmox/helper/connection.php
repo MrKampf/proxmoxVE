@@ -53,7 +53,7 @@ class connection
      * @param $param
      * @return mixed
      */
-    public static function getAPI($httpClient,$url,$cookies,$param){
+    public static function getAPI($httpClient,$url,$cookies,$param=[]){
         if(!is_array($param)){
             throw new AuthenticationException('No array with params for get');
         }
@@ -74,7 +74,7 @@ class connection
      * @param $param
      * @return mixed
      */
-    public static function postAPI($httpClient,$url,$cookies,$param){
+    public static function postAPI($httpClient,$url,$cookies,$param=[]){
         if(!is_array($param)){
             throw new AuthenticationException('No array with params for post');
         }
@@ -95,7 +95,7 @@ class connection
      * @param $param
      * @return mixed
      */
-    public static function putAPI($httpClient,$url,$cookies,$param){
+    public static function putAPI($httpClient,$url,$cookies,$param=[]){
         if(!is_array($param)){
             throw new AuthenticationException('No array with params for put');
         }
@@ -116,7 +116,7 @@ class connection
      * @param $param
      * @return mixed
      */
-    public static function deleteAPI($httpClient,$url,$cookies,$param){
+    public static function deleteAPI($httpClient,$url,$cookies,$param=[]){
         if(!is_array($param)){
             throw new AuthenticationException('No array with params for delete');
         }

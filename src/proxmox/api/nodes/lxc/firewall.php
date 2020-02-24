@@ -7,6 +7,7 @@ namespace proxmox\api\nodes\lxc;
 use GuzzleHttp\Client;
 use proxmox\api\nodes\lxc\firewall\aliases;
 use proxmox\api\nodes\lxc\firewall\ipSet;
+use proxmox\api\nodes\lxc\firewall\rules;
 use proxmox\helper\connection;
 
 /**
@@ -17,26 +18,17 @@ class firewall
 {
     private $httpClient, //The http client for connection to proxmox
         $apiURL, //API url
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $hostname, //Pormxox hostname
         $cookie; //Proxmox auth cookie
 
     /**
      * firewall constructor.
      * @param $httpClient Client
      * @param $apiURL string
-     * @param $CSRFPreventionToken mixed
-     * @param $ticket mixed
-     * @param $hostname string
      * @param $cookie mixed
      */
-    public function __construct($httpClient,$apiURL,$CSRFPreventionToken,$ticket,$hostname,$cookie){
+    public function __construct($httpClient,$apiURL,$cookie){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->CSRFPreventionToken = $CSRFPreventionToken; //Save CSRF token in class variable
-        $this->ticket = $ticket; //Save auth ticket in class variable
-        $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = $cookie; //Save auth cookie in class variable
     }
 
@@ -46,7 +38,7 @@ class firewall
      * @return aliases
      */
     public function aliases(){
-        return new aliases($this->httpClient,$this->apiURL.'aliases/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new aliases($this->httpClient,$this->apiURL.'aliases/',$this->cookie);
     }
 
     /**
@@ -55,7 +47,16 @@ class firewall
      * @return ipSet
      */
     public function ipSet(){
-        return new ipSet($this->httpClient,$this->apiURL.'ipset/',$this->CSRFPreventionToken,$this->ticket,$this->hostname,$this->cookie);
+        return new ipSet($this->httpClient,$this->apiURL.'ipset/',$this->cookie);
+    }
+
+    /**
+     * List rules.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/lxc/{vmid}/firewall/rules
+     * @return rules
+     */
+    public function rules(){
+        return new rules($this->httpClient,$this->apiURL.'rules/',$this->cookie);
     }
 
     /**
@@ -68,7 +69,7 @@ class firewall
      * @return mixed|null
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
@@ -77,7 +78,7 @@ class firewall
      * @return mixed|null
      */
     public function getLog(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'log/',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'log/',$this->cookie));
     }
 
     /**
@@ -86,7 +87,7 @@ class firewall
      * @return mixed|null
      */
     public function getOptions(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'options/',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'options/',$this->cookie));
     }
 
     /**
@@ -95,7 +96,7 @@ class firewall
      * @return mixed|null
      */
     public function getRefs(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'refs/',$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.'refs/',$this->cookie));
     }
 
     /**

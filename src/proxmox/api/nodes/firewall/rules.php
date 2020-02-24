@@ -24,7 +24,7 @@ class rules
      * @return mixed|null
      */
     public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
     }
 
     /**
@@ -32,7 +32,7 @@ class rules
      * @return mixed
      */
     public function getName($name){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$name,$this->cookie,[]));
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$name,$this->cookie));
     }
 
     /**
