@@ -48,6 +48,31 @@ class pools
     }
 
     /**
+     * Get pool configuration.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
+     * @param $poolId string
+     * @return mixed
+     */
+    public function getPoolid($poolId){
+        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$poolId.'/',$this->cookie));
+    }
+
+    /**
+     * PUT
+     */
+
+    /**
+     * Update pool data.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
+     * @param $poolId string
+     * @param $params array
+     * @return mixed
+     */
+    public function putPoolid($poolId,$params){
+        return connection::processHttpResponse(connection::putAPI($this->httpClient,$this->apiURL.$poolId.'/',$this->cookie,$params));
+    }
+
+    /**
      * POST
      */
 
@@ -58,5 +83,19 @@ class pools
      */
     public function post(){
         return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL,$this->cookie));
+    }
+
+    /**
+     * DELETE
+     */
+
+    /**
+     * Delete pool.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
+     * @param $poolId string
+     * @return mixed
+     */
+    public function deletePoolid($poolId){
+        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURL.$poolId.'/',$this->cookie));
     }
 }

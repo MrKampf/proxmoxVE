@@ -5,7 +5,9 @@
 namespace proxmox;
 
 use GuzzleHttp\Client;
+use proxmox\api\access;
 use proxmox\api\nodes;
+use proxmox\api\pools;
 use proxmox\api\storage;
 use proxmox\api\version;
 use proxmox\Exception\AuthenticationException;
@@ -110,5 +112,14 @@ class pve
      */
     public function pools(){
         return new pools($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+    }
+
+    /**
+     * Directory index.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
+     * @return access
+     */
+    public function access(){
+        return new access($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 }
