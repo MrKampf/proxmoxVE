@@ -4,6 +4,7 @@
  */
 namespace proxmox\helper;
 
+use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use proxmox\Exception\AuthenticationException;
 
@@ -12,12 +13,12 @@ class connection
 
     /**
      * Get CSRF token data from proxmox api for api auth
-     * @param $httpClient
-     * @param $url
-     * @param $username
-     * @param $password
-     * @param $authType
-     * @param $debug
+     * @param $httpClient Client
+     * @param $url string
+     * @param $username string
+     * @param $password string
+     * @param $authType string
+     * @param $debug boolean
      * @return mixed
      */
     public static function getCSRFToken($httpClient,$url,$username,$password,$authType,$debug){
@@ -34,8 +35,8 @@ class connection
 
     /**
      * Get cookies for auth
-     * @param $ticket
-     * @param $hostname
+     * @param $ticket string
+     * @param $hostname string
      * @return CookieJar
      */
     public static function getCookies($ticket,$hostname){
@@ -47,10 +48,10 @@ class connection
     /**
      * Get function for get data from proxmox api
      * You can get information from the proxmox api with this function.
-     * @param $httpClient
-     * @param $url
-     * @param $cookies
-     * @param $param
+     * @param $httpClient Client
+     * @param $url string
+     * @param $cookies string
+     * @param $param array
      * @return mixed
      */
     public static function getAPI($httpClient,$url,$cookies,$param=[]){
@@ -68,10 +69,10 @@ class connection
     /**
      * Post function for post to proxmox api
      * You can post information to the proxmox api with this function.
-     * @param $httpClient
-     * @param $url
-     * @param $cookies
-     * @param $param
+     * @param $httpClient Client
+     * @param $url string
+     * @param $cookies string
+     * @param $param array
      * @return mixed
      */
     public static function postAPI($httpClient,$url,$cookies,$param=[]){
@@ -89,10 +90,10 @@ class connection
     /**
      * Put function for put to proxmox api
      * You can put information to the proxmox api with function.
-     * @param $httpClient
-     * @param $url
-     * @param $cookies
-     * @param $param
+     * @param $httpClient Client
+     * @param $url string
+     * @param $cookies string
+     * @param $param array
      * @return mixed
      */
     public static function putAPI($httpClient,$url,$cookies,$param=[]){
@@ -110,10 +111,10 @@ class connection
     /**
      * Delete function for delete to proxmox api
      * You can delete with this function vm's or other.
-     * @param $httpClient
-     * @param $url
-     * @param $cookies
-     * @param $param
+     * @param $httpClient Client
+     * @param $url string
+     * @param $cookies string
+     * @param $param array
      * @return mixed
      */
     public static function deleteAPI($httpClient,$url,$cookies,$param=[]){
@@ -130,7 +131,7 @@ class connection
 
     /**
      * Formatting the proxmox api response to array
-     * @param $response
+     * @param $response mixed
      * @return mixed|null
      */
     public static function processHttpResponse($response){

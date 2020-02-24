@@ -6,6 +6,7 @@ namespace proxmox;
 
 use GuzzleHttp\Client;
 use proxmox\api\access;
+use proxmox\api\cluster;
 use proxmox\api\nodes;
 use proxmox\api\pools;
 use proxmox\api\storage;
@@ -121,5 +122,14 @@ class pve
      */
     public function access(){
         return new access($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+    }
+
+    /**
+     * Cluster index.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster
+     * @return cluster
+     */
+    public function cluster(){
+        return new cluster($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 }
