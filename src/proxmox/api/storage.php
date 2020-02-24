@@ -28,7 +28,7 @@ class storage
      */
     public function __construct($httpClient,$apiURL,$ticket,$hostname){
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
-        $this->apiURL = $apiURL.'/api2/json/version/'; //Save api url in class variable and change this to current api path
+        $this->apiURL = $apiURL.'/api2/json/storage/'; //Save api url in class variable and change this to current api path
         $this->ticket = $ticket; //Save auth ticket in class variable
         $this->hostname = $hostname; //Save hostname in class variable
         $this->cookie = connection::getCookies($this->ticket,$this->hostname); //Get auth cookie and save in class variable

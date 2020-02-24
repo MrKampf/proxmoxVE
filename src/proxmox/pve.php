@@ -102,4 +102,13 @@ class pve
     public function storage(){
         return new storage($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
+
+    /**
+     * Pool index.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
+     * @return pools
+     */
+    public function pools(){
+        return new pools($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+    }
 }
