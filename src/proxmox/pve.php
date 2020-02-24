@@ -56,10 +56,10 @@ class pve
      * @return bool
      */
     private function setLoginTokens($json){
-        if(is_array($json)){ //Is $json are array
+        if(!is_array($json)){ //Is $json are array
             throw new AuthenticationException('Can\'t login with this data.');
         }
-        if(array_key_exists('data',$json)){//Is key 'data' in array
+        if(!array_key_exists('data',$json)){//Is key 'data' in array
             throw new AuthenticationException('Can\'t login with this data.');
         }
         $this->CSRFPreventionToken = $json['data']['CSRFPreventionToken']; //Save the CSRF token in class variable
