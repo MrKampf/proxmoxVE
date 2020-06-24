@@ -3,7 +3,7 @@
     "description": "Proxmox VE API",
     "type": "library",
     "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization", "PHP"],
-    "version": "0.2.2,
+    "version": "0.2.2.0",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
