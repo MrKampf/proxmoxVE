@@ -24,7 +24,7 @@ class pve
     private static $httpClient, //The http client for the connection to the host
         $username, //Username
         $password, //The password for user
-        $host, //Host, ip or domain
+        $hostname, //Host, ip or domain
         $port, //Proxmox api port
         $authType, //User type (pve or pam)
         $debug, //Want debug connection
@@ -38,13 +38,13 @@ class pve
      * @param bool $debug
      */
     public function __construct($param,$debug=false){
-        self::$host = $param['hostname']; //Save hostname in class variable
+        self::$hostname = $param['hostname']; //Save hostname in class variable
         self::$username = $param['username']; //Save username in class variable
         self::$password = $param['password']; //Save user password in class variable
         self::$port = $param['port']; //Save port in class variable
         self::$authType = $param['authType']; //Save auth type in class variable
         self::$debug = $debug; //Save the debug boolean variable
-        self::$apiURL = 'https://'.self::$host.':'.self::$port; //Create the basic api url
+        self::$apiURL = 'https://'.self::$hostname.':'.self::$port; //Create the basic api url
         $this->refreshHttpClient();
         $json = json_decode($this->getCSRFPreventionToken(), true); //Get auth CSRF token
         $this->setLoginTokens($json); //Set the login data for the proxmox api
@@ -91,7 +91,7 @@ class pve
      * @return nodes
      */
     public function nodes(){
-        return new nodes(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new nodes(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -100,7 +100,7 @@ class pve
      * @return version
      */
     public function version(){
-        return new version(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new version(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -109,7 +109,7 @@ class pve
      * @return storage
      */
     public function storage(){
-        return new storage(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new storage(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -118,7 +118,7 @@ class pve
      * @return pools
      */
     public function pools(){
-        return new pools(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new pools(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -127,7 +127,7 @@ class pve
      * @return access
      */
     public function access(){
-        return new access(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new access(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -136,7 +136,7 @@ class pve
      * @return cluster
      */
     public function cluster(){
-        return new cluster(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
+        return new cluster(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -195,7 +195,7 @@ class pve
      */
     public static function getHost()
     {
-        return self::$host;
+        return self::$hostname;
     }
 
     /**
@@ -203,7 +203,7 @@ class pve
      */
     public static function setHost($host)
     {
-        self::$host = $host;
+        self::$hostname = $host;
     }
 
     /**
