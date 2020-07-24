@@ -5,14 +5,14 @@
 namespace proxmox;
 
 use GuzzleHttp\Client;
-use proxmox\api\access;
-use proxmox\api\cluster;
-use proxmox\api\nodes;
-use proxmox\api\pools;
-use proxmox\api\storage;
-use proxmox\api\version;
+use proxmox\Api\access;
+use proxmox\Api\cluster;
+use proxmox\Api\nodes;
+use proxmox\Api\pools;
+use proxmox\Api\storage;
+use proxmox\Api\version;
 use proxmox\Exception\AuthenticationException;
-use proxmox\helper\connection;
+use proxmox\Helper\connection;
 
 /**
  * Class pve
@@ -21,12 +21,12 @@ use proxmox\helper\connection;
 class pve
 {
 
-    private $hostname, //Pormxox hostname
-        $username, //Proxmox username
-        $password, //Proxmox user password
-        $port, //Proxmox port
-        $authType, //Proxmox user type (pve or pam)
-        $httpClient, //The http client for connection to proxmox
+    private static $httpClient, //The http client for the connection to the host
+        $username, //Username
+        $password, //The password for user
+        $host, //Host, ip or domain
+        $port, //Proxmox api port
+        $authType, //User type (pve or pam)
         $debug, //Want debug connection
         $CSRFPreventionToken, //CSRF token for auth
         $ticket, //Auth ticket
@@ -38,16 +38,17 @@ class pve
      * @param bool $debug
      */
     public function __construct($param,$debug=false){
-        $this->hostname = $param['hostname']; //Save hostname in class variable
-        $this->username = $param['username']; //Save username in class variable
-        $this->password = $param['password']; //Save user password in class variable
-        $this->port = $param['port']; //Save port in class variable
-        $this->authType = $param['authType']; //Save auth type in class variable
-        $this->httpClient = new Client(); //Create new http client from GuzzleHttp
-        $this->debug = $debug; //Save the debug boolean variable
-        $this->apiURL = 'https://'.$this->hostname.':'.$this->port; //Create the basic api url
-        $json = json_decode($this->getCSRFToket(), true); //Get auth CSRF token
+        self::$host = $param['hostname']; //Save hostname in class variable
+        self::$username = $param['username']; //Save username in class variable
+        self::$password = $param['password']; //Save user password in class variable
+        self::$port = $param['port']; //Save port in class variable
+        self::$authType = $param['authType']; //Save auth type in class variable
+        self::$debug = $debug; //Save the debug boolean variable
+        self::$apiURL = 'https://'.self::$host.':'.self::$port; //Create the basic api url
+        $this->refreshHttpClient();
+        $json = json_decode($this->getCSRFPreventionToken(), true); //Get auth CSRF token
         $this->setLoginTokens($json); //Set the login data for the proxmox api
+        connection::setCsrfTokenString(self::$CSRFPreventionToken);
     }
 
     /**
@@ -62,21 +63,26 @@ class pve
         if(!array_key_exists('data',$json)){//Is key 'data' in array
             throw new AuthenticationException('Can\'t login with this data.');
         }
-        $this->CSRFPreventionToken = $json['data']['CSRFPreventionToken']; //Save the CSRF token in class variable
-        $this->ticket = $json['data']['ticket']; //Save the ticket in class variable
+        self::$CSRFPreventionToken = $json['data']['CSRFPreventionToken']; //Save the CSRF token in class variable
+        self::$ticket = $json['data']['ticket']; //Save the ticket in class variable
         return true; //Return true when function finish
     }
 
     /**
-     * Get CSRF token data from proxmox api for api auth
-     * @return \Psr\Http\Message\StreamInterface | null
+     * Refresh the CSRF token data from proxmox api for api auth
      */
-    private function getCSRFToket(){
-        $csrfRequest = connection::getCSRFToken($this->httpClient,$this->apiURL,$this->username,$this->password,$this->authType,$this->debug); //Get CSRF token
-        if(!$csrfRequest){ //IF CSRF token variable empty/null
-            return null;
+    private static function refreshCSRFToket(){
+        $csrfRequest = connection::getCSRFToken(self::$httpClient,self::$apiURL,self::$username,self::$password,self::$authType,self::$debug); //Get CSRF token
+        if($csrfRequest){ //IF CSRF token variable empty/null
+            self::$CSRFPreventionToken = $csrfRequest->getBody();
         }
-        return $csrfRequest->getBody();
+    }
+
+    /**
+     * Refresh the http client
+     */
+    private static function refreshHttpClient(){
+        self::$httpClient = new Client(); //Create new http client
     }
 
     /**
@@ -85,7 +91,7 @@ class pve
      * @return nodes
      */
     public function nodes(){
-        return new nodes($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new nodes(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -94,7 +100,7 @@ class pve
      * @return version
      */
     public function version(){
-        return new version($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new version(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -103,7 +109,7 @@ class pve
      * @return storage
      */
     public function storage(){
-        return new storage($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new storage(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -112,7 +118,7 @@ class pve
      * @return pools
      */
     public function pools(){
-        return new pools($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new pools(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -121,7 +127,7 @@ class pve
      * @return access
      */
     public function access(){
-        return new access($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new access(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
 
     /**
@@ -130,6 +136,175 @@ class pve
      * @return cluster
      */
     public function cluster(){
-        return new cluster($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new cluster(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
     }
+
+    /**
+     * @return Client
+     */
+    public static function getHttpClient()
+    {
+        if(!self::$httpClient){
+            self::refreshHttpClient();
+        }
+        return self::$httpClient;
+    }
+
+    /**
+     * @param Client $httpClient
+     */
+    public static function setHttpClient($httpClient)
+    {
+        self::$httpClient = $httpClient;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getUsername()
+    {
+        return self::$username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public static function setUsername($username)
+    {
+        self::$username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getPassword()
+    {
+        return self::$password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public static function setPassword($password)
+    {
+        self::$password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getHost()
+    {
+        return self::$host;
+    }
+
+    /**
+     * @param mixed $host
+     */
+    public static function setHost($host)
+    {
+        self::$host = $host;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getPort()
+    {
+        return self::$port;
+    }
+
+    /**
+     * @param mixed $port
+     */
+    public static function setPort($port)
+    {
+        self::$port = $port;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getAuthType()
+    {
+        return self::$authType;
+    }
+
+    /**
+     * @param mixed $authType
+     */
+    public static function setAuthType($authType)
+    {
+        self::$authType = $authType;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isDebug()
+    {
+        return self::$debug;
+    }
+
+    /**
+     * @param bool $debug
+     */
+    public static function setDebug($debug)
+    {
+        self::$debug = $debug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getCSRFPreventionToken()
+    {
+        if(!self::$CSRFPreventionToken){
+            self::refreshCSRFToket();
+        }
+        return self::$CSRFPreventionToken;
+    }
+
+    /**
+     * @param mixed $CSRFPreventionToken
+     */
+    public static function setCSRFPreventionToken($CSRFPreventionToken)
+    {
+        self::$CSRFPreventionToken = $CSRFPreventionToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getTicket()
+    {
+        return self::$ticket;
+    }
+
+    /**
+     * @param mixed $ticket
+     */
+    public static function setTicket($ticket)
+    {
+        self::$ticket = $ticket;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getApiURL()
+    {
+        return self::$apiURL;
+    }
+
+    /**
+     * @param string $apiURL
+     */
+    public static function setApiURL($apiURL)
+    {
+        self::$apiURL = $apiURL;
+    }
+
+
+
 }
