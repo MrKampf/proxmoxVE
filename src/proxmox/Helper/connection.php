@@ -73,12 +73,13 @@ class connection
     /**
      * Get function for get data from proxmox api
      * You can get information from the proxmox api with this function.
+     * @param $httpClient
      * @param $url string
      * @param $cookies string
      * @param $param array
      * @return mixed
      */
-    public static function getAPI($url, $cookies, $param = [])
+    public static function getAPI($httpClient,$url, $cookies, $param = [])
     {
         if (!is_array($param)) {
             throw new AuthenticationException('No array with params for get');
@@ -95,12 +96,13 @@ class connection
     /**
      * Post function for post to proxmox api
      * You can post information to the proxmox api with this function.
+     * @param $httpClient
      * @param $url string
      * @param $cookies string
      * @param $param array
      * @return mixed
      */
-    public static function postAPI($url, $cookies, $param = [])
+    public static function postAPI($httpClient,$url, $cookies, $param = [])
     {
         if (!is_array($param)) {
             throw new AuthenticationException('No array with params for post');
@@ -117,12 +119,13 @@ class connection
     /**
      * Put function for put to proxmox api
      * You can put information to the proxmox api with function.
+     * @param $httpClient
      * @param $url string
      * @param $cookies string
      * @param $param array
      * @return mixed
      */
-    public static function putAPI($url, $cookies, $param = [])
+    public static function putAPI($httpClient,$url, $cookies, $param = [])
     {
         if (!is_array($param)) {
             throw new AuthenticationException('No array with params for put');
@@ -139,12 +142,13 @@ class connection
     /**
      * Delete function for delete to proxmox api
      * You can delete with this function vm's or other.
+     * @param $httpClient
      * @param $url string
      * @param $cookies string
      * @param $param array
      * @return mixed
      */
-    public static function deleteAPI($url, $cookies, $param = [])
+    public static function deleteAPI($httpClient,$url, $cookies, $param = [])
     {
         if (!is_array($param)) {
             throw new AuthenticationException('No array with params for delete');

@@ -72,7 +72,7 @@ class pve
      * Refresh the CSRF token data from proxmox api for api auth
      */
     private static function refreshCSRFToket(){
-        $csrfRequest = connection::getCSRFToken(self::$httpClient,self::$apiURL,self::$username,self::$password,self::$authType,self::$debug); //Get CSRF token
+        $csrfRequest = connection::getCSRFToken(self::$apiURL,self::$username,self::$password,self::$authType,self::$debug); //Get CSRF token
         if($csrfRequest){ //IF CSRF token variable empty/null
             self::$CSRFPreventionToken = $csrfRequest->getBody();
         }
