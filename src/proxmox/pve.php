@@ -91,7 +91,7 @@ class pve
      * @return nodes
      */
     public function nodes(){
-        return new nodes(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new nodes(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
@@ -100,7 +100,7 @@ class pve
      * @return version
      */
     public function version(){
-        return new version(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new version(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
@@ -109,7 +109,7 @@ class pve
      * @return storage
      */
     public function storage(){
-        return new storage(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new storage(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
@@ -118,7 +118,7 @@ class pve
      * @return pools
      */
     public function pools(){
-        return new pools(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new pools(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
@@ -127,7 +127,7 @@ class pve
      * @return access
      */
     public function access(){
-        return new access(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new access(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
@@ -136,7 +136,7 @@ class pve
      * @return cluster
      */
     public function cluster(){
-        return new cluster(self::$httpClient,self::$apiURL,self::$ticket,self::$hostname);
+        return new cluster(self::$httpClient,self::$apiURL,self::$ticket,self::$host);
     }
 
     /**
