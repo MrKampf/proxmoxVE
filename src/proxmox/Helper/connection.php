@@ -5,7 +5,6 @@
 
 namespace proxmox\Helper;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use proxmox\Exception\AuthenticationException;
 use proxmox\pve;

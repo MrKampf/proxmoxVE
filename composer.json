@@ -3,7 +3,7 @@
     "description": "Proxmox VE API",
     "type": "library",
     "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization", "PHP"],
-    "version": "0.2.6",
+    "version": "0.2.7",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
@@ -19,14 +19,14 @@
         "source": "https://github.com/MrKampf/proxmoxVE"
     },
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=7.0",
         "lib-curl": "*",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
-        "php": ">=5.5.0",
+        "php": ">=7.0",
         "lib-curl": "*",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "^7.0"
     },
     "autoload": {
         "psr-0": {
