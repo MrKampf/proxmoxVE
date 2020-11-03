@@ -20,8 +20,9 @@ use proxmox\Helper\connection;
  */
 class pve
 {
+    private static $httpClient; //The http client for the connection to the host
 
-    private $httpClient, //The http client for the connection to the host
+    private
         $username, //Username
         $password, //The password for user
         $hostname, //Host, ip or domain
@@ -82,7 +83,7 @@ class pve
      * Refresh the http client
      */
     private function refreshHttpClient(){
-        $this->httpClient = new Client(); //Create new http client
+        $this->setHttpClient(new Client()); //Create new http client
     }
 
     /**
@@ -91,7 +92,7 @@ class pve
      * @return nodes
      */
     public function nodes(){
-        return new nodes($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new nodes(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
@@ -100,7 +101,7 @@ class pve
      * @return version
      */
     public function version(){
-        return new version($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new version(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
@@ -109,7 +110,7 @@ class pve
      * @return storage
      */
     public function storage(){
-        return new storage($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new storage(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
@@ -118,7 +119,7 @@ class pve
      * @return pools
      */
     public function pools(){
-        return new pools($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new pools(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
@@ -127,7 +128,7 @@ class pve
      * @return access
      */
     public function access(){
-        return new access($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new access(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
@@ -136,18 +137,18 @@ class pve
      * @return cluster
      */
     public function cluster(){
-        return new cluster($this->httpClient,$this->apiURL,$this->ticket,$this->hostname);
+        return new cluster(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
     }
 
     /**
      * @return Client
      */
-    public function getHttpClient()
+    public static function getHttpClient()
     {
-        if(!$this->httpClient){
+        if(!self::$httpClient){
             self::refreshHttpClient();
         }
-        return $this->httpClient;
+        return self::$httpClient;
     }
 
     /**
@@ -155,7 +156,7 @@ class pve
      */
     public function setHttpClient($httpClient)
     {
-        $this->httpClient = $httpClient;
+        self::$httpClient = $httpClient;
     }
 
     /**
