@@ -1,6 +1,7 @@
 <?php
 /*
  * @copyright  2020 Daniel Engelschalk <hello@mrkampf.com>
+ * @copyright 2020 Elias Haisch <elias@eliashaisch.de>
  */
 
 namespace proxmox\Api\nodes\node;
