@@ -1,6 +1,6 @@
 <?php
-/**
- * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
+/*
+ * @copyright  2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 namespace proxmox\Api\nodes\node;
 
@@ -51,5 +51,19 @@ class qemu
      */
     public function get(){
         return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
+    }
+
+    /**
+     * POST
+     */
+
+    /**
+     * Create or restore a virtual machine.
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu
+     * @param $params array
+     * @return mixed|null
+     */
+    public function post($params){
+        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL,$this->cookie,$params));
     }
 }

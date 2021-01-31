@@ -1,6 +1,6 @@
 <?php
-/**
- * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
+/*
+ * @copyright  2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 namespace proxmox\Api\nodes;
 
@@ -14,6 +14,7 @@ use proxmox\Api\nodes\node\hardware;
 use proxmox\Api\nodes\node\lxc;
 use proxmox\Api\nodes\node\network;
 use proxmox\Api\nodes\node\qemu;
+use proxmox\Api\nodes\node\storage;
 use proxmox\Api\nodes\node\vzdump;
 use proxmox\Helper\connection;
 
@@ -118,6 +119,15 @@ class node
      */
     public function qemu(){
         return new qemu($this->httpClient,$this->apiURL.'qemu/',$this->cookie);
+    }
+
+    /**
+     * Virtual machine index (per node).
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage
+     * @return storage
+     */
+    public function storage(){
+        return new storage($this->httpClient,$this->apiURL.'storage/',$this->cookie);
     }
 
     /**
