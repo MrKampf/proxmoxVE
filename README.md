@@ -33,8 +33,9 @@ Then perform the installation:
 $ composer install --no-dev
 ```
 
-### Example
+### Examples
 
+Create Proxmox main object with credentials:
 ```php
 <?php
 // Require the autoloader
@@ -54,7 +55,10 @@ $credentials = [
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new pve($credentials);
+```
 
+Get data about nodes and instances:
+```php
 //Read all nodes
 print_r($proxmox->nodes()->get());
 
@@ -65,8 +69,29 @@ print_r($proxmox->nodes()->lxc()->get());
 print_r($proxmox->nodes()->qemu()->get());
 ```
 
-[LICENSE]:./LICENSE
-[PVE2 API Documentation]:http://pve.proxmox.com/pve-docs/api-viewer/index.html
-[ProxmoxVE API]:http://pve.proxmox.com/wiki/Proxmox_VE_API
-[Proxmox wiki]:http://pve.proxmox.com/wiki
-[Composer]:https://getcomposer.org/
+Starting and stopping an LXC container.
+```php
+// Array with optionals parameters of the Proxmox API call (Check API documentation link).
+$params = array('debug' => 0);
+$proxmox->nodes()->node('PROXMOX_NODE')->lxc()->vmid('LXC_ID')->status()->postStart(array());
+
+$proxmox->nodes()->node('PROXMOX_NODE')->lxc()->vmid('LXC_ID')->status()->postStop(array());
+```
+
+Get LXC container disk size
+```php
+$data = $proxmox->nodes()->node('PROXMOX_NODE')->lxc()->vmid('LXC_ID')->getConfig(array('current' => 1))['data'];
+print( explode(',', $data['rootfs'])[1] ); // For example `size=32G`
+```
+
+### Links of interest
+
+[LICENSE](./LICENSE)
+
+[PVE2 API Documentation](http://pve.proxmox.com/pve-docs/api-viewer/index.html)
+
+[ProxmoxVE API](http://pve.proxmox.com/wiki/Proxmox_VE_API)
+
+[Proxmox wiki](http://pve.proxmox.com/wiki)
+
+[Composer](https://getcomposer.org/)
