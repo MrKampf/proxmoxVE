@@ -87,7 +87,11 @@ print( explode(',', $data['rootfs'])[1] ); // For example `size=32G`
 ### Links of interest
 
 [LICENSE](./LICENSE)
+
 [PVE2 API Documentation](http://pve.proxmox.com/pve-docs/api-viewer/index.html)
+
 [ProxmoxVE API](http://pve.proxmox.com/wiki/Proxmox_VE_API)
+
 [Proxmox wiki](http://pve.proxmox.com/wiki)
+
 [Composer](https://getcomposer.org/)
