@@ -1,7 +1,7 @@
 # ProxmoxVE API
 This **PHP 7.0+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
 
-| Sponsored by: [GitCom]:https://cloud.gitcom.cloud |
+| Sponsored by: [GitCom Cloud - (Engelschalk & Nitsch GbR)](https://cloud.gitcom.cloud) |
 | --- |
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
