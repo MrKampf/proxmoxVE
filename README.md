@@ -1,5 +1,5 @@
 # ProxmoxVE API
-This **PHP 5.5+** Proxmox library allow, to interact with your Proxmox server and cluster via API.
+This **PHP 7.0+** Proxmox library allow, to interact with your Proxmox server and cluster via API.
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
 [![Total Downloads](https://poser.pugx.org/mrkampf/proxmox-ve/downloads)](https://packagist.org/packages/mrkampf/proxmox-ve)
