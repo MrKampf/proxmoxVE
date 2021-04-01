@@ -23,7 +23,7 @@ Or add this to your `composer.json` file:
 ```json
 {
     "require": {
-        "mrkampf/proxmox-ve": "~2.5"
+        "mrkampf/proxmox-ve": "~3.0"
     }
 }
 ```
@@ -72,12 +72,12 @@ require_once 'vendor/autoload.php';
 use proxmox\pve;
 
 /**
- * Connect established (For version 1.0.1) 
+ * Connect established (For version 3.0) 
  * 
  * authType and port defaults to 'pam' and '8006' but you can specify them like so
  * 
  * !!! WARNING !!!
- * This variant is after version 1.0.1 no longer supported
+ * This variant is after version 3.0 no longer supported
  * 
 */
 $credentials = [
