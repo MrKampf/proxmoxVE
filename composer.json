@@ -3,7 +3,7 @@
     "description": "Proxmox VE API",
     "type": "library",
     "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization", "PHP"],
-    "version": "1.0.0",
+    "version": "0.3.0",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "authors": [
@@ -12,6 +12,12 @@
             "email": "hello@mrkampf.com",
             "homepage": "https://mrkampf.com",
             "role": "Developer"
+        },
+        {
+            "name": "GitCom",
+            "email": "info@gitcom.cloud",
+            "homepage": "https://www.gitcom.cloud",
+            "role": "Developer / Hosting"
         }
     ],
     "support": {
@@ -23,11 +29,6 @@
         "lib-curl": "*",
         "guzzlehttp/guzzle": "*",
         "ext-json": "*"
-    },
-    "require-dev": {
-        "php": ">=7.2",
-        "lib-curl": "*",
-        "guzzlehttp/guzzle": "*"
     },
     "autoload": {
         "psr-0": {

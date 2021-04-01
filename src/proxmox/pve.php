@@ -5,24 +5,196 @@
 
 namespace proxmox;
 
+use GuzzleHttp\Client;
+
 /**
  * Class pve
  * @package proxmox
  */
 class pve
 {
-    private $httpClient; //The http client for the connection to the host
 
-    private
-        $username, //Username
-        $password, //The password for user
-        $hostname, //Host, ip or domain
-        $port, //Proxmox api port
-        $authType, //User type (pve or pam)
-        $debug, //Want debug connection
-        $CSRFPreventionToken, //CSRF token for auth
-        $ticket, //Auth ticket
-        $apiURL; //API url
+    /**
+     * @var Client
+     */
+    private Client $httpClient;
+
+    /**
+     * @var string
+     */
+    private string $hostname, $apiURL, $username, $password, $authType, $CSRFPreventionToken, $ticket;
+
+    /**
+     * @var int
+     */
+    private int $port;
+
+    /**
+     * @var false|string
+     */
+    private $debug;
+
+    /**
+     * @return Client
+     */
+    public function getHttpClient(): Client
+    {
+        return $this->httpClient;
+    }
+
+    /**
+     * @param Client $httpClient
+     */
+    public function setHttpClient(Client $httpClient): void
+    {
+        $this->httpClient = $httpClient;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHostname(): string
+    {
+        return $this->hostname;
+    }
+
+    /**
+     * @param string $hostname
+     */
+    public function setHostname(string $hostname): void
+    {
+        $this->hostname = $hostname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiURL(): string
+    {
+        return $this->apiURL;
+    }
+
+    /**
+     * @param string $apiURL
+     */
+    public function setApiURL(string $apiURL): void
+    {
+        $this->apiURL = $apiURL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthType(): string
+    {
+        return $this->authType;
+    }
+
+    /**
+     * @param string $authType
+     */
+    public function setAuthType(string $authType): void
+    {
+        $this->authType = $authType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCSRFPreventionToken(): string
+    {
+        return $this->CSRFPreventionToken;
+    }
+
+    /**
+     * @param string $CSRFPreventionToken
+     */
+    public function setCSRFPreventionToken(string $CSRFPreventionToken): void
+    {
+        $this->CSRFPreventionToken = $CSRFPreventionToken;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTicket(): string
+    {
+        return $this->ticket;
+    }
+
+    /**
+     * @param string $ticket
+     */
+    public function setTicket(string $ticket): void
+    {
+        $this->ticket = $ticket;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort(): int
+    {
+        return $this->port;
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort(int $port): void
+    {
+        $this->port = $port;
+    }
+
+
+    /**
+     * @return false|string
+     */
+    public function getDebug()
+    {
+        return $this->debug;
+    }
+
+    /**
+     * @param false|string $debug
+     */
+    public function setDebug($debug): void
+    {
+        $this->debug = $debug;
+    }
+
 
     /**
      * pve constructor.
@@ -34,17 +206,25 @@ class pve
      * @param string $authType
      * @param bool $debug
      */
-    public function __construct($hostnameOrArray, $usernameOrDebug = false, string $password = "", int $port = 8006, string $authType = "pve", bool $debug = false)
+    public function __construct($hostnameOrArray, $usernameOrDebug = false, string $password = "", int $port = 8006, string $authType = "pam", bool $debug = false)
     {
         if (is_array($hostnameOrArray)) {
-            $this->hostname = $hostnameOrArray['hostname']; //Save hostname in class variable
-            $this->username = $hostnameOrArray['username']; //Save username in class variable
-            $this->password = $hostnameOrArray['password']; //Save user password in class variable
-            $this->port = $hostnameOrArray['port']; //Save port in class variable
-            $this->authType = $hostnameOrArray['authType']; //Save auth type in class variable
-            $this->debug = $usernameOrDebug; //Save the debug boolean variable
-            $this->apiURL = 'https://' . $this->hostname . ':' . $this->port; //Create the basic api url
+            $this->setHostname($hostnameOrArray['hostname']); //Save hostname in class variable
+            $this->setUsername($hostnameOrArray['username']); //Save username in class variable
+            $this->setPassword($hostnameOrArray['password']); //Save user password in class variable
+            $this->setPort($hostnameOrArray['port']); //Save port in class variable
+            $this->setAuthType($hostnameOrArray['authType']); //Save auth type in class variable
+            $this->setDebug($usernameOrDebug); //Save the debug boolean variable
+        } else {
+            $this->setHostname($hostnameOrArray); //Save hostname in class variable
+            $this->setUsername($usernameOrDebug); //Save username in class variable
+            $this->setPassword($password); //Save user password in class variable
+            $this->setPort($port); //Save port in class variable
+            $this->setAuthType($authType); //Save auth type in class variable
+            $this->setDebug($debug); //Save the debug boolean variable
         }
+        $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort()); //Create the basic api url
+        $this->setHttpClient(new Client());
     }
 
 }
