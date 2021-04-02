@@ -36,9 +36,10 @@ Then perform the installation:
 $ composer install --no-dev
 ```
 
-### Example
+## Example
 
-#### As of version 3.0
+---
+### From version 3.0
 
 ```php
 <?php
@@ -60,8 +61,8 @@ print_r($proxmox->nodes()->lxc()->get());
 //Read all qemu
 print_r($proxmox->nodes()->qemu()->get());
 ```
-
-#### For version 3.0
+---
+### For version 3.0
 
 | WARNING: The array options is after version 3.0 no longer supported! |
 | --- |

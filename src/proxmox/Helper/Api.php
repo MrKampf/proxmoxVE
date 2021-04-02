@@ -5,6 +5,7 @@
 
 namespace proxmox\Helper;
 
+use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\GuzzleException;
 use proxmox\pve;
 use Psr\Http\Message\ResponseInterface;
@@ -13,22 +14,18 @@ use Psr\Http\Message\ResponseInterface;
  * Class api
  * @package proxmox\Helper
  */
-class api extends pve
+class Api extends pve
 {
 
     /**
      * Get CSRF token data from proxmox api for api auth
      *
-     * @param string $url
-     * @param string $username
-     * @param string $password
-     * @param string $authType
      * @return ResponseInterface | null
      */
-    public function getCSRFToken(string $url, string $username, string $password, string $authType): ?ResponseInterface
+    public function getCSRFToken(): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('POST', $url . '/api2/json/access/ticket', [
+            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL() . '/api2/json/access/ticket', [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -36,9 +33,9 @@ class api extends pve
                     'Accept-Encoding' => 'gzip',
                 ],
                 'form_params' => [
-                    'username' => $username,
-                    'password' => $password,
-                    'realm' => $authType,
+                    'username' => parent::getUsername(),
+                    'password' => parent::getPassword(),
+                    'realm' => parent::getAuthType(),
                 ],
             ]))['data'];
         } catch (GuzzleException $exception) {
@@ -50,17 +47,27 @@ class api extends pve
     }
 
     /**
+     * Get cookies for auth
+     *
+     * @return CookieJar
+     */
+    public function getCookies(): CookieJar
+    {
+        return CookieJar::fromArray([
+            'PVEAuthCookie' => $this->getTicket(),
+        ], $this->getHostname());
+    }
+
+    /**
      * Request information from proxmox api over type get
      *
-     * @param string $url
-     * @param string $authCookie
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function get(string $url, string $authCookie, array $params = []): ?ResponseInterface
+    public function get(array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('GET', $url, [
+            return $this->getBody(pve::getHttpClient()->request('GET', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -70,7 +77,7 @@ class api extends pve
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => $authCookie,
+                'cookies' => parent::getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
@@ -84,15 +91,13 @@ class api extends pve
     /**
      * Store new information in proxmox api over type post
      *
-     * @param string $url
-     * @param string $authCookie
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function post(string $url, string $authCookie, array $params = []): ?ResponseInterface
+    public function post(array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('POST', $url, [
+            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -102,7 +107,7 @@ class api extends pve
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => $authCookie,
+                'cookies' => parent::getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
@@ -116,15 +121,13 @@ class api extends pve
     /**
      * Update new information in proxmox api over type put
      *
-     * @param string $url
-     * @param string $authCookie
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function put(string $url, string $authCookie, array $params = []): ?ResponseInterface
+    public function put(array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('PUT', $url, [
+            return $this->getBody(pve::getHttpClient()->request('PUT', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -134,7 +137,7 @@ class api extends pve
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => $authCookie,
+                'cookies' => parent::getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
@@ -148,15 +151,13 @@ class api extends pve
     /**
      * Delete new information in proxmox api over type delete
      *
-     * @param string $url
-     * @param string $authCookie
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function delete(string $url, string $authCookie, array $params = []): ?ResponseInterface
+    public function delete(array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('DELETE', $url, [
+            return $this->getBody(pve::getHttpClient()->request('DELETE', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -166,7 +167,7 @@ class api extends pve
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => $authCookie,
+                'cookies' => parent::getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
@@ -188,16 +189,15 @@ class api extends pve
         return json_decode($response->getBody(), true);
     }
 
+    /**
+     * Login to proxmox ve
+     */
     public function login()
     {
-        try {
-            $requestResult = $this->getCSRFToken($this->getApiURL(), $this->getUsername(), $this->getPassword(), $this->getAuthType());
-            $this->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
-            $this->setTicket($requestResult['ticket']);
-        } catch (GuzzleException $exception) {
-
-        }
-
+        $requestResult = $this->getCSRFToken();
+        $this->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
+        $this->setTicket($requestResult['ticket']);
+        $this->setCookie($this->getCookies());
     }
 
 }

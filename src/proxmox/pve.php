@@ -6,6 +6,8 @@
 namespace proxmox;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Cookie\CookieJar;
+use proxmox\Helper\Api;
 
 /**
  * Class pve
@@ -18,6 +20,13 @@ class pve
      * @var Client
      */
     private Client $httpClient;
+
+    /**
+     * @var Api
+     */
+    private Api $api;
+
+    private CookieJar $cookie;
 
     /**
      * @var string
@@ -195,11 +204,42 @@ class pve
         $this->debug = $debug;
     }
 
+    /**
+     * @return Api
+     */
+    public function getApi(): Api
+    {
+        return $this->api;
+    }
+
+    /**
+     * @param Api $api
+     */
+    public function setApi(Api $api): void
+    {
+        $this->api = $api;
+    }
+
+    /**
+     * @return CookieJar
+     */
+    public function getCookie(): CookieJar
+    {
+        return $this->cookie;
+    }
+
+    /**
+     * @param CookieJar $cookie
+     */
+    public function setCookie(CookieJar $cookie): void
+    {
+        $this->cookie = $cookie;
+    }
 
     /**
      * pve constructor.
      *
-     * @param $hostnameOrArray
+     * @param string|array $hostnameOrArray
      * @param string|false $usernameOrDebug
      * @param string $password
      * @param int $port
@@ -224,6 +264,7 @@ class pve
             $this->setDebug($debug); //Save the debug boolean variable
         }
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort()); //Create the basic api url
+        $this->setApi(new Api($this->getHostname(), $this->getUsername(), $this->getPassword(), $this->getPort(), $this->getAuthType(), $this->getDebug()));
         $this->setHttpClient(new Client());
     }
 
