@@ -1,5 +1,5 @@
 # ProxmoxVE API
-This **PHP 5.5+** Proxmox library allow, to interact with your Proxmox server and cluster via API.
+This **PHP 7.2+** Proxmox library allow, to interact with your Proxmox server and cluster via API.
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
 [![Total Downloads](https://poser.pugx.org/mrkampf/proxmox-ve/downloads)](https://packagist.org/packages/mrkampf/proxmox-ve)
@@ -7,6 +7,9 @@ This **PHP 5.5+** Proxmox library allow, to interact with your Proxmox server an
 [![License](https://poser.pugx.org/mrkampf/proxmox-ve/license)](https://packagist.org/packages/mrkampf/proxmox-ve)
 
 > You find any errors, typos or you detect that something is not working as expected please open an [issue](https://github.com/MrKampf/proxmoxVE/issues/new). I'll try to release a fix asap.
+
+### Ad
+[You want a custom Web App or Library? Hire me!](mailto:hello@mrkampf.com)
 
 ## Getting Started
 
@@ -23,7 +26,7 @@ Or add this to your `composer.json` file:
 ```json
 {
     "require": {
-        "mrkampf/proxmox-ve": "~2.5"
+        "mrkampf/proxmox-ve": "~2.9"
     }
 }
 ```
