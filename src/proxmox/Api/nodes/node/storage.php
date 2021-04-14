@@ -26,7 +26,7 @@ class storage
      * @param $apiURL string
      * @param $cookie string
      */
-    public function __construct(Client $httpClient, string $apiURL, string $cookie)
+    public function __construct($httpClient, $apiURL, $cookie)
     {
         $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
         $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
@@ -40,7 +40,7 @@ class storage
      * @param $storage string
      * @return storageId
      */
-    public function storageId(string $storage)
+    public function storageId($storage)
     {
         return new storageId($this->httpClient, $this->apiURL . $storage . '/', $this->cookie);
     }
