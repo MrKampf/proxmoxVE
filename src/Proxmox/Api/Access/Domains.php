@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Access;
 
 use Proxmox\Helper\Interfaces\PVEPathClassInterface;
-use Proxmox\Helper\Object\Access\Domain\GET;
+use Proxmox\Helper\Object\Access\Domains\GET;
 use Proxmox\PVE;
 
 /**

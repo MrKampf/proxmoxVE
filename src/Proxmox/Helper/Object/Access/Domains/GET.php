@@ -3,7 +3,7 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace Proxmox\Helper\Object\Access\Domain;
+namespace Proxmox\Helper\Object\Access\Domains;
 
 /**
  * Class GET
