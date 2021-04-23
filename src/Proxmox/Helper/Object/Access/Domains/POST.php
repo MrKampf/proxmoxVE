@@ -612,14 +612,6 @@ class POST
     /**
      * @return array
      */
-    public function get(): array
-    {
-        return $this->toArray();
-    }
-
-    /**
-     * @return array
-     */
     public function toArray(): array
     {
         return get_object_vars($this);
