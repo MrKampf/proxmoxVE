@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Access;
 
 use Proxmox\Helper\Interfaces\PVEPathClassInterface;
+use Proxmox\Helper\Object\Access\Domain\GET;
 use Proxmox\PVE;
 
 /**
@@ -73,11 +74,15 @@ class Domains implements PVEPathClassInterface
      * Authentication domain index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
      *
-     * @return array|null
+     * @return GET
      */
-    public function get(): ?array
+    public function get(): GET
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
+        $result = $this->getPve()->getApi()->get($this->getPathAdditional());
+        $object = new GET();
+        $object->fillFromApi($result);
+
+        return $object;
     }
 
     /**
