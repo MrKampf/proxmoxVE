@@ -39,6 +39,7 @@ class Access
 
     /**
      * Authentication domain index.
+     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
      * @return domains
      */

@@ -7,14 +7,14 @@ namespace proxmox\Helper;
 
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\GuzzleException;
-use proxmox\pve;
+use proxmox\PVE;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class api
  * @package proxmox\Helper
  */
-class Api extends pve
+class Api extends PVE
 {
 
     /**
@@ -25,7 +25,7 @@ class Api extends pve
     public function getCSRFToken(): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL() . 'access/ticket', [
+            return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL() . 'access/ticket', [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -68,7 +68,7 @@ class Api extends pve
     public function get(string $path, array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('GET', parent::getApiURL(), [
+            return $this->getBody(PVE::getHttpClient()->request('GET', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -99,7 +99,7 @@ class Api extends pve
     public function post(string $path, array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL(), [
+            return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -130,7 +130,7 @@ class Api extends pve
     public function put(string $path, array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('PUT', parent::getApiURL(), [
+            return $this->getBody(PVE::getHttpClient()->request('PUT', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -161,7 +161,7 @@ class Api extends pve
     public function delete(string $path, array $params = []): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('DELETE', parent::getApiURL(), [
+            return $this->getBody(PVE::getHttpClient()->request('DELETE', parent::getApiURL(), [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [

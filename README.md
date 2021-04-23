@@ -44,7 +44,7 @@ $ composer install --no-dev
 require_once 'vendor/autoload.php';
 
 // Use the library namespace
-use proxmox\pve;
+use proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new PVE("hostname", "username", "password", "pve", 8006, false);
@@ -68,7 +68,7 @@ print_r($proxmox->nodes()->qemu()->get());
 require_once 'vendor/autoload.php';
 
 // Use the library namespace
-use proxmox\pve;
+use proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new PVE("hostname", "username", "password", "pve", 8006, false);
@@ -94,7 +94,7 @@ print_r($proxmox->nodes()->qemu()->get());
 require_once 'vendor/autoload.php';
 
 // Use the library namespace
-use proxmox\pve;
+use proxmox\PVE;
 
 /**
  * Connect established (For version 3.0) 

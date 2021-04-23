@@ -13,7 +13,7 @@ use proxmox\Helper\Api;
  * Class pve
  * @package proxmox
  */
-class pve
+class PVE
 {
 
     /**
