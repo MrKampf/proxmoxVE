@@ -77,7 +77,7 @@ class Access
      */
     public function domains()
     {
-        return new domains($this->pve->getHostname(), $this->apiURL . 'domains/', $this->cookie);
+        return new domains($this->apiURL . 'domains/', $this->cookie);
     }
 
     /**

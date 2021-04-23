@@ -5,13 +5,14 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\PVE;
 
 /**
  * Class Domains
  * @package proxmox\api\access
  */
-class Domains
+class Domains implements PVEPathClassInterface
 {
     /**
      * @var string
@@ -72,20 +73,10 @@ class Domains
      * Authentication domain index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
      *
-     * @param string|null $comment
-     * @param string|null $tfa
      * @return array|null
      */
-    public function get(string $comment = null, string $tfa = null): ?array
+    public function get(): ?array
     {
-        $params = [];
-        if (!is_null($comment)) { //Is comment parameter not null, then add his value to the array
-            $params['comment'] = $comment;
-        }
-        if (!is_null($tfa)) { //Is tfa parameter not null, then add his value to the array
-            $params['tfa'] = $tfa;
-        }
-
         return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 

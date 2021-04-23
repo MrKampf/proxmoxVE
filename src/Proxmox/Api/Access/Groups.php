@@ -2,7 +2,7 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace Proxmox\Api\access;
+namespace Proxmox\Api\Access;
 
 use GuzzleHttp\Client;
 use Proxmox\Helper\connection;
