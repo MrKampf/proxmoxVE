@@ -2,11 +2,11 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace proxmox\Api\access;
+namespace Proxmox\Api\access;
 
 use GuzzleHttp\Client;
-use proxmox\Api\access\users\userid;
-use proxmox\Helper\connection;
+use Proxmox\Api\access\users\userid;
+use Proxmox\Helper\connection;
 
 /**
  * Class users

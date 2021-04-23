@@ -3,11 +3,11 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace proxmox;
+namespace Proxmox;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
-use proxmox\Helper\Api;
+use Proxmox\Helper\Api;
 
 /**
  * Class pve

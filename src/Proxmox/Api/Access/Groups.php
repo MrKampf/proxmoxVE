@@ -2,10 +2,10 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace proxmox\Api\access;
+namespace Proxmox\Api\access;
 
 use GuzzleHttp\Client;
-use proxmox\Helper\connection;
+use Proxmox\Helper\connection;
 
 /**
  * Class groups

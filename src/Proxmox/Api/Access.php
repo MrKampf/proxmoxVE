@@ -3,12 +3,13 @@
  * @copyright 2019 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace proxmox\Api;
+namespace Proxmox\Api;
 
-use proxmox\Api\Access\domains;
-use proxmox\Api\Access\groups;
-use proxmox\Api\Access\roles;
-use proxmox\Api\Access\users;
+use Proxmox\Api\Access\domains;
+use Proxmox\Api\Access\groups;
+use Proxmox\Api\Access\roles;
+use Proxmox\Api\Access\users;
+use Proxmox\PVE;
 
 /**
  * Class access
@@ -19,7 +20,12 @@ class Access
     /**
      * @var string
      */
-    public string $pathAdditional;
+    private string $pathAdditional;
+
+    /**
+     * @var PVE
+     */
+    private PVE $pve;
 
     /**
      * @return string
@@ -38,6 +44,32 @@ class Access
     }
 
     /**
+     * @return PVE
+     */
+    public function getPve(): PVE
+    {
+        return $this->pve;
+    }
+
+    /**
+     * @param PVE $pve
+     */
+    public function setPve(PVE $pve): void
+    {
+        $this->pve = $pve;
+    }
+
+    /**
+     * Access constructor.
+     *
+     * @param PVE $pve
+     */
+    public function __construct(PVE $pve)
+    {
+        $this->setPve($pve); //Save PVE in variable $this->pve
+    }
+
+    /**
      * Authentication domain index.
      *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
@@ -45,7 +77,7 @@ class Access
      */
     public function domains()
     {
-        return new domains($this->httpClient, $this->apiURL . 'domains/', $this->cookie);
+        return new domains($this->pve->getHostname(), $this->apiURL . 'domains/', $this->cookie);
     }
 
     /**

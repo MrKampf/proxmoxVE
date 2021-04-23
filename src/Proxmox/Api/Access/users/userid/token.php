@@ -2,7 +2,7 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace proxmox\Api\Access\users\userid;
+namespace Proxmox\Api\Access\users\userid;
 
 use GuzzleHttp\Client;
 

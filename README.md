@@ -1,5 +1,5 @@
 # ProxmoxVE API
-This **PHP 7.0+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
+This **PHP 7.4+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
 [![Total Downloads](https://poser.pugx.org/mrkampf/proxmox-ve/downloads)](https://packagist.org/packages/mrkampf/proxmox-ve)
@@ -44,7 +44,7 @@ $ composer install --no-dev
 require_once 'vendor/autoload.php';
 
 // Use the library namespace
-use proxmox\PVE;
+use Proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new PVE("hostname", "username", "password", "pve", 8006, false);
@@ -59,29 +59,6 @@ print_r($proxmox->nodes()->lxc()->get());
 print_r($proxmox->nodes()->qemu()->get());
 ```
 
----
-### From version 3.1
-
-```php
-<?php
-// Require the autoloader
-require_once 'vendor/autoload.php';
-
-// Use the library namespace
-use proxmox\PVE;
-
-// Then simply pass your credentials when creating the API client object.
-$proxmox = new PVE("hostname", "username", "password", "pve", 8006, false);
-
-//Read all nodes
-print_r($proxmox->nodes()->get());
-
-//Read all lxc
-print_r($proxmox->nodes()->lxc()->get());
-
-//Read all qemu
-print_r($proxmox->nodes()->qemu()->get());
-```
 ---
 ### For version 3.0
 
@@ -94,7 +71,7 @@ print_r($proxmox->nodes()->qemu()->get());
 require_once 'vendor/autoload.php';
 
 // Use the library namespace
-use proxmox\PVE;
+use Proxmox\PVE;
 
 /**
  * Connect established (For version 3.0) 

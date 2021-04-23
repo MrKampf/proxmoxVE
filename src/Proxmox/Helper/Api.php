@@ -3,11 +3,11 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace proxmox\Helper;
+namespace Proxmox\Helper;
 
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\GuzzleException;
-use proxmox\PVE;
+use Proxmox\PVE;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -20,9 +20,9 @@ class Api extends PVE
     /**
      * Get CSRF token data from proxmox api for api auth
      *
-     * @return ResponseInterface | null
+     * @return array | null
      */
-    public function getCSRFToken(): ?ResponseInterface
+    public function getCSRFToken(): ?array
     {
         try {
             return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL() . 'access/ticket', [
@@ -63,9 +63,9 @@ class Api extends PVE
      *
      * @param string $path
      * @param array $params
-     * @return ResponseInterface | null
+     * @return array | null
      */
-    public function get(string $path, array $params = []): ?ResponseInterface
+    public function get(string $path, array $params = []): ?array
     {
         try {
             return $this->getBody(PVE::getHttpClient()->request('GET', parent::getApiURL(), [
@@ -94,9 +94,9 @@ class Api extends PVE
      *
      * @param string $path
      * @param array $params
-     * @return ResponseInterface | null
+     * @return array | null
      */
-    public function post(string $path, array $params = []): ?ResponseInterface
+    public function post(string $path, array $params = []): ?array
     {
         try {
             return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL(), [
@@ -125,9 +125,9 @@ class Api extends PVE
      *
      * @param string $path
      * @param array $params
-     * @return ResponseInterface | null
+     * @return array | null
      */
-    public function put(string $path, array $params = []): ?ResponseInterface
+    public function put(string $path, array $params = []): ?array
     {
         try {
             return $this->getBody(PVE::getHttpClient()->request('PUT', parent::getApiURL(), [
@@ -156,9 +156,9 @@ class Api extends PVE
      *
      * @param string $path
      * @param array $params
-     * @return ResponseInterface | null
+     * @return array | null
      */
-    public function delete(string $path, array $params = []): ?ResponseInterface
+    public function delete(string $path, array $params = []): ?array
     {
         try {
             return $this->getBody(PVE::getHttpClient()->request('DELETE', parent::getApiURL(), [
@@ -186,9 +186,10 @@ class Api extends PVE
      * Get response information as array
      *
      * @param ResponseInterface $response
-     * @return mixed
+     *
+     * @return array|null
      */
-    public function getBody(ResponseInterface $response)
+    public function getBody(ResponseInterface $response): ?array
     {
         if ($response === null) {
             return null;
