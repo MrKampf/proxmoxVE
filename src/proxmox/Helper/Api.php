@@ -25,7 +25,7 @@ class Api extends pve
     public function getCSRFToken(): ?ResponseInterface
     {
         try {
-            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL() . '/api2/json/access/ticket', [
+            return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL() . 'access/ticket', [
                 'verify' => false,
                 'debug' => parent::getDebug(),
                 'headers' => [
@@ -61,10 +61,11 @@ class Api extends pve
     /**
      * Request information from proxmox api over type get
      *
+     * @param string $path
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function get(array $params = []): ?ResponseInterface
+    public function get(string $path, array $params = []): ?ResponseInterface
     {
         try {
             return $this->getBody(pve::getHttpClient()->request('GET', parent::getApiURL(), [
@@ -91,10 +92,11 @@ class Api extends pve
     /**
      * Store new information in proxmox api over type post
      *
+     * @param string $path
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function post(array $params = []): ?ResponseInterface
+    public function post(string $path, array $params = []): ?ResponseInterface
     {
         try {
             return $this->getBody(pve::getHttpClient()->request('POST', parent::getApiURL(), [
@@ -121,10 +123,11 @@ class Api extends pve
     /**
      * Update new information in proxmox api over type put
      *
+     * @param string $path
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function put(array $params = []): ?ResponseInterface
+    public function put(string $path, array $params = []): ?ResponseInterface
     {
         try {
             return $this->getBody(pve::getHttpClient()->request('PUT', parent::getApiURL(), [
@@ -151,10 +154,11 @@ class Api extends pve
     /**
      * Delete new information in proxmox api over type delete
      *
+     * @param string $path
      * @param array $params
      * @return ResponseInterface | null
      */
-    public function delete(array $params = []): ?ResponseInterface
+    public function delete(string $path, array $params = []): ?ResponseInterface
     {
         try {
             return $this->getBody(pve::getHttpClient()->request('DELETE', parent::getApiURL(), [
@@ -186,6 +190,9 @@ class Api extends pve
      */
     public function getBody(ResponseInterface $response)
     {
+        if ($response === null) {
+            return null;
+        }
         return json_decode($response->getBody(), true);
     }
 
