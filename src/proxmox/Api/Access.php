@@ -9,13 +9,12 @@ use proxmox\Api\Access\domains;
 use proxmox\Api\Access\groups;
 use proxmox\Api\Access\roles;
 use proxmox\Api\Access\users;
-use proxmox\pve;
 
 /**
  * Class access
  * @package proxmox\api
  */
-class Access extends pve
+class Access
 {
     /**
      * @var string
@@ -36,25 +35,6 @@ class Access extends pve
     public function setPathAdditional(string $pathAdditional): void
     {
         $this->pathAdditional = $pathAdditional;
-    }
-
-    /**
-     * Access constructor.
-     *
-     * TODO: Check is this the best method
-     *
-     * @param string $hostname
-     * @param string $username
-     * @param string $password
-     * @param int $port
-     * @param string $authType
-     * @param bool $debug
-     * @param string $pathAdditional
-     */
-    public function __construct(string $hostname, string $username, string $password, int $port, string $authType, bool $debug, string $pathAdditional)
-    {
-        $this->setPathAdditional($pathAdditional);
-        parent::__construct($hostname, $username, $password, $port, $authType, $debug);
     }
 
     /**
