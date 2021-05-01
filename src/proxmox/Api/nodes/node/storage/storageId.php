@@ -35,22 +35,22 @@ class storageId
      * Directory index
      *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/content
-     * @return prunebackups
+     * @return content
      */
     public function content()
     {
-        return new prunebackups($this->httpClient, $this->apiURL . 'content/', $this->cookie);
+        return new content($this->httpClient, $this->apiURL . 'content/', $this->cookie);
     }
 
     /**
      * Read storage RRD statistics (returns PNG).
      *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/rrd
-     * @return status
+     * @return rrd
      */
     public function rrd()
     {
-        return new status($this->httpClient, $this->apiURL . 'rrd/', $this->cookie);
+        return new rrd($this->httpClient, $this->apiURL . 'rrd/', $this->cookie);
     }
 
     /**
