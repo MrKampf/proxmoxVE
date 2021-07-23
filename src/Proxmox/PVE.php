@@ -8,6 +8,7 @@ namespace Proxmox;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use Proxmox\Api\Access;
+use Proxmox\Api\Pools;
 use Proxmox\Api\Version;
 use Proxmox\Helper\Api;
 
@@ -274,6 +275,17 @@ class PVE
     public function access(): Access
     {
         return new Access($this, "");
+    }
+
+    /**
+     * Pool index.
+     *
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
+     * @return Pools
+     */
+    public function pools(): Pools
+    {
+        return new Pools($this, "");
     }
 
     /**
