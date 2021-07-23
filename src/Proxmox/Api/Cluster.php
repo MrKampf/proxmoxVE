@@ -6,6 +6,9 @@
 namespace Proxmox\Api;
 
 use Proxmox\Api\Cluster\Acme;
+use Proxmox\Api\Cluster\Backup;
+use Proxmox\Api\Cluster\BackupInfo;
+use Proxmox\Api\Cluster\Ceph;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -15,6 +18,7 @@ use Proxmox\PVE;
  */
 class Cluster extends PVEPathClassBase
 {
+
     /**
      * Cluster constructor.
      * @param PVE $pve
@@ -34,6 +38,39 @@ class Cluster extends PVEPathClassBase
     public function acme(): Acme
     {
         return new Acme($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * ACMEAccount index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup
+     * @return Backup
+     */
+    public function backup(): Backup
+    {
+        return new Backup($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Index for backup info related endpoints
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info
+     * @return BackupInfo
+     */
+    public function backupInfo(): BackupInfo
+    {
+        return new BackupInfo($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Cluster ceph index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph
+     * @return Ceph
+     */
+    public function ceph(): Ceph
+    {
+        return new Ceph($this->getPve(), $this->getPathAdditional());
     }
 
     /**

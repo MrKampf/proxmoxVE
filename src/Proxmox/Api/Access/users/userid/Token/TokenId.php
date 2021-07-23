@@ -61,6 +61,7 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Remove API token for a specific user.
+     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}/token/{tokenid}
      * @return array|null
      */

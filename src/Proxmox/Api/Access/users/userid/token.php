@@ -15,6 +15,7 @@ use Proxmox\PVE;
  */
 class Token extends PVEPathClassBase
 {
+
     /**
      * Token constructor.
      * @param PVE $pve
