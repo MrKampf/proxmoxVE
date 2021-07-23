@@ -10,6 +10,14 @@ use Proxmox\PVE;
 
 interface PVEPathClassInterface
 {
+
+    /**
+     * Domains constructor.
+     * @param PVE $pve
+     * @param string $parentAdditional
+     */
+    public function __construct(PVE $pve, string $parentAdditional);
+
     /**
      * @return string
      */
@@ -29,11 +37,5 @@ interface PVEPathClassInterface
      * @param PVE $pve
      */
     public function setPve(PVE $pve): void;
-
-    /**
-     * Domains constructor.
-     * @param PVE $pve
-     */
-    public function __construct(PVE $pve);
 
 }

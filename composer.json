@@ -25,7 +25,7 @@
         "source": "https://github.com/MrKampf/proxmoxVE"
     },
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "lib-curl": "*",
         "guzzlehttp/guzzle": "*",
         "ext-json": "*"

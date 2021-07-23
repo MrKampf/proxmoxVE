@@ -26,6 +26,9 @@ class PVE
      */
     private Api $api;
 
+    /**
+     * @var CookieJar
+     */
     private CookieJar $cookie;
 
     /**
@@ -41,7 +44,7 @@ class PVE
     /**
      * @var false|string
      */
-    private $debug;
+    private string|false $debug;
 
     /**
      * @return Client
@@ -94,7 +97,7 @@ class PVE
     /**
      * @return string
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->username;
     }
@@ -102,7 +105,7 @@ class PVE
     /**
      * @param string $username
      */
-    public function setUsername($username): void
+    public function setUsername(string $username): void
     {
         $this->username = $username;
     }
@@ -191,15 +194,15 @@ class PVE
     /**
      * @return false|string
      */
-    public function getDebug()
+    public function getDebug(): bool|string
     {
         return $this->debug;
     }
 
     /**
-     * @param false|string $debug
+     * @param bool|string $debug
      */
-    public function setDebug($debug): void
+    public function setDebug(bool|string $debug): void
     {
         $this->debug = $debug;
     }
@@ -239,33 +242,25 @@ class PVE
     /**
      * pve constructor.
      *
-     * @param string|array $hostnameOrArray
-     * @param string|false $usernameOrDebug
+     * @param string $hostname
+     * @param string $username
      * @param string $password
      * @param int $port
      * @param string $authType
      * @param bool $debug
      */
-    public function __construct($hostnameOrArray, $usernameOrDebug = false, string $password = "", int $port = 8006, string $authType = "pam", bool $debug = false)
+    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false)
     {
-        if (is_array($hostnameOrArray)) {
-            $this->setHostname($hostnameOrArray['hostname']); //Save hostname in class variable
-            $this->setUsername($hostnameOrArray['username']); //Save username in class variable
-            $this->setPassword($hostnameOrArray['password']); //Save user password in class variable
-            $this->setPort($hostnameOrArray['port']); //Save port in class variable
-            $this->setAuthType($hostnameOrArray['authType']); //Save auth type in class variable
-            $this->setDebug($usernameOrDebug); //Save the debug boolean variable
-        } else {
-            $this->setHostname($hostnameOrArray); //Save hostname in class variable
-            $this->setUsername($usernameOrDebug); //Save username in class variable
-            $this->setPassword($password); //Save user password in class variable
-            $this->setPort($port); //Save port in class variable
-            $this->setAuthType($authType); //Save auth type in class variable
-            $this->setDebug($debug); //Save the debug boolean variable
-        }
-        $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort().'/api2/json/'); //Create the basic api url
-        $this->setApi(new Api($this->getHostname(), $this->getUsername(), $this->getPassword(), $this->getPort(), $this->getAuthType(), $this->getDebug()));
+        $this->setHostname($hostname); //Save hostname in class variable
+        $this->setUsername($username); //Save username in class variable
+        $this->setPassword($password); //Save user password in class variable
+        $this->setPort($port); //Save port in class variable
+        $this->setAuthType($authType); //Save auth type in class variable
+        $this->setDebug($debug); //Save the debug boolean variable
+        $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
+        $this->setApi(new Api($this));
         $this->setHttpClient(new Client());
+        $this->getApi()->login();
     }
 
 }

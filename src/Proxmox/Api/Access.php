@@ -5,109 +5,82 @@
 
 namespace Proxmox\Api;
 
-use Proxmox\Api\Access\domains;
-use Proxmox\Api\Access\groups;
-use Proxmox\Api\Access\roles;
-use Proxmox\Api\Access\users;
+use Proxmox\Api\Access\Acl;
+use Proxmox\Api\Access\Domains;
+use Proxmox\Api\Access\Groups;
+use Proxmox\Api\Access\Roles;
+use Proxmox\Api\Access\Users;
+use Proxmox\Helper\Interfaces\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
  * Class access
  * @package proxmox\api
  */
-class Access
+class Access extends PVEPathClassBase
 {
-    /**
-     * @var string
-     */
-    private string $pathAdditional;
-
-    /**
-     * @var PVE
-     */
-    private PVE $pve;
-
-    /**
-     * @return string
-     */
-    public function getPathAdditional(): string
-    {
-        return $this->pathAdditional;
-    }
-
-    /**
-     * @param string $pathAdditional
-     */
-    public function setPathAdditional(string $pathAdditional): void
-    {
-        $this->pathAdditional = $pathAdditional;
-    }
-
-    /**
-     * @return PVE
-     */
-    public function getPve(): PVE
-    {
-        return $this->pve;
-    }
-
-    /**
-     * @param PVE $pve
-     */
-    public function setPve(PVE $pve): void
-    {
-        $this->pve = $pve;
-    }
 
     /**
      * Access constructor.
-     *
      * @param PVE $pve
+     * @param string $parentAdditional
      */
-    public function __construct(PVE $pve)
+    public function __construct(PVE $pve, string $parentAdditional = "")
     {
-        $this->setPve($pve); //Save PVE in variable $this->pve
+        parent::__construct($pve, $parentAdditional . 'access/');
     }
 
     /**
      * Authentication domain index.
      *
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
-     * @return domains
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
+     * @return Domains
      */
-    public function domains()
+    public function domains(): Domains
     {
-        return new domains($this->apiURL . 'domains/', $this->cookie);
+        return new Domains($this->getPve(), $this->getPathAdditional());
     }
 
     /**
      * Group index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
-     * @return groups
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
+     * @return Groups
      */
-    public function groups()
+    public function groups(): Groups
     {
-        return new groups($this->httpClient, $this->apiURL . 'groups/', $this->cookie);
+        return new Groups($this->getPve(), $this->getPathAdditional());
     }
 
     /**
      * Role index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
-     * @return roles
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
+     * @return Roles
      */
-    public function roles()
+    public function roles(): Roles
     {
-        return new roles($this->httpClient, $this->apiURL . 'roles/', $this->cookie);
+        return new Roles($this->getPve(), $this->getPathAdditional());
     }
 
     /**
      * User index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users
-     * @return users
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users
+     * @return Users
      */
-    public function users()
+    public function users(): Users
     {
-        return new users($this->httpClient, $this->apiURL . 'users/', $this->cookie);
+        return new Users($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Get Access Control List (ACLs).
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
+     * @return Acl
+     */
+    public function acl(): Acl
+    {
+        return new Acl($this->getPve(), $this->getPathAdditional());
     }
 
     /**
@@ -116,27 +89,17 @@ class Access
 
     /**
      * Directory index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
-     * @return mixed
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
+     * @return array|null
      */
-    public function get()
+    public function get(): ?array
     {
-        return $this->getApi()->get($this->pathAdditional);
-    }
-
-    /**
-     * Get Access Control List (ACLs).
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
-     * @return mixed
-     */
-    public function getAcl()
-    {
-        return $this->getApi()->get($this->pathAdditional . "acl");
+        return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
 
     /**
      * Retrieve effective permissions of given user/token.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
      * @param array $params
      * @return mixed
      */
@@ -150,19 +113,8 @@ class Access
      */
 
     /**
-     * Update Access Control List (add or remove permissions).
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
-     * @param array $params
-     * @return mixed
-     */
-    public function putAcl(array $params)
-    {
-        return $this->getApi()->put($this->pathAdditional . "acl", $params);
-    }
-
-    /**
      * Change user password.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
      * @param array $params
      * @return mixed
      */
@@ -173,7 +125,7 @@ class Access
 
     /**
      * Change user u2f authentication.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
      * @param array $params
      * @return mixed
      */
@@ -188,7 +140,7 @@ class Access
 
     /**
      * Finish a u2f challenge.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
      * @param array $params
      * @return mixed
      */
@@ -199,7 +151,7 @@ class Access
 
     /**
      * Create or verify authentication ticket.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
      * @param array $params
      * @return mixed
      */

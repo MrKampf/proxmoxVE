@@ -2,97 +2,60 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
-namespace Proxmox\Api\access;
 
-use GuzzleHttp\Client;
-use Proxmox\Helper\connection;
+namespace Proxmox\Api\Access;
+
+use Proxmox\Api\Access\Roles\RoleId;
+use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\PVE;
 
 /**
  * Class roles
  * @package proxmox\api\access
  */
-class roles
+class Roles extends PVEPathClassBase
 {
-    private $httpClient, //The http client for connection to proxmox
-        $apiURL, //API url
-        $cookie; //Proxmox auth cookie
-
     /**
-     * roles constructor.
-     * @param $httpClient Client
-     * @param $apiURL string
-     * @param $cookie mixed
+     * Roles constructor.
+     * @param PVE $pve
+     * @param string $parentAdditional
      */
-    public function __construct($httpClient,$apiURL,$cookie){
-        $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
-        $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->cookie = $cookie; //Save auth cookie in class variable
-    }
-
-    /**
-     * GET
-     */
-
-    /**
-     * Role index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
-     * @return mixed
-     */
-    public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
+    public function __construct(PVE $pve, string $parentAdditional)
+    {
+        parent::__construct($pve, $parentAdditional . 'roles/');
     }
 
     /**
      * Get role configuration.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{groupid}
-     * @param $groupID string
-     * @return mixed
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
+     * @param string $roleId
+     * @return RoleId
      */
-    public function getRoleid($groupID){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie));
+    public function roleId(string $roleId): RoleId
+    {
+        return new RoleId($this->getPve(), $this->getPathAdditional() . $roleId . '/');
     }
 
     /**
-     * PUT
+     * Role index.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
+     * @return array|null
      */
-
-    /**
-     * Update an existing role.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
-     * @param $groupID string
-     * @param $params array
-     * @return mixed
-     */
-    public function putRoleid($groupID,$params){
-        return connection::processHttpResponse(connection::putAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie,$params));
+    public function get(): ?array
+    {
+        return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
-
-    /**
-     * POST
-     */
 
     /**
      * Create new role.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
-     * @return mixed
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles
+     * @param array $params
+     * @return array|null
      */
-    public function post(){
-        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL,$this->cookie));
-    }
-
-    /**
-     * DELETE
-     */
-
-    /**
-     * Delete role.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
-     * @param $groupID string
-     * @param $params array
-     * @return mixed
-     */
-    public function deleteRoleid($groupID,$params){
-        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie,$params));
+    public function post(array $params = []): ?array
+    {
+        return $this->getPve()->getApi()->post($this->getPathAdditional(), $params);
     }
 
 }

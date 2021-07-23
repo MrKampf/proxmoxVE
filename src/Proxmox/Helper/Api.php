@@ -14,8 +14,21 @@ use Psr\Http\Message\ResponseInterface;
  * Class api
  * @package proxmox\Helper
  */
-class Api extends PVE
+class Api
 {
+    /**
+     * @var PVE
+     */
+    private PVE $PVE;
+
+    /**
+     * Api constructor.
+     * @param PVE $PVE
+     */
+    public function __construct(PVE $PVE)
+    {
+        $this->PVE = $PVE;
+    }
 
     /**
      * Get CSRF token data from proxmox api for api auth
@@ -25,21 +38,21 @@ class Api extends PVE
     public function getCSRFToken(): ?array
     {
         try {
-            return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL() . 'access/ticket', [
+            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
                 'verify' => false,
-                'debug' => parent::getDebug(),
+                'debug' => $this->PVE->getDebug(),
                 'headers' => [
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'form_params' => [
-                    'username' => parent::getUsername(),
-                    'password' => parent::getPassword(),
-                    'realm' => parent::getAuthType(),
+                    'username' => $this->PVE->getUsername(),
+                    'password' => $this->PVE->getPassword(),
+                    'realm' => $this->PVE->getAuthType(),
                 ],
             ]))['data'];
         } catch (GuzzleException $exception) {
-            if ($this->getDebug()) {
+            if ($this->PVE->getDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -54,8 +67,8 @@ class Api extends PVE
     public function getCookies(): CookieJar
     {
         return CookieJar::fromArray([
-            'PVEAuthCookie' => $this->getTicket(),
-        ], $this->getHostname());
+            'PVEAuthCookie' => $this->PVE->getTicket(),
+        ], $this->PVE->getHostname());
     }
 
     /**
@@ -68,21 +81,21 @@ class Api extends PVE
     public function get(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody(PVE::getHttpClient()->request('GET', parent::getApiURL(), [
+            return $this->getBody($this->PVE->getHttpClient()->request('GET', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => parent::getDebug(),
+                'debug' => $this->PVE->getDebug(),
                 'headers' => [
-                    'CSRFPreventionToken' => parent::getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => parent::getCookie(),
+                'cookies' => $this->PVE->getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->getDebug()) {
+            if ($this->PVE->getDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -99,21 +112,21 @@ class Api extends PVE
     public function post(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody(PVE::getHttpClient()->request('POST', parent::getApiURL(), [
+            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => parent::getDebug(),
+                'debug' => $this->PVE->getDebug(),
                 'headers' => [
-                    'CSRFPreventionToken' => parent::getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => parent::getCookie(),
+                'cookies' => $this->PVE->getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->getDebug()) {
+            if ($this->PVE->getDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -130,21 +143,21 @@ class Api extends PVE
     public function put(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody(PVE::getHttpClient()->request('PUT', parent::getApiURL(), [
+            return $this->getBody($this->PVE->getHttpClient()->request('PUT', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => parent::getDebug(),
+                'debug' => $this->PVE->getDebug(),
                 'headers' => [
-                    'CSRFPreventionToken' => parent::getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => parent::getCookie(),
+                'cookies' => $this->PVE->getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->getDebug()) {
+            if ($this->PVE->getDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -161,21 +174,21 @@ class Api extends PVE
     public function delete(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody(PVE::getHttpClient()->request('DELETE', parent::getApiURL(), [
+            return $this->getBody($this->PVE->getHttpClient()->request('DELETE', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => parent::getDebug(),
+                'debug' => $this->PVE->getDebug(),
                 'headers' => [
-                    'CSRFPreventionToken' => parent::getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
-                'cookies' => parent::getCookie(),
+                'cookies' => $this->PVE->getCookie(),
                 'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->getDebug()) {
+            if ($this->PVE->getDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -203,9 +216,9 @@ class Api extends PVE
     public function login()
     {
         $requestResult = $this->getCSRFToken();
-        $this->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
-        $this->setTicket($requestResult['ticket']);
-        $this->setCookie($this->getCookies());
+        $this->PVE->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
+        $this->PVE->setTicket($requestResult['ticket']);
+        $this->PVE->setCookie($this->getCookies());
     }
 
 }

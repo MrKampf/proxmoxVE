@@ -2,97 +2,60 @@
 /**
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
+
 namespace Proxmox\Api\Access;
 
-use GuzzleHttp\Client;
-use Proxmox\Helper\connection;
+use Proxmox\Api\Access\Groups\GroupId;
+use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\PVE;
 
 /**
  * Class groups
  * @package proxmox\api\access
  */
-class groups
+class Groups extends PVEPathClassBase
 {
-    private $httpClient, //The http client for connection to proxmox
-        $apiURL, //API url
-        $cookie; //Proxmox auth cookie
-
     /**
-     * groups constructor.
-     * @param $httpClient Client
-     * @param $apiURL string
-     * @param $cookie mixed
+     * Groups constructor.
+     * @param PVE $pve
+     * @param string $parentAdditional
      */
-    public function __construct($httpClient,$apiURL,$cookie){
-        $this->httpClient = $httpClient; //Save the http client from GuzzleHttp in class variable
-        $this->apiURL = $apiURL; //Save api url in class variable and change this to current api path
-        $this->cookie = $cookie; //Save auth cookie in class variable
-    }
-
-    /**
-     * GET
-     */
-
-    /**
-     * Group index.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
-     * @return mixed
-     */
-    public function get(){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL,$this->cookie));
+    public function __construct(PVE $pve, string $parentAdditional)
+    {
+        parent::__construct($pve, $parentAdditional . 'groups/');
     }
 
     /**
      * Get group configuration.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
-     * @param $groupID string
-     * @return mixed
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
+     * @param string $groupId
+     * @return GroupId
      */
-    public function getGroupID($groupID){
-        return connection::processHttpResponse(connection::getAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie));
+    public function groupId(string $groupId): GroupId
+    {
+        return new GroupId($this->getPve(), $this->getPathAdditional() . $groupId . '/');
     }
 
     /**
-     * PUT
+     * Group index.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
+     * @return array|null
      */
-
-    /**
-     * Update group data.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
-     * @param $groupID string
-     * @param $params array
-     * @return mixed
-     */
-    public function putGroupID($groupID,$params){
-        return connection::processHttpResponse(connection::putAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie,$params));
+    public function get(): ?array
+    {
+        return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
-
-    /**
-     * POST
-     */
 
     /**
      * Create new group.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
-     * @return mixed
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups
+     * @param array $params
+     * @return array|null
      */
-    public function post(){
-        return connection::processHttpResponse(connection::postAPI($this->httpClient,$this->apiURL,$this->cookie));
-    }
-
-    /**
-     * DELETE
-     */
-
-    /**
-     * Delete group.
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
-     * @param $groupID string
-     * @param $params array
-     * @return mixed
-     */
-    public function deleteGroupID($groupID,$params){
-        return connection::processHttpResponse(connection::deleteAPI($this->httpClient,$this->apiURL.$groupID.'/',$this->cookie,$params));
+    public function post(array $params = []): ?array
+    {
+        return $this->getPve()->getApi()->post($this->getPathAdditional(), $params);
     }
 
 }
