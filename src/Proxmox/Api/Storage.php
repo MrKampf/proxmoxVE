@@ -27,7 +27,6 @@ class Storage extends PVEPathClassBase
     }
 
     /**
-     * /**
      * Read storage configuration.
      *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage/{storage}

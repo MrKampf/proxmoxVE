@@ -8,7 +8,9 @@ namespace Proxmox;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use Proxmox\Api\Access;
+use Proxmox\Api\Cluster;
 use Proxmox\Api\Pools;
+use Proxmox\Api\Storage;
 use Proxmox\Api\Version;
 use Proxmox\Helper\Api;
 
@@ -275,6 +277,28 @@ class PVE
     public function access(): Access
     {
         return new Access($this, "");
+    }
+
+    /**
+     * Cluster index.
+     *
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster
+     * @return Cluster
+     */
+    public function cluster(): Cluster
+    {
+        return new Cluster($this, "");
+    }
+
+    /**
+     * Storage index.
+     *
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
+     * @return Storage
+     */
+    public function storage(): Storage
+    {
+        return new Storage($this, "");
     }
 
     /**
