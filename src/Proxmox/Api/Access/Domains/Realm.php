@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Access\Domains;
 
 use Proxmox\Api\Access\Domains\Realm\Sync;
-use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**

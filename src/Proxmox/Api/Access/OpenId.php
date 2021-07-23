@@ -7,7 +7,7 @@ namespace Proxmox\Api\Access;
 
 use Proxmox\Api\Access\OpenId\AuthUrl;
 use Proxmox\Api\Access\OpenId\Login;
-use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**

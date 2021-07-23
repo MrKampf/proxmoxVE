@@ -3,8 +3,9 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace Proxmox\Helper\Interfaces;
+namespace Proxmox\Helper;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\PVE;
 
 /**

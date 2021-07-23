@@ -15,7 +15,7 @@ use Proxmox\Api\Access\Roles;
 use Proxmox\Api\Access\Tfa;
 use Proxmox\Api\Access\Ticket;
 use Proxmox\Api\Access\Users;
-use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**

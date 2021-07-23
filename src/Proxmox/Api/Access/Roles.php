@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Access;
 
 use Proxmox\Api\Access\Roles\RoleId;
-use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
