@@ -5,43 +5,44 @@
 
 namespace Proxmox\Api;
 
-use Proxmox\Api\Pools\PoolId;
+
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Pools
+ * Class Storage
  * @package Proxmox\Api
  */
-class Pools extends PVEPathClassBase
+class Storage extends PVEPathClassBase
 {
 
     /**
-     * Pools constructor.
+     * Storage constructor.
      * @param PVE $pve
      * @param string $parentAdditional
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional . 'pools/');
+        parent::__construct($pve, $parentAdditional . 'storage/');
     }
 
     /**
-     * Get pool configuration.
+     * /**
+     * Read storage configuration.
      *
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
-     * @param string $poolId
-     * @return PoolId
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage/{storage}
+     * @param String $storage
+     * @return Storage\Storage
      */
-    public function poolId(string $poolId): PoolId
+    public function storage(string $storage): Storage\Storage
     {
-        return new PoolId($this->getPve(), $this->getPathAdditional() . $poolId . '/');
+        return new Storage\Storage($this->getPve(), $this->getPathAdditional() . $storage . '/');
     }
 
     /**
-     * Pool index.
+     * Storage index.
      *
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @return array|null
      */
     public function get(): ?array
@@ -50,9 +51,9 @@ class Pools extends PVEPathClassBase
     }
 
     /**
-     * Create new pool.
+     * Create a new storage.
      *
-     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
+     * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @param array $params
      * @return array|null
      */

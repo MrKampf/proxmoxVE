@@ -17,7 +17,7 @@ class Version extends PVEPathClassBase
 {
 
     /**
-     * Access constructor.
+     * Version constructor.
      * @param PVE $pve
      * @param string $parentAdditional
      */
