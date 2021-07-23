@@ -15,15 +15,15 @@ use Proxmox\PVE;
  */
 class Token extends PVEPathClassBase
 {
-
+    /**
+     * Token constructor.
+     * @param PVE $pve
+     * @param string $parentAdditional
+     */
     public function __construct(PVE $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'token/');
     }
-
-    /**
-     * GET
-     */
 
     /**
      * Get user API tokens.

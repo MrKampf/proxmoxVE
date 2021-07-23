@@ -8,6 +8,7 @@ namespace Proxmox\Api;
 use Proxmox\Api\Access\Acl;
 use Proxmox\Api\Access\Domains;
 use Proxmox\Api\Access\Groups;
+use Proxmox\Api\Access\OpenId;
 use Proxmox\Api\Access\Roles;
 use Proxmox\Api\Access\Users;
 use Proxmox\Helper\Interfaces\PVEPathClassBase;
@@ -25,7 +26,7 @@ class Access extends PVEPathClassBase
      * @param PVE $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional = "")
+    public function __construct(PVE $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'access/');
     }
@@ -39,6 +40,17 @@ class Access extends PVEPathClassBase
     public function domains(): Domains
     {
         return new Domains($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid
+     * @return OpenId
+     */
+    public function openId(): OpenId
+    {
+        return new OpenId($this->getPve(), $this->getPathAdditional());
     }
 
     /**
