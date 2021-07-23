@@ -3,32 +3,33 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace Proxmox\Api\Access\Users\UserId;
+namespace Proxmox\Api;
+
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Tfa
- * @package Proxmox\Api\Access\Users\UserId
+ * Class Version
+ * @package Proxmox\Api
  */
-class Tfa extends PVEPathClassBase
+class Version extends PVEPathClassBase
 {
 
     /**
-     * Tfa constructor.
+     * Access constructor.
      * @param PVE $pve
      * @param string $parentAdditional
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional . 'tfa');
+        parent::__construct($pve, $parentAdditional . 'version/');
     }
 
     /**
-     * Get user TFA types (Personal and Realm).
+     * API version details. The result also includes the global datacenter confguration.
      *
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}/tfa
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
      * @return array|null
      */
     public function get(): ?array

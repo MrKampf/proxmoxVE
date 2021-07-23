@@ -7,6 +7,8 @@ namespace Proxmox;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
+use Proxmox\Api\Access;
+use Proxmox\Api\Version;
 use Proxmox\Helper\Api;
 
 /**
@@ -261,6 +263,28 @@ class PVE
         $this->setApi(new Api($this));
         $this->setHttpClient(new Client());
         $this->getApi()->login();
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
+     * @return Access
+     */
+    public function access(): Access
+    {
+        return new Access($this, "");
+    }
+
+    /**
+     * API version details. The result also includes the global datacenter confguration.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
+     * @return Version
+     */
+    public function version(): Version
+    {
+        return new Version($this, "");
     }
 
 }

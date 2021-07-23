@@ -5,7 +5,7 @@
 
 namespace Proxmox\Api\Access\Users\UserId\Token;
 
-use Proxmox\Helper\Interfaces\PVEPathClassBase;
+use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
