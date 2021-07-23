@@ -9,7 +9,11 @@ use Proxmox\Api\Access\Acl;
 use Proxmox\Api\Access\Domains;
 use Proxmox\Api\Access\Groups;
 use Proxmox\Api\Access\OpenId;
+use Proxmox\Api\Access\Password;
+use Proxmox\Api\Access\Permission;
 use Proxmox\Api\Access\Roles;
+use Proxmox\Api\Access\Tfa;
+use Proxmox\Api\Access\Ticket;
 use Proxmox\Api\Access\Users;
 use Proxmox\Helper\Interfaces\PVEPathClassBase;
 use Proxmox\PVE;
@@ -96,8 +100,48 @@ class Access extends PVEPathClassBase
     }
 
     /**
-     * GET
+     * Change user password.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
+     * @return Password
      */
+    public function password(): Password
+    {
+        return new Password($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Retrieve effective permissions of given user/token.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
+     * @return Permission
+     */
+    public function permission(): Permission
+    {
+        return new Permission($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Change user u2f authentication.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
+     * @return Tfa
+     */
+    public function tfa(): Tfa
+    {
+        return new Tfa($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Dummy. Useful for formatters which want to provide a login page.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
+     * @return Ticket
+     */
+    public function ticket(): Ticket
+    {
+        return new Ticket($this->getPve(), $this->getPathAdditional());
+    }
 
     /**
      * Directory index.
@@ -107,68 +151,5 @@ class Access extends PVEPathClassBase
     public function get(): ?array
     {
         return $this->getPve()->getApi()->get($this->getPathAdditional());
-    }
-
-    /**
-     * Retrieve effective permissions of given user/token.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
-     * @param array $params
-     * @return mixed
-     */
-    public function getPermissions(array $params)
-    {
-        return $this->getApi()->get($this->pathAdditional . "permissions", $params);
-    }
-
-    /**
-     * PUT
-     */
-
-    /**
-     * Change user password.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
-     * @param array $params
-     * @return mixed
-     */
-    public function putPassword(array $params)
-    {
-        return $this->getApi()->put($this->pathAdditional . "password", $params);
-    }
-
-    /**
-     * Change user u2f authentication.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
-     * @param array $params
-     * @return mixed
-     */
-    public function putTfa(array $params)
-    {
-        return $this->getApi()->put($this->pathAdditional . "tfa", $params);
-    }
-
-    /**
-     * POST
-     */
-
-    /**
-     * Finish a u2f challenge.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
-     * @param array $params
-     * @return mixed
-     */
-    public function postTfa(array $params)
-    {
-        return $this->getApi()->post($this->pathAdditional . "tfa", $params);
-    }
-
-    /**
-     * Create or verify authentication ticket.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
-     * @param array $params
-     * @return mixed
-     */
-    public function postTicket(array $params)
-    {
-        return $this->getApi()->post($this->pathAdditional . "ticket", $params);
     }
 }
