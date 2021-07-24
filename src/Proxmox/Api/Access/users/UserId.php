@@ -11,7 +11,7 @@ use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class userid
+ * Class UserId
  * @package proxmox\api\access\users
  */
 class UserId extends PVEPathClassBase

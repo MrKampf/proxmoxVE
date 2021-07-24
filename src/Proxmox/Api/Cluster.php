@@ -9,6 +9,7 @@ use Proxmox\Api\Cluster\Acme;
 use Proxmox\Api\Cluster\Backup;
 use Proxmox\Api\Cluster\BackupInfo;
 use Proxmox\Api\Cluster\Ceph;
+use Proxmox\Api\Cluster\Config;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -71,6 +72,17 @@ class Cluster extends PVEPathClassBase
     public function ceph(): Ceph
     {
         return new Ceph($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
+     * @return Config
+     */
+    public function config(): Config
+    {
+        return new Config($this->getPve(), $this->getPathAdditional());
     }
 
     /**

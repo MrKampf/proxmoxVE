@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Cluster;
 
-use Proxmox\Api\Cluster\Backup\Id;
 use Proxmox\Api\Cluster\Ceph\Flags;
 use Proxmox\Api\Cluster\Ceph\MetaData;
 use Proxmox\Api\Cluster\Ceph\Status;
