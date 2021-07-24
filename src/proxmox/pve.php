@@ -1,6 +1,6 @@
 <?php
-/**
- * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
+/*
+ * @copyright  2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 namespace proxmox;
 
@@ -37,6 +37,7 @@ class pve
      * pve constructor.
      * @param $param
      * @param bool $debug
+     * @deprecated Changed in next version
      */
     public function __construct($param,$debug=false){
         $this->hostname = $param['hostname']; //Save hostname in class variable
@@ -90,6 +91,7 @@ class pve
      * Cluster node index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes
      * @return nodes
+     * @deprecated Changed in next version
      */
     public function nodes(){
         return new nodes(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
@@ -99,6 +101,7 @@ class pve
      * API version details. The result also includes the global datacenter confguration.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
      * @return version
+     * @deprecated Changed in next version
      */
     public function version(){
         return new version(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
@@ -108,6 +111,7 @@ class pve
      * Storage index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @return storage
+     * @deprecated Changed in next version
      */
     public function storage(){
         return new storage(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
@@ -117,6 +121,7 @@ class pve
      * Pool index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
      * @return pools
+     * @deprecated Changed in next version
      */
     public function pools(){
         return new pools(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
@@ -126,6 +131,7 @@ class pve
      * Directory index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
      * @return access
+     * @deprecated Changed in next version
      */
     public function access(){
         return new access(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
@@ -135,6 +141,7 @@ class pve
      * Cluster index.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster
      * @return cluster
+     * @deprecated Changed in next version
      */
     public function cluster(){
         return new cluster(self::$httpClient,$this->apiURL,$this->ticket,$this->hostname);
