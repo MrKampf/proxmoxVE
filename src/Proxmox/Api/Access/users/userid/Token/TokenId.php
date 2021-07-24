@@ -50,6 +50,7 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Generate a new API token for a specific user. NOTE: returns API token value, which needs to be stored as it cannot be retrieved afterwards!
+     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}/token/{tokenid}
      * @param $params array
      * @return array|null

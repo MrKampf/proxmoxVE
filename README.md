@@ -1,5 +1,5 @@
 # ProxmoxVE API
-This **PHP 7.4+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
+This **PHP 8+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
 [![Total Downloads](https://poser.pugx.org/mrkampf/proxmox-ve/downloads)](https://packagist.org/packages/mrkampf/proxmox-ve)
@@ -36,7 +36,7 @@ $ composer install --no-dev
 ## Example
 
 ---
-### From version 3.0
+### From version 3.1
 
 ```php
 <?php
@@ -60,7 +60,7 @@ print_r($proxmox->nodes()->qemu()->get());
 ```
 
 ---
-### For version 3.0
+### For version 3.1
 
 | WARNING: The array options is after version 3.0 no longer supported! |
 | --- |

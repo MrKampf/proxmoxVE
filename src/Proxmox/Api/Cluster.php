@@ -10,6 +10,8 @@ use Proxmox\Api\Cluster\Backup;
 use Proxmox\Api\Cluster\BackupInfo;
 use Proxmox\Api\Cluster\Ceph;
 use Proxmox\Api\Cluster\Config;
+use Proxmox\Api\Cluster\Firewall;
+use Proxmox\Api\Cluster\Ha;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -83,6 +85,28 @@ class Cluster extends PVEPathClassBase
     public function config(): Config
     {
         return new Config($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall
+     * @return Firewall
+     */
+    public function firewall(): Firewall
+    {
+        return new Firewall($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha
+     * @return Ha
+     */
+    public function ha(): Ha
+    {
+        return new Ha($this->getPve(), $this->getPathAdditional());
     }
 
     /**
