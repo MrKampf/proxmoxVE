@@ -12,8 +12,13 @@ use Proxmox\Api\Cluster\Ceph;
 use Proxmox\Api\Cluster\Config;
 use Proxmox\Api\Cluster\Firewall;
 use Proxmox\Api\Cluster\Ha;
+use Proxmox\Api\Cluster\Log;
 use Proxmox\Api\Cluster\Metrics;
+use Proxmox\Api\Cluster\NextId;
 use Proxmox\Api\Cluster\Replication;
+use Proxmox\Api\Cluster\Resources;
+use Proxmox\Api\Cluster\Status;
+use Proxmox\Api\Cluster\Tasks;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -131,6 +136,61 @@ class Cluster extends PVEPathClassBase
     public function replication(): Replication
     {
         return new Replication($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Read cluster log
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/log
+     * @return Log
+     */
+    public function log(): Log
+    {
+        return new Log($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Get next free VMID. If you pass an VMID it will raise an error if the ID is already used.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/nextid
+     * @return NextId
+     */
+    public function nextId(): NextId
+    {
+        return new NextId($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Resources index (cluster wide).
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/resources
+     * @return Resources
+     */
+    public function resources(): Resources
+    {
+        return new Resources($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Get cluster status information.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/status
+     * @return Status
+     */
+    public function status(): Status
+    {
+        return new Status($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * List recent tasks (cluster wide).
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/tasks
+     * @return Tasks
+     */
+    public function tasks(): Tasks
+    {
+        return new Tasks($this->getPve(), $this->getPathAdditional());
     }
 
     /**
