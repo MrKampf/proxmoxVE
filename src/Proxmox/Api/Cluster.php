@@ -12,6 +12,8 @@ use Proxmox\Api\Cluster\Ceph;
 use Proxmox\Api\Cluster\Config;
 use Proxmox\Api\Cluster\Firewall;
 use Proxmox\Api\Cluster\Ha;
+use Proxmox\Api\Cluster\Metrics;
+use Proxmox\Api\Cluster\Replication;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -107,6 +109,28 @@ class Cluster extends PVEPathClassBase
     public function ha(): Ha
     {
         return new Ha($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Metrics index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics
+     * @return Metrics
+     */
+    public function metrics(): Metrics
+    {
+        return new Metrics($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * List replication jobs.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication
+     * @return Replication
+     */
+    public function replication(): Replication
+    {
+        return new Replication($this->getPve(), $this->getPathAdditional());
     }
 
     /**
