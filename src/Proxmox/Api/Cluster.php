@@ -17,6 +17,7 @@ use Proxmox\Api\Cluster\Metrics;
 use Proxmox\Api\Cluster\NextId;
 use Proxmox\Api\Cluster\Replication;
 use Proxmox\Api\Cluster\Resources;
+use Proxmox\Api\Cluster\Sdn;
 use Proxmox\Api\Cluster\Status;
 use Proxmox\Api\Cluster\Tasks;
 use Proxmox\Helper\PVEPathClassBase;
@@ -136,6 +137,17 @@ class Cluster extends PVEPathClassBase
     public function replication(): Replication
     {
         return new Replication($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn
+     * @return Sdn
+     */
+    public function sdn(): Sdn
+    {
+        return new Sdn($this->getPve(), $this->getPathAdditional());
     }
 
     /**
