@@ -7,6 +7,7 @@ namespace Proxmox\Api\Nodes;
 
 use Proxmox\Api\Nodes\Node\Apt;
 use Proxmox\Api\Nodes\Node\Capabilities;
+use Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -46,6 +47,17 @@ class Node extends PVEPathClassBase
     public function capabilities(): Capabilities
     {
         return new Capabilities($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph
+     * @return Ceph
+     */
+    public function ceph(): Ceph
+    {
+        return new Ceph($this->getPve(), $this->getPathAdditional());
     }
 
     /**
