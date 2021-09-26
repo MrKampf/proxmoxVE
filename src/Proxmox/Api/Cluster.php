@@ -15,6 +15,7 @@ use Proxmox\Api\Cluster\Ha;
 use Proxmox\Api\Cluster\Log;
 use Proxmox\Api\Cluster\Metrics;
 use Proxmox\Api\Cluster\NextId;
+use Proxmox\Api\Cluster\Options;
 use Proxmox\Api\Cluster\Replication;
 use Proxmox\Api\Cluster\Resources;
 use Proxmox\Api\Cluster\Sdn;
@@ -170,6 +171,17 @@ class Cluster extends PVEPathClassBase
     public function nextId(): NextId
     {
         return new NextId($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Get datacenter options.
+     *
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/options
+     * @return Options
+     */
+    public function options(): Options
+    {
+        return new Options($this->getPve(), $this->getPathAdditional());
     }
 
     /**
