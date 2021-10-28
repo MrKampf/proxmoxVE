@@ -10,6 +10,8 @@ use Proxmox\Api\Nodes\Node\Capabilities;
 use Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Api\Nodes\Node\Certificates;
 use Proxmox\Api\Nodes\Node\Disks;
+use Proxmox\Api\Nodes\Node\Tasks;
+use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -31,7 +33,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Directory index for apt (Advanced Package Tool).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt
      * @return Apt
      */
@@ -42,7 +43,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Node capabilities index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities
      * @return Capabilities
      */
@@ -53,7 +53,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph
      * @return Ceph
      */
@@ -64,7 +63,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Node index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates
      * @return Certificates
      */
@@ -75,7 +73,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Node index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/disks
      * @return Disks
      */
@@ -85,8 +82,27 @@ class Node extends PVEPathClassBase
     }
 
     /**
+     * Read task list for one node (finished tasks).
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/tasks
+     * @return \Proxmox\Api\Nodes\Node\Tasks
+     */
+    public function tasks(): Tasks
+    {
+        return new Tasks($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Create backup.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/vzdump
+     * @return Vzdump
+     */
+    public function vzdump(): Vzdump
+    {
+        return new Vzdump($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
      * Node index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}
      * @return array|null
      */
