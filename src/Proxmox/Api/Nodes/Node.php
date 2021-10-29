@@ -10,6 +10,7 @@ use Proxmox\Api\Nodes\Node\Capabilities;
 use Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Api\Nodes\Node\Certificates;
 use Proxmox\Api\Nodes\Node\Disks;
+use Proxmox\Api\Nodes\Node\Firewall;
 use Proxmox\Api\Nodes\Node\Tasks;
 use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Helper\PVEPathClassBase;
@@ -79,6 +80,16 @@ class Node extends PVEPathClassBase
     public function disks(): Disks
     {
         return new Disks($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Directory index.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/firewall
+     * @return \Proxmox\Api\Nodes\Node\Firewall
+     */
+    public function firewall(): Firewall
+    {
+        return new Firewall($this->getPve(), $this->getPathAdditional());
     }
 
     /**
