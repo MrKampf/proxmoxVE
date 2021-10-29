@@ -12,6 +12,8 @@ use Proxmox\Api\Nodes\Node\Certificates;
 use Proxmox\Api\Nodes\Node\Disks;
 use Proxmox\Api\Nodes\Node\Firewall;
 use Proxmox\Api\Nodes\Node\Hardware;
+use Proxmox\Api\Nodes\Node\Network;
+use Proxmox\Api\Nodes\Node\Scan;
 use Proxmox\Api\Nodes\Node\Tasks;
 use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Helper\PVEPathClassBase;
@@ -101,6 +103,26 @@ class Node extends PVEPathClassBase
     public function hardware(): Hardware
     {
         return new Hardware($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * List available networks
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network
+     * @return \Proxmox\Api\Nodes\Node\Network
+     */
+    public function network(): Network
+    {
+        return new Network($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Index of available scan methods
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan
+     * @return \Proxmox\Api\Nodes\Node\Scan
+     */
+    public function scan(): Scan
+    {
+        return new Scan($this->getPve(), $this->getPathAdditional());
     }
 
     /**
