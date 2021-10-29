@@ -11,6 +11,7 @@ use Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Api\Nodes\Node\Certificates;
 use Proxmox\Api\Nodes\Node\Disks;
 use Proxmox\Api\Nodes\Node\Firewall;
+use Proxmox\Api\Nodes\Node\Hardware;
 use Proxmox\Api\Nodes\Node\Tasks;
 use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Helper\PVEPathClassBase;
@@ -90,6 +91,16 @@ class Node extends PVEPathClassBase
     public function firewall(): Firewall
     {
         return new Firewall($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Index of hardware types
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware
+     * @return \Proxmox\Api\Nodes\Node\Hardware
+     */
+    public function hardware(): Hardware
+    {
+        return new Hardware($this->getPve(), $this->getPathAdditional());
     }
 
     /**
