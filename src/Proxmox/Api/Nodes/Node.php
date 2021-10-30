@@ -12,6 +12,7 @@ use Proxmox\Api\Nodes\Node\Certificates;
 use Proxmox\Api\Nodes\Node\Disks;
 use Proxmox\Api\Nodes\Node\Firewall;
 use Proxmox\Api\Nodes\Node\Hardware;
+use Proxmox\Api\Nodes\Node\Lxc;
 use Proxmox\Api\Nodes\Node\Network;
 use Proxmox\Api\Nodes\Node\Scan;
 use Proxmox\Api\Nodes\Node\Tasks;
@@ -103,6 +104,16 @@ class Node extends PVEPathClassBase
     public function hardware(): Hardware
     {
         return new Hardware($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * LXC container index (per node).
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc
+     * @return \Proxmox\Api\Nodes\Node\Lxc
+     */
+    public function lxc(): Lxc
+    {
+        return new Lxc($this->getPve(), $this->getPathAdditional());
     }
 
     /**
