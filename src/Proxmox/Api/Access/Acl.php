@@ -26,7 +26,6 @@ class Acl extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Acl extends PVEPathClassBase
 
     /**
      * Update Access Control List (add or remove permissions).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
      * @param array $params
      * @return array|null

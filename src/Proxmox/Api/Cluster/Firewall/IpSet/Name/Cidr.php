@@ -26,7 +26,6 @@ class Cidr extends PVEPathClassBase
 
     /**
      * Read IP or Network settings from IPSet.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}/{cidr}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Cidr extends PVEPathClassBase
 
     /**
      * Update IP or Network settings
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}/{cidr}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Cidr extends PVEPathClassBase
 
     /**
      * Remove IP or Network from IPSet.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}/{cidr}
      * @return array|null
      */

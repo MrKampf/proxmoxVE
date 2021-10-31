@@ -27,7 +27,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Adds a node to the cluster configuration. This call is for internal use.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/nodes/{node}
      * @param $params array
      * @return array|null
@@ -39,7 +38,6 @@ class Node extends PVEPathClassBase
 
     /**
      * Removes a node from the cluster configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/nodes/{node}
      * @return array|null
      */

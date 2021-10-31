@@ -26,7 +26,6 @@ class Tasks extends PVEPathClassBase
 
     /**
      * List recent tasks (cluster wide).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/tasks
      * @return array|null
      */

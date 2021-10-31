@@ -26,7 +26,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Read alias.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases/{name}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Update IP or Network alias.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases/{name}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Remove IP or Network alias.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases/{name}
      * @return array|null
      */

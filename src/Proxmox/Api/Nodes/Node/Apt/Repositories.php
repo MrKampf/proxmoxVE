@@ -26,7 +26,6 @@ class Repositories extends PVEPathClassBase
 
     /**
      * Get APT repository information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Repositories extends PVEPathClassBase
 
     /**
      * Add a standard repository to the configuration
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Repositories extends PVEPathClassBase
 
     /**
      * Change the properties of a repository. Currently only allows enabling/disabling.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
      * @param $params array
      * @return array|null

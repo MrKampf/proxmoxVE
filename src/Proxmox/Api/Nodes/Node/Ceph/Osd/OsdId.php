@@ -29,7 +29,6 @@ class OsdId extends PVEPathClassBase
 
     /**
      * ceph osd in
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/in
      * @return In
      */
@@ -40,7 +39,6 @@ class OsdId extends PVEPathClassBase
 
     /**
      * ceph osd out
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/out
      * @return Out
      */
@@ -51,7 +49,6 @@ class OsdId extends PVEPathClassBase
 
     /**
      * ceph osd scrub
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/scrub
      * @return Scrub
      */
@@ -62,7 +59,6 @@ class OsdId extends PVEPathClassBase
 
     /**
      * Destroy OSD
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}
      * @return array|null
      */

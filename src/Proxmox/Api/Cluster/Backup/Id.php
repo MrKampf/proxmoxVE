@@ -29,7 +29,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Returns included guests and the backup status of their disks. Optimized to be used in ExtJS tree views.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}/included_volumes
      * @return IncludedVolumes
      */
@@ -40,7 +39,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Read vzdump backup job definition.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Update vzdump backup job definition.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}
      * @param $params array
      * @return array|null
@@ -63,7 +60,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Delete vzdump backup job definition.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}
      * @return array|null
      */

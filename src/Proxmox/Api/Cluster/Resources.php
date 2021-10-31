@@ -26,7 +26,6 @@ class Resources extends PVEPathClassBase
 
     /**
      * Resources index (cluster wide).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/resources
      * @return array|null
      */

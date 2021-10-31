@@ -26,7 +26,6 @@ class Update extends PVEPathClassBase
 
     /**
      * List available updates.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/update
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Update extends PVEPathClassBase
 
     /**
      * This is used to resynchronize the package index files from their sources (apt-get update).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/update
      * @param $params array
      * @return array|null

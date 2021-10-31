@@ -26,7 +26,6 @@ class ChallengeSchema extends PVEPathClassBase
 
     /**
      * Get schema of ACME challenge types.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/challenge-schema
      * @return array|null
      */

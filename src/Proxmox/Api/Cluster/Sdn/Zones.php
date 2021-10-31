@@ -27,7 +27,6 @@ class Zones extends PVEPathClassBase
 
     /**
      * Read sdn zone configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/zones/{zone}
      * @param string $zone
      * @return Zone
@@ -39,7 +38,6 @@ class Zones extends PVEPathClassBase
 
     /**
      * SDN zones index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/zones
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Zones extends PVEPathClassBase
 
     /**
      * Create a new sdn zone object.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/zones
      * @param $params array
      * @return array|null

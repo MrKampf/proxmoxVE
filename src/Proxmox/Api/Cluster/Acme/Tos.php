@@ -26,7 +26,6 @@ class Tos extends PVEPathClassBase
 
     /**
      * Retrieve ACME TermsOfService URL from CA.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/tos
      * @return array|null
      */

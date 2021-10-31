@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node;
 
-use Proxmox\Api\Cluster\Sdn\Zones\Zone;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -30,9 +29,9 @@ class Storage extends PVEPathClassBase
      * @param string $Storage
      * @return \Proxmox\Api\Nodes\Node\Storage\Storage
      */
-    public function zone(string $Storage): \Proxmox\Api\Nodes\Node\Storage\Storage
+    public function zone(string $Storage): Storage\Storage
     {
-        return new \Proxmox\Api\Nodes\Node\Storage\Storage($this->getPve(), $this->getPathAdditional() . $Storage . '/');
+        return new Storage\Storage($this->getPve(), $this->getPathAdditional() . $Storage . '/');
     }
 
     /**

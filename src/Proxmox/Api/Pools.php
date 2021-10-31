@@ -28,7 +28,6 @@ class Pools extends PVEPathClassBase
 
     /**
      * Get pool configuration.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
      * @param string $poolId
      * @return PoolId
@@ -40,7 +39,6 @@ class Pools extends PVEPathClassBase
 
     /**
      * Pool index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Pools extends PVEPathClassBase
 
     /**
      * Create new pool.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
      * @param array $params
      * @return array|null

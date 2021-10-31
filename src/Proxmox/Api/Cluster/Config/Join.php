@@ -22,12 +22,11 @@ class Join extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'join/');
+        parent::__construct($pve, $parentAdditional . 'join/');
     }
 
     /**
      * Get information needed to join this cluster over the connected node.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/join
      * @return array|null
      */
@@ -38,7 +37,6 @@ class Join extends PVEPathClassBase
 
     /**
      * Joins this node into an existing cluster. If no links are given, default to IP resolved by node's hostname on single link (fallback fails for clusters with multiple links).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/join
      * @param $params array
      * @return array|null

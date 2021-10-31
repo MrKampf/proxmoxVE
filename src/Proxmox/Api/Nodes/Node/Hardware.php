@@ -5,9 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node;
 
-use Proxmox\Api\Nodes\Node\Firewall\Log;
-use Proxmox\Api\Nodes\Node\Firewall\Options;
-use Proxmox\Api\Nodes\Node\Firewall\Rules;
 use Proxmox\Api\Nodes\Node\Hardware\Pci;
 use Proxmox\Api\Nodes\Node\Hardware\Usb;
 use Proxmox\Helper\PVEPathClassBase;

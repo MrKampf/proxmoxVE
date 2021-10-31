@@ -33,7 +33,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * List aliases
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases
      * @return Aliases
      */
@@ -44,7 +43,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * List security groups.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups
      * @return Groups
      */
@@ -55,7 +53,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * List IPSets
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset
      * @return IpSet
      */
@@ -66,7 +63,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * List rules.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/rules
      * @return Rules
      */
@@ -77,7 +73,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * List available macros
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/macros
      * @return Macros
      */
@@ -88,7 +83,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * Get Firewall options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/options
      * @return Options
      */
@@ -99,7 +93,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * Lists possible IPSet/Alias reference which are allowed in source/dest properties.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/refs
      * @return Refs
      */
@@ -110,7 +103,6 @@ class Firewall extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall
      * @return array|null
      */

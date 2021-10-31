@@ -31,7 +31,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * SDN controllers index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/controllers
      * @return Controllers
      */
@@ -42,7 +41,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * SDN dns index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/dns/{dns}
      * @return Dns
      */
@@ -53,7 +51,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * SDN ipams index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams
      * @return Ipams
      */
@@ -64,7 +61,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * SDN vnets index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets
      * @return VNets
      */
@@ -75,7 +71,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * SDN zones index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/zones
      * @return Zones
      */
@@ -86,7 +81,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn
      * @return array|null
      */
@@ -97,7 +91,6 @@ class Sdn extends PVEPathClassBase
 
     /**
      * Apply sdn controller changes && reload.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn
      * @param $params array
      * @return array|null

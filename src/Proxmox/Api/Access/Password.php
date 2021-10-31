@@ -27,7 +27,6 @@ class Password extends PVEPathClassBase
 
     /**
      * Change user password.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
      * @param array $params
      * @return array|null

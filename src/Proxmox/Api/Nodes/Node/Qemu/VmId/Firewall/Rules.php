@@ -6,7 +6,6 @@
 namespace Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall;
 
 use Proxmox\Api\Nodes\Node\Firewall\Rules\Pos;
-use Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\IpSet\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 

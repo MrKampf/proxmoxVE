@@ -31,49 +31,7 @@ class Api
     }
 
     /**
-     * Get CSRF token data from proxmox api for api auth
-     *
-     * @return array | null
-     */
-    public function getCSRFToken(): ?array
-    {
-        try {
-            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
-                'verify' => false,
-                'debug' => $this->PVE->getDebug(),
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
-                'form_params' => [
-                    'username' => $this->PVE->getUsername(),
-                    'password' => $this->PVE->getPassword(),
-                    'realm' => $this->PVE->getAuthType(),
-                ],
-            ]))['data'];
-        } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
-        }
-    }
-
-    /**
-     * Get cookies for auth
-     *
-     * @return CookieJar
-     */
-    public function getCookies(): CookieJar
-    {
-        return CookieJar::fromArray([
-            'PVEAuthCookie' => $this->PVE->getTicket(),
-        ], $this->PVE->getHostname());
-    }
-
-    /**
      * Request information from proxmox api over type get
-     *
      * @param string $path
      * @param array $params
      * @return array | null
@@ -102,8 +60,20 @@ class Api
     }
 
     /**
+     * Get response information as array
+     * @param ResponseInterface $response
+     * @return array|null
+     */
+    public function getBody(ResponseInterface $response): ?array
+    {
+        if ($response === null) {
+            return null;
+        }
+        return json_decode($response->getBody(), true);
+    }
+
+    /**
      * Store new information in proxmox api over type post
-     *
      * @param string $path
      * @param array $params
      * @return array | null
@@ -134,7 +104,6 @@ class Api
 
     /**
      * Update new information in proxmox api over type put
-     *
      * @param string $path
      * @param array $params
      * @return array | null
@@ -165,7 +134,6 @@ class Api
 
     /**
      * Delete new information in proxmox api over type delete
-     *
      * @param string $path
      * @param array $params
      * @return array | null
@@ -195,21 +163,6 @@ class Api
     }
 
     /**
-     * Get response information as array
-     *
-     * @param ResponseInterface $response
-     *
-     * @return array|null
-     */
-    public function getBody(ResponseInterface $response): ?array
-    {
-        if ($response === null) {
-            return null;
-        }
-        return json_decode($response->getBody(), true);
-    }
-
-    /**
      * Login to proxmox ve
      */
     public function login()
@@ -218,6 +171,45 @@ class Api
         $this->PVE->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
         $this->PVE->setTicket($requestResult['ticket']);
         $this->PVE->setCookie($this->getCookies());
+    }
+
+    /**
+     * Get CSRF token data from proxmox api for api auth
+     * @return array | null
+     */
+    public function getCSRFToken(): ?array
+    {
+        try {
+            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
+                'verify' => false,
+                'debug' => $this->PVE->getDebug(),
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Accept-Encoding' => 'gzip',
+                ],
+                'form_params' => [
+                    'username' => $this->PVE->getUsername(),
+                    'password' => $this->PVE->getPassword(),
+                    'realm' => $this->PVE->getAuthType(),
+                ],
+            ]))['data'];
+        } catch (GuzzleException $exception) {
+            if ($this->PVE->getDebug()) {
+                print_r($exception->getMessage());
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Get cookies for auth
+     * @return CookieJar
+     */
+    public function getCookies(): CookieJar
+    {
+        return CookieJar::fromArray([
+            'PVEAuthCookie' => $this->PVE->getTicket(),
+        ], $this->PVE->getHostname());
     }
 
 }

@@ -27,7 +27,6 @@ class Subnets extends PVEPathClassBase
 
     /**
      * Read sdn subnet configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}/subnets/{subnet}
      * @param string $subnet
      * @return Subnet
@@ -39,7 +38,6 @@ class Subnets extends PVEPathClassBase
 
     /**
      * SDN subnets index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}/subnets
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Subnets extends PVEPathClassBase
 
     /**
      * Create a new sdn subnet object.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}/subnets
      * @param $params array
      * @return array|null

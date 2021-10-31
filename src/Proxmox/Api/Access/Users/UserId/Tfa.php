@@ -27,7 +27,6 @@ class Tfa extends PVEPathClassBase
 
     /**
      * Get user TFA types (Personal and Realm).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/tfa
      * @return array|null
      */

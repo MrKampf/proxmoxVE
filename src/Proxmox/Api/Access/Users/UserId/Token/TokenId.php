@@ -27,7 +27,6 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Get specific API token information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @return array|null
      */
@@ -38,7 +37,6 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Update API token for a specific user.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @param $params array
      * @return array|null
@@ -50,7 +48,6 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Generate a new API token for a specific user. NOTE: returns API token value, which needs to be stored as it cannot be retrieved afterwards!
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @param $params array
      * @return array|null
@@ -62,7 +59,6 @@ class TokenId extends PVEPathClassBase
 
     /**
      * Remove API token for a specific user.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @return array|null
      */

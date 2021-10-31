@@ -27,7 +27,6 @@ class Controllers extends PVEPathClassBase
 
     /**
      * Read sdn controller configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/controllers/{controller}
      * @param string $controller
      * @return Controller
@@ -39,7 +38,6 @@ class Controllers extends PVEPathClassBase
 
     /**
      * SDN controllers index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/controllers
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Controllers extends PVEPathClassBase
 
     /**
      * Create a new sdn controller object.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/controllers
      * @param $params array
      * @return array|null

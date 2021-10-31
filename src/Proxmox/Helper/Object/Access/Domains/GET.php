@@ -95,7 +95,6 @@ class GET
 
     /**
      * Fill the object with information from the pve api
-     *
      * @param array $array
      * @return bool
      */

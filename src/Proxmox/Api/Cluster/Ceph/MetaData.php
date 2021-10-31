@@ -26,7 +26,6 @@ class MetaData extends PVEPathClassBase
 
     /**
      * Get ceph metadata.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/metadata
      * @return array|null
      */

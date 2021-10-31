@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Cluster\Firewall;
 
-use Proxmox\Api\Cluster\Firewall\IpSet\Name;
 use Proxmox\Api\Cluster\Firewall\Rules\Pos;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
@@ -29,7 +28,6 @@ class Rules extends PVEPathClassBase
 
     /**
      * Get single rule data.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/rules/{pos}
      * @param string $pos
      * @return Pos
@@ -41,7 +39,6 @@ class Rules extends PVEPathClassBase
 
     /**
      * List rules.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/rules
      * @return array|null
      */
@@ -52,7 +49,6 @@ class Rules extends PVEPathClassBase
 
     /**
      * Create new rule.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/rules
      * @param $params array
      * @return array|null

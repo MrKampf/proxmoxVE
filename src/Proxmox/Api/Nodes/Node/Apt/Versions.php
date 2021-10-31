@@ -26,7 +26,6 @@ class Versions extends PVEPathClassBase
 
     /**
      * Get package information for important Proxmox packages.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/versions
      * @return array|null
      */

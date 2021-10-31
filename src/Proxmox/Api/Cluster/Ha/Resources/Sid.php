@@ -28,7 +28,6 @@ class Sid extends PVEPathClassBase
 
     /**
      * Request resource migration (online) to another node.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}/migrate
      * @return Migrate
      */
@@ -39,7 +38,6 @@ class Sid extends PVEPathClassBase
 
     /**
      * Request resource migration (online) to another node.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}/migrate
      * @return Relocate
      */
@@ -50,7 +48,6 @@ class Sid extends PVEPathClassBase
 
     /**
      * Read resource configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}
      * @return array|null
      */
@@ -61,7 +58,6 @@ class Sid extends PVEPathClassBase
 
     /**
      * Update resource configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}
      * @param $params array
      * @return array|null
@@ -73,7 +69,6 @@ class Sid extends PVEPathClassBase
 
     /**
      * Delete resource configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}
      * @return array|null
      */

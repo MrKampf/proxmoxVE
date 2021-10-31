@@ -27,7 +27,6 @@ class Refs extends PVEPathClassBase
 
     /**
      * Lists possible IPSet/Alias reference which are allowed in source/dest properties.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/refs
      * @return array|null
      */

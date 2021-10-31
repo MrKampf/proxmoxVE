@@ -27,7 +27,6 @@ class Nfs extends PVEPathClassBase
     /**
      * Scan remote NFS server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/nfs
-
      * @return array|null
      */
     public function get(): ?array

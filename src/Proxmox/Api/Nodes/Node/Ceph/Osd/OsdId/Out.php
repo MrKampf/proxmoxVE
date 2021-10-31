@@ -26,7 +26,6 @@ class Out extends PVEPathClassBase
 
     /**
      * ceph osd out
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/out
      * @param $params array
      * @return array|null

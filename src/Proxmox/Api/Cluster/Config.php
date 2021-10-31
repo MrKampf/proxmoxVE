@@ -31,7 +31,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Adds a node to the cluster configuration. This call is for internal use.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/nodes/{node}
      * @return Nodes
      */
@@ -42,7 +41,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Return the version of the cluster join API available on this node.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/apiversion
      * @return ApiVersion
      */
@@ -53,7 +51,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Joins this node into an existing cluster. If no links are given, default to IP resolved by node's hostname on single link (fallback fails for clusters with multiple links).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/join
      * @return Join
      */
@@ -64,7 +61,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Get QDevice status
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/qdevice
      * @return QDevice
      */
@@ -75,7 +71,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Get corosync totem protocol settings.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/totem
      * @return Totem
      */
@@ -86,7 +81,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
      * @return array|null
      */
@@ -97,7 +91,6 @@ class Config extends PVEPathClassBase
 
     /**
      * Generate new cluster configuration. If no links given, default to local IP address as link0.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
      * @param $params array
      * @return array|null

@@ -22,12 +22,11 @@ class Totem extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'totem/');
+        parent::__construct($pve, $parentAdditional . 'totem/');
     }
 
     /**
      * Get corosync totem protocol settings.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/totem
      * @return array|null
      */

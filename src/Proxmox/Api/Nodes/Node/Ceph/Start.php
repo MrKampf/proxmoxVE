@@ -26,7 +26,6 @@ class Start extends PVEPathClassBase
 
     /**
      * Start ceph services.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/start
      * @param $params array
      * @return array|null

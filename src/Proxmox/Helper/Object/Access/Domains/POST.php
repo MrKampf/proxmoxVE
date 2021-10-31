@@ -134,6 +134,17 @@ class POST
     private bool $verify;
 
     /**
+     * POST constructor.
+     * @param string $realm
+     * @param string $type
+     */
+    public function __construct(string $realm, string $type)
+    {
+        $this->setRealm($realm);
+        $this->setType($type);
+    }
+
+    /**
      * @return string
      */
     public function getRealm(): string
@@ -595,18 +606,6 @@ class POST
     public function setVerify(bool $verify): void
     {
         $this->verify = $verify;
-    }
-
-    /**
-     * POST constructor.
-     *
-     * @param string $realm
-     * @param string $type
-     */
-    public function __construct(string $realm, string $type)
-    {
-        $this->setRealm($realm);
-        $this->setType($type);
     }
 
     /**

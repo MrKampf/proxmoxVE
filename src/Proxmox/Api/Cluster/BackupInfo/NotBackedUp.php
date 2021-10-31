@@ -26,7 +26,6 @@ class NotBackedUp extends PVEPathClassBase
 
     /**
      * Shows all guests which are not covered by any backup job.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info/not-backed-up
      * @return array|null
      */

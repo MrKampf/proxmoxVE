@@ -28,7 +28,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * List rules.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}
      * @param string $group
      * @return Group
@@ -40,7 +39,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * List security groups.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * Create new security group.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups
      * @param $params array
      * @return array|null

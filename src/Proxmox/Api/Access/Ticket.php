@@ -27,7 +27,6 @@ class Ticket extends PVEPathClassBase
 
     /**
      * Dummy. Useful for formatters which want to provide a login page.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
      * @return array|null
      */
@@ -38,7 +37,6 @@ class Ticket extends PVEPathClassBase
 
     /**
      * Create or verify authentication ticket.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
      * @param array $params
      * @return array|null

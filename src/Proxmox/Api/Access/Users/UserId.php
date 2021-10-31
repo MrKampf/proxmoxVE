@@ -19,7 +19,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * UserId constructor.
-     *
      * @param PVE $pve
      * @param string $parentAdditional
      */
@@ -30,7 +29,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * Get user API tokens.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token
      * @return Token
      */
@@ -41,7 +39,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * Get user TFA types (Personal and Realm).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/tfa
      * @return Tfa
      */
@@ -52,7 +49,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * Get user configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @return array|null
      */
@@ -63,7 +59,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * Update user configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @param $params array
      * @return array|null
@@ -75,7 +70,6 @@ class UserId extends PVEPathClassBase
 
     /**
      * Delete user.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @return array|null
      */

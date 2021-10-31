@@ -21,12 +21,11 @@ class ManagerStatus extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'manager_status/');
+        parent::__construct($pve, $parentAdditional . 'manager_status/');
     }
 
     /**
      * Get full HA manger status, including LRM status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status/manager_status
      * @return array|null
      */

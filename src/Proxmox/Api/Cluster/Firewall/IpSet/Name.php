@@ -27,7 +27,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Read IP or Network settings from IPSet.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}/{cidr}
      * @param string $cidr
      * @return Cidr
@@ -39,7 +38,6 @@ class Name extends PVEPathClassBase
 
     /**
      * List IPSet content
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Add IP or Network to IPSet.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}
      * @param $params array
      * @return array|null
@@ -62,7 +59,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Delete IPSet
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}
      * @return array|null
      */

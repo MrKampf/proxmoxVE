@@ -31,7 +31,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme
      * @return Account
      */
@@ -42,7 +41,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * ACME plugin index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
      * @return Plugins
      */
@@ -53,7 +51,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * Get schema of ACME challenge types.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/challenge-schema
      * @return ChallengeSchema
      */
@@ -64,7 +61,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * Get named known ACME directory endpoints.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/directories
      * @return Directories
      */
@@ -75,7 +71,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * Retrieve ACME TermsOfService URL from CA.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/tos
      * @return Tos
      */
@@ -86,7 +81,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme
      * @return array|null
      */

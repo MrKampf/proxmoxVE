@@ -26,7 +26,6 @@ class Pos extends PVEPathClassBase
 
     /**
      * Get single rule data.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}/{pos}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Pos extends PVEPathClassBase
 
     /**
      * Modify rule data.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}/{pos}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Pos extends PVEPathClassBase
 
     /**
      * Delete rule.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}/{pos}
      * @return array|null
      */

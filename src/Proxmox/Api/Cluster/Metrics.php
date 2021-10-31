@@ -27,7 +27,6 @@ class Metrics extends PVEPathClassBase
 
     /**
      * List configured metric servers.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server
      * @return Server
      */
@@ -38,7 +37,6 @@ class Metrics extends PVEPathClassBase
 
     /**
      * Metrics index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics
      * @return array|null
      */

@@ -48,9 +48,112 @@ class PVE
     private int $port;
 
     /**
-     * @var false|string
+     * @var boolean
      */
-    private string|false $debug;
+    private bool $debug;
+
+    /**
+     * pve constructor.
+     * @param string $hostname
+     * @param string $username
+     * @param string $password
+     * @param int $port
+     * @param string $authType
+     * @param bool $debug
+     */
+    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false)
+    {
+        $this->setHostname($hostname); //Save hostname in class variable
+        $this->setUsername($username); //Save username in class variable
+        $this->setPassword($password); //Save user password in class variable
+        $this->setPort($port); //Save port in class variable
+        $this->setAuthType($authType); //Save auth type in class variable
+        $this->setDebug($debug); //Save the debug boolean variable
+        $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
+        $this->setApi(new Api($this));
+        $this->setHttpClient(new Client());
+        $this->getApi()->login();
+    }
+
+    /**
+     * @param string $username
+     */
+    public function setUsername(string $username): void
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @param string $authType
+     */
+    public function setAuthType(string $authType): void
+    {
+        $this->authType = $authType;
+    }
+
+    /**
+     * @param string $apiURL
+     */
+    public function setApiURL(string $apiURL): void
+    {
+        $this->apiURL = $apiURL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHostname(): string
+    {
+        return $this->hostname;
+    }
+
+    /**
+     * @param string $hostname
+     */
+    public function setHostname(string $hostname): void
+    {
+        $this->hostname = $hostname;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort(): int
+    {
+        return $this->port;
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort(int $port): void
+    {
+        $this->port = $port;
+    }
+
+    /**
+     * @return Api
+     */
+    public function getApi(): Api
+    {
+        return $this->api;
+    }
+
+    /**
+     * @param Api $api
+     */
+    public function setApi(Api $api): void
+    {
+        $this->api = $api;
+    }
 
     /**
      * @return Client
@@ -71,33 +174,9 @@ class PVE
     /**
      * @return string
      */
-    public function getHostname(): string
-    {
-        return $this->hostname;
-    }
-
-    /**
-     * @param string $hostname
-     */
-    public function setHostname(string $hostname): void
-    {
-        $this->hostname = $hostname;
-    }
-
-    /**
-     * @return string
-     */
     public function getApiURL(): string
     {
         return $this->apiURL;
-    }
-
-    /**
-     * @param string $apiURL
-     */
-    public function setApiURL(string $apiURL): void
-    {
-        $this->apiURL = $apiURL;
     }
 
     /**
@@ -109,14 +188,6 @@ class PVE
     }
 
     /**
-     * @param string $username
-     */
-    public function setUsername(string $username): void
-    {
-        $this->username = $username;
-    }
-
-    /**
      * @return string
      */
     public function getPassword(): string
@@ -125,27 +196,11 @@ class PVE
     }
 
     /**
-     * @param string $password
-     */
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
-
-    /**
      * @return string
      */
     public function getAuthType(): string
     {
         return $this->authType;
-    }
-
-    /**
-     * @param string $authType
-     */
-    public function setAuthType(string $authType): void
-    {
-        $this->authType = $authType;
     }
 
     /**
@@ -181,52 +236,19 @@ class PVE
     }
 
     /**
-     * @return int
+     * @return bool
      */
-    public function getPort(): int
-    {
-        return $this->port;
-    }
-
-    /**
-     * @param int $port
-     */
-    public function setPort(int $port): void
-    {
-        $this->port = $port;
-    }
-
-
-    /**
-     * @return false|string
-     */
-    public function getDebug(): bool|string
+    public function getDebug(): bool
     {
         return $this->debug;
     }
 
     /**
-     * @param bool|string $debug
+     * @param bool $debug
      */
-    public function setDebug(bool|string $debug): void
+    public function setDebug(bool $debug): void
     {
         $this->debug = $debug;
-    }
-
-    /**
-     * @return Api
-     */
-    public function getApi(): Api
-    {
-        return $this->api;
-    }
-
-    /**
-     * @param Api $api
-     */
-    public function setApi(Api $api): void
-    {
-        $this->api = $api;
     }
 
     /**
@@ -246,32 +268,7 @@ class PVE
     }
 
     /**
-     * pve constructor.
-     *
-     * @param string $hostname
-     * @param string $username
-     * @param string $password
-     * @param int $port
-     * @param string $authType
-     * @param bool $debug
-     */
-    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false)
-    {
-        $this->setHostname($hostname); //Save hostname in class variable
-        $this->setUsername($username); //Save username in class variable
-        $this->setPassword($password); //Save user password in class variable
-        $this->setPort($port); //Save port in class variable
-        $this->setAuthType($authType); //Save auth type in class variable
-        $this->setDebug($debug); //Save the debug boolean variable
-        $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
-        $this->setApi(new Api($this));
-        $this->setHttpClient(new Client());
-        $this->getApi()->login();
-    }
-
-    /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access
      * @return Access
      */
@@ -282,7 +279,6 @@ class PVE
 
     /**
      * Cluster index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster
      * @return Cluster
      */
@@ -303,7 +299,6 @@ class PVE
 
     /**
      * Storage index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @return Storage
      */
@@ -314,7 +309,6 @@ class PVE
 
     /**
      * Pool index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools
      * @return Pools
      */
@@ -325,7 +319,6 @@ class PVE
 
     /**
      * API version details. The result also includes the global datacenter confguration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
      * @return Version
      */

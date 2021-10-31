@@ -27,7 +27,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * Get group configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
      * @param string $groupId
      * @return GroupId

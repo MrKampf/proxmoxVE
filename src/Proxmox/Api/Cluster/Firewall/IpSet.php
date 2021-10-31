@@ -28,7 +28,6 @@ class IpSet extends PVEPathClassBase
 
     /**
      * List IPSet content
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset/{name}
      * @param string $name
      * @return Name
@@ -40,7 +39,6 @@ class IpSet extends PVEPathClassBase
 
     /**
      * List IPSets
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset
      * @return array|null
      */
@@ -51,7 +49,6 @@ class IpSet extends PVEPathClassBase
 
     /**
      * Create new IPSet
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/ipset
      * @param $params array
      * @return array|null

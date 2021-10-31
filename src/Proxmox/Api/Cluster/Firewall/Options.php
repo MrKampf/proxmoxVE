@@ -27,7 +27,6 @@ class Options extends PVEPathClassBase
 
     /**
      * Get Firewall options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/options
      * @return array|null
      */
@@ -38,7 +37,6 @@ class Options extends PVEPathClassBase
 
     /**
      * Set Firewall options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/options
      * @param $params array
      * @return array|null

@@ -27,7 +27,6 @@ class Roles extends PVEPathClassBase
 
     /**
      * Get role configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
      * @param string $roleId
      * @return RoleId

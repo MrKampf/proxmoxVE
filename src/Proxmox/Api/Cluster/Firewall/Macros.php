@@ -27,7 +27,6 @@ class Macros extends PVEPathClassBase
 
     /**
      * List available macros
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/macros
      * @return array|null
      */

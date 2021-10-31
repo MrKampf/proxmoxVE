@@ -43,7 +43,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme
      * @return Acme
      */
@@ -54,7 +53,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup
      * @return Backup
      */
@@ -65,7 +63,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Index for backup info related endpoints
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info
      * @return BackupInfo
      */
@@ -76,7 +73,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Cluster ceph index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph
      * @return Ceph
      */
@@ -87,7 +83,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
      * @return Config
      */
@@ -98,7 +93,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall
      * @return Firewall
      */
@@ -109,7 +103,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha
      * @return Ha
      */
@@ -120,7 +113,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Metrics index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics
      * @return Metrics
      */
@@ -131,7 +123,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * List replication jobs.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication
      * @return Replication
      */
@@ -142,7 +133,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn
      * @return Sdn
      */
@@ -153,7 +143,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Read cluster log
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/log
      * @return Log
      */
@@ -164,7 +153,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Get next free VMID. If you pass an VMID it will raise an error if the ID is already used.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/nextid
      * @return NextId
      */
@@ -175,7 +163,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Get datacenter options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/options
      * @return Options
      */
@@ -186,7 +173,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Resources index (cluster wide).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/resources
      * @return Resources
      */
@@ -197,7 +183,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Get cluster status information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/status
      * @return Status
      */
@@ -208,7 +193,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * List recent tasks (cluster wide).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/tasks
      * @return Tasks
      */
@@ -219,7 +203,6 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Cluster index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster
      * @return array|null
      */

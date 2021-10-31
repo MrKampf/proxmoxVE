@@ -28,7 +28,6 @@ class Nodes extends PVEPathClassBase
 
     /**
      * Adds a node to the cluster configuration. This call is for internal use.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/nodes/{node}
      * @param string $node
      * @return Node
@@ -40,7 +39,6 @@ class Nodes extends PVEPathClassBase
 
     /**
      * Corosync node list.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/nodes
      * @return array|null
      */

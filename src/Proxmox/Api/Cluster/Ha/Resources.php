@@ -27,7 +27,6 @@ class Resources extends PVEPathClassBase
 
     /**
      * Read resource configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}
      * @param string $sid
      * @return Sid
@@ -39,7 +38,6 @@ class Resources extends PVEPathClassBase
 
     /**
      * List HA resources.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Resources extends PVEPathClassBase
 
     /**
      * Create a new HA resource.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources
      * @param $params array
      * @return array|null

@@ -28,7 +28,6 @@ class Qemu extends PVEPathClassBase
 
     /**
      * List all custom and default CPU models.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu/cpu
      * @return Cpu
      */
@@ -39,7 +38,6 @@ class Qemu extends PVEPathClassBase
 
     /**
      * Get available QEMU/KVM machine types.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu/machines
      * @return Machines
      */
@@ -50,7 +48,6 @@ class Qemu extends PVEPathClassBase
 
     /**
      * QEMU capabilities index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu
      * @return array|null
      */

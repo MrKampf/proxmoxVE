@@ -27,7 +27,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * Read ha group configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups/{group}
      * @param string $group
      * @return Group
@@ -39,7 +38,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * Get HA groups.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Groups extends PVEPathClassBase
 
     /**
      * Create a new HA group.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups
      * @param $params array
      * @return array|null

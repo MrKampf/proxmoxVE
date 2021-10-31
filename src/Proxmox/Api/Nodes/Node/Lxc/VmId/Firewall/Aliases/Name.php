@@ -5,8 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Aliases;
 
-use Proxmox\Api\Nodes\Node\Hardware\Pci\PciId\Mdev;
-use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 

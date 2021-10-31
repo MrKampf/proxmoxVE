@@ -26,7 +26,6 @@ class Custom extends PVEPathClassBase
 
     /**
      * Upload or update custom certificate chain and key.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/custom
      * @param $params array
      * @return array|null
@@ -38,7 +37,6 @@ class Custom extends PVEPathClassBase
 
     /**
      * Upload or update custom certificate chain and key.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/custom
      * @return array|null
      */

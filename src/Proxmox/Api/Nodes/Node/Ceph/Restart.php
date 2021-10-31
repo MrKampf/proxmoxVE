@@ -26,7 +26,6 @@ class Restart extends PVEPathClassBase
 
     /**
      * Restart ceph services.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/restart
      * @param $params array
      * @return array|null

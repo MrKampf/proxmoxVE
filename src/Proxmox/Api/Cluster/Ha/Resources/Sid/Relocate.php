@@ -26,7 +26,6 @@ class Relocate extends PVEPathClassBase
 
     /**
      * Request resource relocatzion to another node. This stops the service on the old node, and restarts it on the target node.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}/relocate
      * @param $params array
      * @return array|null

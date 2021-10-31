@@ -26,7 +26,6 @@ class Info extends PVEPathClassBase
 
     /**
      * Get information about node's certificates.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/info
      * @return array|null
      */

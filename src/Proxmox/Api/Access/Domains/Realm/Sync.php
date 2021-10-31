@@ -21,12 +21,11 @@ class Sync extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'sync/');
+        parent::__construct($pve, $parentAdditional . 'sync/');
     }
 
     /**
      * Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name 'name-$realm', so make sure those groups do not exist to prevent overwriting.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}/sync
      * @param $params array
      * @return array|null

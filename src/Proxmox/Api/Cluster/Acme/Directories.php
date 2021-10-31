@@ -26,7 +26,6 @@ class Directories extends PVEPathClassBase
 
     /**
      * Get named known ACME directory endpoints.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/directories
      * @return array|null
      */

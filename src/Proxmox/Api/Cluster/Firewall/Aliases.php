@@ -28,7 +28,6 @@ class Aliases extends PVEPathClassBase
 
     /**
      * Read alias.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases/{name}
      * @param string $name
      * @return Name
@@ -40,7 +39,6 @@ class Aliases extends PVEPathClassBase
 
     /**
      * List aliases
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Aliases extends PVEPathClassBase
 
     /**
      * Create IP or Network Alias.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/aliases
      * @param $params array
      * @return array|null

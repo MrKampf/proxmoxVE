@@ -27,7 +27,6 @@ class Tfa extends PVEPathClassBase
 
     /**
      * Change user u2f authentication.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
      * @param array $params
      * @return array|null
@@ -39,7 +38,6 @@ class Tfa extends PVEPathClassBase
 
     /**
      * Finish a u2f challenge.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
      * @param array $params
      * @return array|null

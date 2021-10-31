@@ -27,7 +27,6 @@ class Server extends PVEPathClassBase
 
     /**
      * Read metric server configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
      * @param string $id
      * @return Id
@@ -39,7 +38,6 @@ class Server extends PVEPathClassBase
 
     /**
      * List configured metric servers.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server
      * @return array|null
      */

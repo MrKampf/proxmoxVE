@@ -28,7 +28,6 @@ class Storage extends PVEPathClassBase
 
     /**
      * Read storage configuration.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage/{storage}
      * @param String $storage
      * @return Storage\Storage
@@ -40,7 +39,6 @@ class Storage extends PVEPathClassBase
 
     /**
      * Storage index.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Storage extends PVEPathClassBase
 
     /**
      * Create a new storage.
-     *
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/storage
      * @param array $params
      * @return array|null

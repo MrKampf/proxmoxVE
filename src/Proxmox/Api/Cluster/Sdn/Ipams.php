@@ -27,7 +27,6 @@ class Ipams extends PVEPathClassBase
 
     /**
      * Read sdn dns configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams
      * @param string $ipam
      * @return Ipam
@@ -39,7 +38,6 @@ class Ipams extends PVEPathClassBase
 
     /**
      * SDN ipams index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Ipams extends PVEPathClassBase
 
     /**
      * Create a new sdn ipam object.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams
      * @param $params array
      * @return array|null

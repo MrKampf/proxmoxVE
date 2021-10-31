@@ -26,7 +26,6 @@ class Log extends PVEPathClassBase
 
     /**
      * Read cluster log
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/log
      * @return array|null
      */

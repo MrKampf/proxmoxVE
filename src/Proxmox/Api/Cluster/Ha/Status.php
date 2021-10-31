@@ -28,7 +28,6 @@ class Status extends PVEPathClassBase
 
     /**
      * Get full HA manger status, including LRM status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status/manager_status
      * @return Current
      */
@@ -39,7 +38,6 @@ class Status extends PVEPathClassBase
 
     /**
      * Get full HA manger status, including LRM status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status/manager_status
      * @return ManagerStatus
      */
@@ -50,7 +48,6 @@ class Status extends PVEPathClassBase
 
     /**
      * List HA resources.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status
      * @return array|null
      */

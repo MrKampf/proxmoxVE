@@ -27,7 +27,6 @@ class Nodes extends PVEPathClassBase
 
     /**
      * Node index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}
      * @param string $node
      * @return Node
@@ -39,7 +38,6 @@ class Nodes extends PVEPathClassBase
 
     /**
      * Cluster node index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes
      * @return array|null
      */

@@ -27,7 +27,6 @@ class Flags extends PVEPathClassBase
 
     /**
      * Get the status of a specific ceph flag.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags/{flag}
      * @param string $flag
      * @return Flag
@@ -39,7 +38,6 @@ class Flags extends PVEPathClassBase
 
     /**
      * Get the status of all ceph flags
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Flags extends PVEPathClassBase
 
     /**
      * Set/Unset multiple ceph flags at once.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags
      * @param $params array
      * @return array|null

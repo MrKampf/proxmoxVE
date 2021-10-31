@@ -26,7 +26,6 @@ class Changelog extends PVEPathClassBase
 
     /**
      * Get package changelogs.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/changelog
      * @return array|null
      */

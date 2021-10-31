@@ -42,7 +42,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/fs
      * @return Fs
      */
@@ -53,7 +52,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * MDS directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mds
      * @return Mds
      */
@@ -64,7 +62,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * MGR directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr
      * @return Mgr
      */
@@ -75,7 +72,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get Ceph monitor list.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon
      * @return Mon
      */
@@ -86,7 +82,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get Ceph osd list/tree.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd
      * @return Osd
      */
@@ -97,7 +92,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * List all pools.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/pools
      * @return Pools
      */
@@ -108,7 +102,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get Ceph configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/config
      * @return Config
      */
@@ -119,7 +112,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get Ceph configuration database.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/pools
      * @return ConfigDb
      */
@@ -130,7 +122,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get OSD crush map
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/crush
      * @return Crush
      */
@@ -141,7 +132,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Create initial ceph default configuration and setup symlinks.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/init
      * @return Init
      */
@@ -152,7 +142,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Read ceph log
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/log
      * @return Log
      */
@@ -163,7 +152,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Restart ceph services.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/restart
      * @return Restart
      */
@@ -174,7 +162,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * List ceph rules.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/rules
      * @return Rules
      */
@@ -185,7 +172,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Start ceph services.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/start
      * @return Start
      */
@@ -196,7 +182,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get ceph status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/status
      * @return Status
      */
@@ -207,7 +192,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Stop ceph services.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/stop
      * @return Stop
      */
@@ -218,7 +202,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph
      * @return array|null
      */

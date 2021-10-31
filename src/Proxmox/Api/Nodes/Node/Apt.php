@@ -30,7 +30,6 @@ class Apt extends PVEPathClassBase
 
     /**
      * Get package changelogs.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/changelog
      * @return Changelog
      */
@@ -41,7 +40,6 @@ class Apt extends PVEPathClassBase
 
     /**
      * Get APT repository information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
      * @return Repositories
      */
@@ -52,7 +50,6 @@ class Apt extends PVEPathClassBase
 
     /**
      * List available updates.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/update
      * @return Update
      */
@@ -63,7 +60,6 @@ class Apt extends PVEPathClassBase
 
     /**
      * Get package information for important Proxmox packages.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/versions
      * @return Versions
      */
@@ -74,7 +70,6 @@ class Apt extends PVEPathClassBase
 
     /**
      * Directory index for apt (Advanced Package Tool).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt
      * @return array|null
      */

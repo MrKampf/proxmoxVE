@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node;
 
-use Proxmox\Api\Nodes\Node\Hardware\Pci\PciId;
 use Proxmox\Api\Nodes\Node\Replication\Id;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;

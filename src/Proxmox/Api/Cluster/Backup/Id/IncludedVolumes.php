@@ -22,12 +22,11 @@ class IncludedVolumes extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'included_volumes/');
+        parent::__construct($pve, $parentAdditional . 'included_volumes/');
     }
 
     /**
      * Returns included guests and the backup status of their disks. Optimized to be used in ExtJS tree views.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}/included_volumes
      * @return array|null
      */

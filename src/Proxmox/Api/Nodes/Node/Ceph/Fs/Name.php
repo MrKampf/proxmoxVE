@@ -22,7 +22,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Create a Ceph filesystem
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/fs/{name}
      * @param $params array
      * @return array|null

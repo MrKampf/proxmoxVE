@@ -29,7 +29,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get the status of all ceph flags
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags
      * @param string $tokenId
      * @return Flags
@@ -41,7 +40,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get ceph metadata.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/metadata
      * @return MetaData
      */
@@ -52,7 +50,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Get ceph status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/status
      * @return Status
      */
@@ -63,7 +60,6 @@ class Ceph extends PVEPathClassBase
 
     /**
      * Cluster ceph index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph
      * @return array|null
      */

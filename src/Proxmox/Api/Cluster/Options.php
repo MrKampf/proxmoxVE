@@ -26,7 +26,6 @@ class Options extends PVEPathClassBase
 
     /**
      * Get datacenter options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/options
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Options extends PVEPathClassBase
 
     /**
      * Set datacenter options.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/options
      * @param $params array
      * @return array|null

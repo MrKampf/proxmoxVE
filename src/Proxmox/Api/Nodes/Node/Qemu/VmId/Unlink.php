@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node\Qemu\VmId;
 
-use Proxmox\Api\Nodes\Node\Qemu\VmId\Snapshot\Snapname;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 

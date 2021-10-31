@@ -29,7 +29,6 @@ class OpenId extends PVEPathClassBase
 
     /**
      * Get the OpenId Authorization Url for the specified realm.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url
      * @return AuthUrl
      */
@@ -40,7 +39,6 @@ class OpenId extends PVEPathClassBase
 
     /**
      * Get the OpenId Authorization Url for the specified realm.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url
      * @return Login
      */
@@ -51,7 +49,6 @@ class OpenId extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid
      * @return array|null
      */

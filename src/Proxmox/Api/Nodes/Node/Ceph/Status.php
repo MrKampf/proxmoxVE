@@ -26,7 +26,6 @@ class Status extends PVEPathClassBase
 
     /**
      * Get ceph status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/status
      * @return array|null
      */

@@ -28,7 +28,6 @@ class VNet extends PVEPathClassBase
 
     /**
      * SDN subnets index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}/subnets
      * @return Subnets
      */
@@ -39,7 +38,6 @@ class VNet extends PVEPathClassBase
 
     /**
      * Read sdn vnet configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}
      * @return array|null
      */
@@ -50,7 +48,6 @@ class VNet extends PVEPathClassBase
 
     /**
      * Update sdn vnet object configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}
      * @param $params array
      * @return array|null
@@ -62,7 +59,6 @@ class VNet extends PVEPathClassBase
 
     /**
      * Delete sdn vnet object configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/vnets/{vnet}
      * @return array|null
      */

@@ -27,7 +27,6 @@ class Group extends PVEPathClassBase
 
     /**
      * Get single rule data.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}/{pos}
      * @param string $pos
      * @return Pos
@@ -39,7 +38,6 @@ class Group extends PVEPathClassBase
 
     /**
      * List rules.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Group extends PVEPathClassBase
 
     /**
      * Create new rule.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}
      * @param $params array
      * @return array|null
@@ -62,7 +59,6 @@ class Group extends PVEPathClassBase
 
     /**
      * Delete security group.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/firewall/groups/{group}
      * @return array|null
      */

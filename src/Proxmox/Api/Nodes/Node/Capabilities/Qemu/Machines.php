@@ -26,7 +26,6 @@ class Machines extends PVEPathClassBase
 
     /**
      * Get available QEMU/KVM machine types.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu/machines
      * @return array|null
      */

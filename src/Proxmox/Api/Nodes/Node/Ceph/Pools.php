@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node\Ceph;
 
-use Proxmox\Api\Nodes\Node\Ceph\Osd\OsdId;
 use Proxmox\Api\Nodes\Node\Ceph\Pools\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;

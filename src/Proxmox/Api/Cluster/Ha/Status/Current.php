@@ -21,12 +21,11 @@ class Current extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'current/');
+        parent::__construct($pve, $parentAdditional . 'current/');
     }
 
     /**
      * Get full HA manger status, including LRM status.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status/current
      * @return array|null
      */

@@ -27,7 +27,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * Order a new certificate from ACME-compatible CA.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/certificate
      * @return Certificate
      */
@@ -38,7 +37,6 @@ class Acme extends PVEPathClassBase
 
     /**
      * ACME index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/acme
      * @return array|null
      */

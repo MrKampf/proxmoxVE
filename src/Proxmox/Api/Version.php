@@ -28,7 +28,6 @@ class Version extends PVEPathClassBase
 
     /**
      * API version details. The result also includes the global datacenter confguration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
      * @return array|null
      */

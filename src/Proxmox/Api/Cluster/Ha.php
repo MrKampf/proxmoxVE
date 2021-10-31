@@ -29,7 +29,6 @@ class Ha extends PVEPathClassBase
 
     /**
      * Get HA groups.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups
      * @return Groups
      */
@@ -40,7 +39,6 @@ class Ha extends PVEPathClassBase
 
     /**
      * List HA resources.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources
      * @return Resources
      */
@@ -51,7 +49,6 @@ class Ha extends PVEPathClassBase
 
     /**
      * List HA resources.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/status
      * @return Status
      */
@@ -62,7 +59,6 @@ class Ha extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha
      * @return array|null
      */

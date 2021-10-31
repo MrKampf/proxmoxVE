@@ -22,12 +22,11 @@ class QDevice extends PVEPathClassBase
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional.'qdevice/');
+        parent::__construct($pve, $parentAdditional . 'qdevice/');
     }
 
     /**
      * Get QDevice status
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/qdevice
      * @return array|null
      */

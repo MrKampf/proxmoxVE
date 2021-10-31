@@ -26,7 +26,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Return existing ACME account information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account/{name}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Update existing ACME account information with CA. Note: not specifying any new account information triggers a refresh.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account/{name}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Deactivate existing ACME account at CA.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account/{name}
      * @return array|null
      */

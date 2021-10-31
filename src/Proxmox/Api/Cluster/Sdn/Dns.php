@@ -26,7 +26,6 @@ class Dns extends PVEPathClassBase
 
     /**
      * Read sdn dns configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/dns/{dns}
      * @param string $dns
      * @return Dns\Dns
@@ -38,7 +37,6 @@ class Dns extends PVEPathClassBase
 
     /**
      * SDN dns index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/dns/{dns}
      * @return array|null
      */
@@ -49,7 +47,6 @@ class Dns extends PVEPathClassBase
 
     /**
      * Create a new sdn dns object.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/dns/{dns}
      * @param $params array
      * @return array|null

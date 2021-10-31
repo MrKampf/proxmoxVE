@@ -11,7 +11,6 @@ use Proxmox\PVE;
 /**
  * Class Lists
  * @package Proxmox\Api\Nodes\Node\Disks
- *
  * @desc List is not allowed as class name
  */
 class Lists extends PVEPathClassBase

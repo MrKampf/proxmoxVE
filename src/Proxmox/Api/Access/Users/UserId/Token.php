@@ -28,7 +28,6 @@ class Token extends PVEPathClassBase
 
     /**
      * Get user API tokens.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token
      * @return array|null
      */
@@ -39,7 +38,6 @@ class Token extends PVEPathClassBase
 
     /**
      * Get specific API token information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @param string $tokenId
      * @return TokenId

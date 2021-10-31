@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Cluster;
 
-use Proxmox\Api\Cluster\Backup\Id;
 use Proxmox\Api\Cluster\BackupInfo\NotBackedUp;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
@@ -28,7 +27,6 @@ class BackupInfo extends PVEPathClassBase
 
     /**
      * Shows all guests which are not covered by any backup job.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info/not-backed-up
      * @return NotBackedUp
      */
@@ -39,7 +37,6 @@ class BackupInfo extends PVEPathClassBase
 
     /**
      * Index for backup info related endpoints
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info
      * @return array|null
      */

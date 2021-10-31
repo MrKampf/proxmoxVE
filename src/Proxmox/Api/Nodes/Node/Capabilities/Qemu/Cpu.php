@@ -26,7 +26,6 @@ class Cpu extends PVEPathClassBase
 
     /**
      * List all custom and default CPU models.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu/cpu
      * @return array|null
      */

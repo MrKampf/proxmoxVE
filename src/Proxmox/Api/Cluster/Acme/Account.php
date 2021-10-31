@@ -27,7 +27,6 @@ class Account extends PVEPathClassBase
 
     /**
      * Return existing ACME account information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account/{name}
      * @param string $name
      * @return Name
@@ -39,7 +38,6 @@ class Account extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
      * @return array|null
      */

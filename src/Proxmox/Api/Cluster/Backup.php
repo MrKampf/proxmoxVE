@@ -27,7 +27,6 @@ class Backup extends PVEPathClassBase
 
     /**
      * Read vzdump backup job definition.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}
      * @param string $tokenId
      * @return Id
@@ -39,7 +38,6 @@ class Backup extends PVEPathClassBase
 
     /**
      * ACMEAccount index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Backup extends PVEPathClassBase
 
     /**
      * Create new vzdump backup job.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup
      * @param $params array
      * @return array|null

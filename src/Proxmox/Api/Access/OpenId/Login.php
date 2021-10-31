@@ -27,7 +27,6 @@ class Login extends PVEPathClassBase
 
     /**
      * Verify OpenID authorization code and create a ticket.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/login
      * @param $params array
      * @return array|null

@@ -26,7 +26,6 @@ class Init extends PVEPathClassBase
 
     /**
      * Create initial ceph default configuration and setup symlinks.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/init
      * @param $params array
      * @return array|null

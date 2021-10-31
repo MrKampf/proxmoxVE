@@ -26,7 +26,6 @@ class MonId extends PVEPathClassBase
 
     /**
      * Create Ceph Monitor and Manager
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon/{monid}
      * @param $params array
      * @return array|null
@@ -38,7 +37,6 @@ class MonId extends PVEPathClassBase
 
     /**
      * Destroy Ceph Monitor and Manager.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon/{monid}
      * @return array|null
      */

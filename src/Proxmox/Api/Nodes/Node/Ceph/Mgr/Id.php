@@ -26,7 +26,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Create Ceph Manager
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr/{id}
      * @param $params array
      * @return array|null
@@ -38,7 +37,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Destroy Ceph Manager.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr/{id}
      * @return array|null
      */

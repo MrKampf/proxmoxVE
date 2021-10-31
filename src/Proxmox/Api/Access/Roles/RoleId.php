@@ -27,7 +27,6 @@ class RoleId extends PVEPathClassBase
 
     /**
      * Get role configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
      * @return array|null
      */
@@ -38,7 +37,6 @@ class RoleId extends PVEPathClassBase
 
     /**
      * Update an existing role.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
      * @param $params array
      * @return array|null
@@ -50,7 +48,6 @@ class RoleId extends PVEPathClassBase
 
     /**
      * Delete role.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/roles/{roleid}
      * @return array|null
      */

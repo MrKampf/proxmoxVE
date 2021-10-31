@@ -37,7 +37,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Authentication domain index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains
      * @return Domains
      */
@@ -48,7 +47,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid
      * @return OpenId
      */
@@ -79,7 +77,6 @@ class Access extends PVEPathClassBase
 
     /**
      * User index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users
      * @return Users
      */
@@ -90,7 +87,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Get Access Control List (ACLs).
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
      * @return Acl
      */
@@ -101,7 +97,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Change user password.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/password
      * @return Password
      */
@@ -112,7 +107,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Retrieve effective permissions of given user/token.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
      * @return Permission
      */
@@ -123,7 +117,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Change user u2f authentication.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
      * @return Tfa
      */
@@ -134,7 +127,6 @@ class Access extends PVEPathClassBase
 
     /**
      * Dummy. Useful for formatters which want to provide a login page.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/ticket
      * @return Ticket
      */

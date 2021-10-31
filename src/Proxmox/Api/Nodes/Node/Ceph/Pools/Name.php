@@ -22,7 +22,6 @@ class Name extends PVEPathClassBase
 
     /**
      * List pool settings.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/pools/{name}
      * @return array|null
      */
@@ -33,7 +32,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Change POOL settings
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/pools/{name}
      * @param $params array
      * @return array|null
@@ -45,7 +43,6 @@ class Name extends PVEPathClassBase
 
     /**
      * Destroy pool
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/pools/{name}
      * @return array|null
      */

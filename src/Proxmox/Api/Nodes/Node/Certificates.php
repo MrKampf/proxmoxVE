@@ -29,7 +29,6 @@ class Certificates extends PVEPathClassBase
 
     /**
      * ACME index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/acme
      * @return Acme
      */
@@ -40,7 +39,6 @@ class Certificates extends PVEPathClassBase
 
     /**
      * Upload or update custom certificate chain and key.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/custom
      * @return Custom
      */
@@ -51,7 +49,6 @@ class Certificates extends PVEPathClassBase
 
     /**
      * Get information about node's certificates.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/info
      * @return Info
      */

@@ -28,7 +28,6 @@ class Users extends PVEPathClassBase
 
     /**
      * Get user configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @param string $userID
      * @return UserId
@@ -40,7 +39,6 @@ class Users extends PVEPathClassBase
 
     /**
      * Authentication domain index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users
      * @return array|null
      */
@@ -51,7 +49,6 @@ class Users extends PVEPathClassBase
 
     /**
      * Add an authentication server.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users
      * @param $params array
      * @return array|null

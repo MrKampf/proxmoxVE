@@ -26,7 +26,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Read metric server configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Update metric server configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Create a new external metric server config
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
      * @param $params array
      * @return array|null
@@ -61,7 +58,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Remove Metric server.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
      * @return array|null
      */

@@ -27,7 +27,6 @@ class Plugins extends PVEPathClassBase
 
     /**
      * Get ACME plugin configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/plugins/{id}
      * @param string $id
      * @return Id
@@ -39,7 +38,6 @@ class Plugins extends PVEPathClassBase
 
     /**
      * ACME plugin index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
      * @return array|null
      */
@@ -50,7 +48,6 @@ class Plugins extends PVEPathClassBase
 
     /**
      * Add ACME plugin configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
      * @param $params array
      * @return array|null

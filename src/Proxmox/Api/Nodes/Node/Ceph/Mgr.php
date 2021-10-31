@@ -27,7 +27,6 @@ class Mgr extends PVEPathClassBase
 
     /**
      * MGR directory index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr
      * @return array|null
      */
@@ -38,7 +37,6 @@ class Mgr extends PVEPathClassBase
 
     /**
      * Create Ceph Manager
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr/{id}
      * @param string $id
      * @return Id

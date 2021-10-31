@@ -27,7 +27,6 @@ class Capabilities extends PVEPathClassBase
 
     /**
      * QEMU capabilities index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities/qemu
      * @return Qemu
      */
@@ -38,7 +37,6 @@ class Capabilities extends PVEPathClassBase
 
     /**
      * Node capabilities index.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/capabilities
      * @return array|null
      */

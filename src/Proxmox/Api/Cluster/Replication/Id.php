@@ -26,7 +26,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Read replication job configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication/{id}
      * @return array|null
      */
@@ -37,7 +36,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Update replication job configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication/{id}
      * @param $params array
      * @return array|null
@@ -49,7 +47,6 @@ class Id extends PVEPathClassBase
 
     /**
      * Mark replication job for removal.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication/{id}
      * @return array|null
      */

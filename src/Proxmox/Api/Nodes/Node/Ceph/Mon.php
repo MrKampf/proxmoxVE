@@ -5,7 +5,6 @@
 
 namespace Proxmox\Api\Nodes\Node\Ceph;
 
-use Proxmox\Api\Access\Users\UserId\Token\TokenId;
 use Proxmox\Api\Nodes\Node\Ceph\Mon\MonId;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
@@ -28,7 +27,6 @@ class Mon extends PVEPathClassBase
 
     /**
      * Get Ceph monitor list.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon
      * @return array|null
      */
@@ -39,7 +37,6 @@ class Mon extends PVEPathClassBase
 
     /**
      * Create Ceph Monitor and Manager
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon/{monid}
      * @param string $monId
      * @return MonId

@@ -17,7 +17,6 @@ class Ipam extends PVEPathClassBase
 
     /**
      * Ipam constructor.
-     * 
      * @param PVE $pve
      * @param string $parentAdditional
      */
@@ -28,7 +27,6 @@ class Ipam extends PVEPathClassBase
 
     /**
      * Read sdn ipam configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams/{ipam}
      * @return array|null
      */
@@ -39,7 +37,6 @@ class Ipam extends PVEPathClassBase
 
     /**
      * Update sdn ipam object configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams/{ipam}
      * @param $params array
      * @return array|null
@@ -51,7 +48,6 @@ class Ipam extends PVEPathClassBase
 
     /**
      * Delete sdn ipam object configuration.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams/{ipam}
      * @return array|null
      */

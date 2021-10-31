@@ -26,7 +26,6 @@ class Status extends PVEPathClassBase
 
     /**
      * Get cluster status information.
-     *
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/status
      * @return array|null
      */
