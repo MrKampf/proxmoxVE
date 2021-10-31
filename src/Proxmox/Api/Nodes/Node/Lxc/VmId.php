@@ -5,7 +5,7 @@
 
 namespace Proxmox\Api\Nodes\Node\Lxc;
 
-use Proxmox\Api\Nodes\Node\Lxc\VmId\Clone_;
+use Proxmox\Api\Nodes\Node\Lxc\VmId\CloneVm;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Config;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Feature;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall;
@@ -74,11 +74,11 @@ class VmId extends PVEPathClassBase
     /**
      * Create a container clone/copy
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/clone
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Clone_
+     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\CloneVm
      */
-    public function clone(): Clone_
+    public function clone(): CloneVm
     {
-        return new Clone_($this->getPve(), $this->getPathAdditional());
+        return new CloneVm($this->getPve(), $this->getPathAdditional());
     }
 
     /**

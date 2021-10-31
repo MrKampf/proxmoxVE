@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Nodes\Node\Storage\Storage;
 
 use Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore\Download;
-use Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore\List_;
+use Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore\Lists;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -41,10 +41,10 @@ class FileRestore extends PVEPathClassBase
      * List files and directories for single file restore under the given path.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/file-restore/list
      * @param string $List
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore\List_
+     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore\Lists
      */
-    public function list(string $List): List_
+    public function list(string $List): Lists
     {
-        return new List_($this->getPve(), $this->getPathAdditional() . $List . '/');
+        return new Lists($this->getPve(), $this->getPathAdditional() . $List . '/');
     }
 }

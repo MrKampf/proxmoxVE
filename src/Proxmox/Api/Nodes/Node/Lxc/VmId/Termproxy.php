@@ -9,7 +9,7 @@ use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Clone_
+ * Class Termproxy
  * @package Proxmox\Api\Nodes\Node\Lxc\VmId
  */
 class Termproxy extends PVEPathClassBase

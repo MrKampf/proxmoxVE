@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Nodes\Node\Qemu;
 
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Agent;
-use Proxmox\Api\Nodes\Node\Qemu\VmId\Clone_;
+use Proxmox\Api\Nodes\Node\Qemu\VmId\CloneVm;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\CloudInit;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Config;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Feature;
@@ -99,11 +99,11 @@ class VmId extends PVEPathClassBase
     /**
      * Create a container clone/copy
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/clone
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Clone_
+     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\CloneVm
      */
-    public function clone(): Clone_
+    public function clone(): CloneVm
     {
-        return new Clone_($this->getPve(), $this->getPathAdditional());
+        return new CloneVm($this->getPve(), $this->getPathAdditional());
     }
 
     /**

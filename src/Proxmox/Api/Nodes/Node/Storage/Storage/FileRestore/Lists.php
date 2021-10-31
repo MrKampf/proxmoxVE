@@ -9,10 +9,10 @@ use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class List_
+ * Class Lists
  * @package Proxmox\Api\Nodes\Node\Storage\Storage\Content
  */
-class List_ extends PVEPathClassBase
+class Lists extends PVEPathClassBase
 {
     /**
      * Init constructor.

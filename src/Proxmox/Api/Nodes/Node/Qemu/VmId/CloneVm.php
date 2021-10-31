@@ -3,16 +3,16 @@
  * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace Proxmox\Api\Nodes\Node\Lxc\VmId;
+namespace Proxmox\Api\Nodes\Node\Qemu\VmId;
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Clone_
- * @package Proxmox\Api\Nodes\Node\Lxc\VmId
+ * Class CloneVm
+ * @package Proxmox\Api\Nodes\Node\Qemu\VmId
  */
-class Clone_ extends PVEPathClassBase
+class CloneVm extends PVEPathClassBase
 {
     /**
      * Init constructor.
@@ -26,7 +26,7 @@ class Clone_ extends PVEPathClassBase
 
     /**
      * Create a container clone/copy
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/clone
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/clone
      * @param $params array
      * @return array|null
      */

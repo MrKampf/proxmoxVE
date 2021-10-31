@@ -29,7 +29,7 @@ class Domains extends PVEPathClassBase
     /**
      * Get specific API token information.
      *
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}/token/{tokenid}
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token/{tokenid}
      * @param string $realm
      * @return Realm
      */

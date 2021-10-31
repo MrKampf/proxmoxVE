@@ -29,7 +29,7 @@ class Users extends PVEPathClassBase
     /**
      * Get user configuration.
      *
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/users/{userid}
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @param string $userID
      * @return UserId
      */
