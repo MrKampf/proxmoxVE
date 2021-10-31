@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
 use Proxmox\Api\Access;
 use Proxmox\Api\Cluster;
+use Proxmox\Api\Nodes;
 use Proxmox\Api\Pools;
 use Proxmox\Api\Storage;
 use Proxmox\Api\Version;
@@ -288,6 +289,16 @@ class PVE
     public function cluster(): Cluster
     {
         return new Cluster($this, "");
+    }
+
+    /**
+     * Node index.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}
+     * @return Nodes
+     */
+    public function nodes(): Nodes
+    {
+        return new Nodes($this, "");
     }
 
     /**
