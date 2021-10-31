@@ -16,6 +16,7 @@ use Proxmox\Api\Nodes\Node\Lxc;
 use Proxmox\Api\Nodes\Node\Network;
 use Proxmox\Api\Nodes\Node\Qemu;
 use Proxmox\Api\Nodes\Node\Scan;
+use Proxmox\Api\Nodes\Node\Services;
 use Proxmox\Api\Nodes\Node\Tasks;
 use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Helper\PVEPathClassBase;
@@ -145,6 +146,16 @@ class Node extends PVEPathClassBase
     public function scan(): Scan
     {
         return new Scan($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Service list.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services
+     * @return \Proxmox\Api\Nodes\Node\Services
+     */
+    public function services(): Services
+    {
+        return new Services($this->getPve(), $this->getPathAdditional());
     }
 
     /**
