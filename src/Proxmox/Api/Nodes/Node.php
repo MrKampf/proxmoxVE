@@ -23,6 +23,7 @@ use Proxmox\Api\Nodes\Node\Migrateall;
 use Proxmox\Api\Nodes\Node\Netstat;
 use Proxmox\Api\Nodes\Node\Network;
 use Proxmox\Api\Nodes\Node\Qemu;
+use Proxmox\Api\Nodes\Node\Replication;
 use Proxmox\Api\Nodes\Node\Report;
 use Proxmox\Api\Nodes\Node\Rrd;
 use Proxmox\Api\Nodes\Node\Rrddata;
@@ -170,6 +171,16 @@ class Node extends PVEPathClassBase
     public function scan(): Scan
     {
         return new Scan($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * List status of all replication jobs on this node.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication
+     * @return \Proxmox\Api\Nodes\Node\Replication
+     */
+    public function replication(): Replication
+    {
+        return new Replication($this->getPve(), $this->getPathAdditional());
     }
 
     /**
