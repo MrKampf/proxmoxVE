@@ -14,6 +14,7 @@ use Proxmox\Api\Nodes\Node\Firewall;
 use Proxmox\Api\Nodes\Node\Hardware;
 use Proxmox\Api\Nodes\Node\Lxc;
 use Proxmox\Api\Nodes\Node\Network;
+use Proxmox\Api\Nodes\Node\Qemu;
 use Proxmox\Api\Nodes\Node\Scan;
 use Proxmox\Api\Nodes\Node\Tasks;
 use Proxmox\Api\Nodes\Node\Vzdump;
@@ -124,6 +125,16 @@ class Node extends PVEPathClassBase
     public function network(): Network
     {
         return new Network($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Virtual machine index (per node).
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu
+     * @return \Proxmox\Api\Nodes\Node\Qemu
+     */
+    public function qemu(): Qemu
+    {
+        return new Qemu($this->getPve(), $this->getPathAdditional());
     }
 
     /**
