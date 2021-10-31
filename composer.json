@@ -6,7 +6,7 @@
     "description": "Proxmox VE API Client",
     "type": "library",
     "keywords": ["Proxmox", "API", "KVM", "OpenVZ", "Virtualization", "PHP", "PHP 8", "PHP 7"],
-    "version": "0.3.4",
+    "version": "0.3.5",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "authors": [
