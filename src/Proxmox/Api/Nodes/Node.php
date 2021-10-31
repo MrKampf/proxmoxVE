@@ -34,6 +34,7 @@ use Proxmox\Api\Nodes\Node\Spiceshell;
 use Proxmox\Api\Nodes\Node\Startall;
 use Proxmox\Api\Nodes\Node\Status;
 use Proxmox\Api\Nodes\Node\Stopall;
+use Proxmox\Api\Nodes\Node\Storage;
 use Proxmox\Api\Nodes\Node\Subscription;
 use Proxmox\Api\Nodes\Node\Syslog;
 use Proxmox\Api\Nodes\Node\Tasks;
@@ -164,16 +165,6 @@ class Node extends PVEPathClassBase
     }
 
     /**
-     * Index of available scan methods
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan
-     * @return \Proxmox\Api\Nodes\Node\Scan
-     */
-    public function scan(): Scan
-    {
-        return new Scan($this->getPve(), $this->getPathAdditional());
-    }
-
-    /**
      * List status of all replication jobs on this node.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication
      * @return \Proxmox\Api\Nodes\Node\Replication
@@ -181,6 +172,16 @@ class Node extends PVEPathClassBase
     public function replication(): Replication
     {
         return new Replication($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Index of available scan methods
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan
+     * @return \Proxmox\Api\Nodes\Node\Scan
+     */
+    public function scan(): Scan
+    {
+        return new Scan($this->getPve(), $this->getPathAdditional());
     }
 
     /**
@@ -201,6 +202,16 @@ class Node extends PVEPathClassBase
     public function services(): Services
     {
         return new Services($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Get status for all datastores.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage
+     * @return \Proxmox\Api\Nodes\Node\Storage
+     */
+    public function storage(): Storage
+    {
+        return new Storage($this->getPve(), $this->getPathAdditional());
     }
 
     /**
