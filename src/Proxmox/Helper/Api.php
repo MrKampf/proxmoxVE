@@ -66,9 +66,6 @@ class Api
      */
     public function getBody(ResponseInterface $response): ?array
     {
-        if ($response === null) {
-            return null;
-        }
         return json_decode($response->getBody(), true);
     }
 
@@ -92,7 +89,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => $params,
+                'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -122,7 +119,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => $params,
+                'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -152,7 +149,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => $params,
+                'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
