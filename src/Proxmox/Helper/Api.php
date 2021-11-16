@@ -44,7 +44,6 @@ class Api
                 'debug' => $this->PVE->getDebug(),
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
-                    'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
@@ -83,13 +82,13 @@ class Api
                 'debug' => $this->PVE->getDebug(),
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
-                    'Content-Type' => 'application/json',
+                    'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => (count($params) > 0) ? $params : null,
+                'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -113,13 +112,13 @@ class Api
                 'debug' => $this->PVE->getDebug(),
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
-                    'Content-Type' => 'application/json',
+                    'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => (count($params) > 0) ? $params : null,
+                'json' => $params,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -143,7 +142,7 @@ class Api
                 'debug' => $this->PVE->getDebug(),
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
-                    'Content-Type' => 'application/json',
+                    'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
