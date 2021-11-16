@@ -24,6 +24,7 @@ class Token extends PVEPathClassBase
     public function __construct(PVE $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'token/');
+        return $this->get();
     }
 
     /**

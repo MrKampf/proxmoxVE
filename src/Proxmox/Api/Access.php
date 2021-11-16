@@ -33,6 +33,7 @@ class Access extends PVEPathClassBase
     public function __construct(PVE $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'access/');
+        return $this->get();
     }
 
     /**

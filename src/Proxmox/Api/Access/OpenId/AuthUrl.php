@@ -20,10 +20,12 @@ class AuthUrl extends PVEPathClassBase
      * AuthUrl constructor.
      * @param PVE $pve
      * @param string $parentAdditional
+     * @param array $params
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE $pve, string $parentAdditional, array $params = [])
     {
         parent::__construct($pve, $parentAdditional . 'auth-url/');
+        return $this->post($params);
     }
 
     /**

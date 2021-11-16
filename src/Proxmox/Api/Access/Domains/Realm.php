@@ -28,11 +28,12 @@ class Realm extends PVEPathClassBase
     /**
      * Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name 'name-$realm', so make sure those groups do not exist to prevent overwriting.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}/sync
+     * @param array $params
      * @return Sync
      */
-    public function sync(): Sync
+    public function sync(array $params = []): Sync
     {
-        return new Sync($this->getPve(), $this->getPathAdditional());
+        return new Sync($this->getPve(), $this->getPathAdditional(), $params);
     }
 
     /**

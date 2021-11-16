@@ -25,26 +25,29 @@ class OpenId extends PVEPathClassBase
     public function __construct(PVE $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'openid/');
+        return $this->get();
     }
 
     /**
      * Get the OpenId Authorization Url for the specified realm.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url
+     * @param array $params
      * @return AuthUrl
      */
-    public function authUrl(): AuthUrl
+    public function authUrl(array $params = []): AuthUrl
     {
-        return new AuthUrl($this->getPve(), $this->getPathAdditional());
+        return new AuthUrl($this->getPve(), $this->getPathAdditional(), $params);
     }
 
     /**
      * Get the OpenId Authorization Url for the specified realm.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url
+     * @param array $params
      * @return Login
      */
-    public function login(): Login
+    public function login(array $params = []): Login
     {
-        return new Login($this->getPve(), $this->getPathAdditional());
+        return new Login($this->getPve(), $this->getPathAdditional(), $params);
     }
 
     /**

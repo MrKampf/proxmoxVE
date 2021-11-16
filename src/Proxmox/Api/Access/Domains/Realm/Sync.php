@@ -18,10 +18,12 @@ class Sync extends PVEPathClassBase
      * Domains constructor.
      * @param PVE $pve
      * @param string $parentAdditional
+     * @param array $params
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE $pve, string $parentAdditional, array $params = [])
     {
         parent::__construct($pve, $parentAdditional . 'sync/');
+        return $this->post($params);
     }
 
     /**
