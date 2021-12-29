@@ -41,7 +41,7 @@ class Api
         try {
             return $this->getBody($this->PVE->getHttpClient()->request('GET', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug(),
+                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Accept' => 'application/json',
@@ -79,7 +79,7 @@ class Api
         try {
             return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug(),
+                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
@@ -88,7 +88,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => $params,
+                'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -109,7 +109,7 @@ class Api
         try {
             return $this->getBody($this->PVE->getHttpClient()->request('PUT', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug(),
+                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
@@ -118,7 +118,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => $params,
+                'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
@@ -139,7 +139,7 @@ class Api
         try {
             return $this->getBody($this->PVE->getHttpClient()->request('DELETE', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug(),
+                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
@@ -178,7 +178,7 @@ class Api
         try {
             return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug(),
+                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => [
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
