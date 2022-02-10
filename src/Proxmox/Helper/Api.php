@@ -49,6 +49,7 @@ class Api
                 ],
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
+                'query' => $params
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
