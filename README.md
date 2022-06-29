@@ -47,7 +47,7 @@ require_once 'vendor/autoload.php';
 use Proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
-$proxmox = new PVE("hostname", "username", "password", "pve", 8006, false);
+$proxmox = new PVE("hostname", "username", "password", 8006, "pve", false);
 
 //Read all nodes
 print_r($proxmox->nodes()->get());
