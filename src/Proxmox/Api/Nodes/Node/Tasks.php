@@ -44,4 +44,9 @@ class Tasks extends PVEPathClassBase
     {
         return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
+
+    public function delete(): ?array
+    {
+        return $this->getPve()->getApi()->delete($this->getPathAdditional());
+    }
 }
