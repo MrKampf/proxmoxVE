@@ -1,5 +1,5 @@
 {
-  "name": "mrkampf/proxmox-ve",
+  "name": "performave/proxmox",
   "license": [
     "GPL-3.0-or-later"
   ],
@@ -19,6 +19,12 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "authors": [
+    {
+      "name": "Eric Wang",
+      "email": "eric@performave.com",
+      "homepage": "https://performave.com",
+      "role": "Developer"
+    },
     {
       "name": "MrKampf",
       "email": "hello@mrkampf.com",
