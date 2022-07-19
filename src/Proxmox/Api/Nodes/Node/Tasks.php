@@ -40,13 +40,13 @@ class Tasks extends PVEPathClassBase
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/tasks
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
-    public function delete(): ?array
+    public function delete(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->delete($this->getPathAdditional());
+        return $this->getPve()->getApi()->delete($this->getPathAdditional(), $params);
     }
 }
