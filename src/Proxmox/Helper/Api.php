@@ -47,9 +47,9 @@ class Api
                     'Accept' => 'application/json',
                     'Accept-Encoding' => 'gzip',
                 ],
+                'query' => $params,
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'query' => $params
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
