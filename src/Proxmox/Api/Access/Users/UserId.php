@@ -6,7 +6,7 @@
 namespace Proxmox\Api\Access\Users;
 
 use Proxmox\Api\Access\Users\UserId\Tfa;
-use Proxmox\Api\access\users\UserId\Token;
+use Proxmox\Api\Access\Users\UserId\Token;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 

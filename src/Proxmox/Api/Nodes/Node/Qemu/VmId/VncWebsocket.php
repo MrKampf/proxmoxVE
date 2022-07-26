@@ -33,4 +33,9 @@ class VncWebsocket extends PVEPathClassBase
     {
         return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
+
+    public function getWebsocketEndpoint(): string
+    {
+        return $this->getPathAdditional();
+    }
 }
