@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Acl
  * @package Proxmox\Api\Access
  */
-class Acl extends PVEPathClassBase
+class Acl extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Acl constructor.

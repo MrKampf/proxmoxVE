@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Password
  * @package Proxmox\Api\Access
  */
-class Password extends PVEPathClassBase
+class Password extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
