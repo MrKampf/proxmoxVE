@@ -22,6 +22,14 @@ class Api
     private PVE $PVE;
 
     /**
+     * @var array|string[] $defaultHeaders
+     */
+    private array $defaultHeaders = [
+        'Content-Type' => 'application/json',
+        'Accept' => 'application/json',
+    ];
+
+    /**
      * Api constructor.
      * @param PVE $PVE
      */
@@ -42,11 +50,9 @@ class Api
             return $this->getBody($this->PVE->getHttpClient()->request('GET', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
-                'headers' => [
-                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
+                'headers' => array_merge($this->defaultHeaders, [
+                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken()
+                ]),
                 'query' => $params,
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
@@ -81,12 +87,10 @@ class Api
             return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
-                'headers' => [
+                'headers' => array_merge($this->defaultHeaders, [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
+                ]),
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
                 'json' => (count($params) > 0) ? $params : null,
@@ -111,12 +115,10 @@ class Api
             return $this->getBody($this->PVE->getHttpClient()->request('PUT', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
-                'headers' => [
+                'headers' => array_merge($this->defaultHeaders, [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
+                ]),
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
                 'json' => (count($params) > 0) ? $params : null,
@@ -141,12 +143,10 @@ class Api
             return $this->getBody($this->PVE->getHttpClient()->request('DELETE', $this->PVE->getApiURL() . $path, [
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
-                'headers' => [
+                'headers' => array_merge($this->defaultHeaders, [
                     'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
+                ]),
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
                 'json' => (count($params) > 0) ? $params : null,
@@ -180,10 +180,7 @@ class Api
             return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Accept-Encoding' => 'gzip',
-                ],
+                'headers' => $this->defaultHeaders,
                 'form_params' => [
                     'username' => $this->PVE->getUsername(),
                     'password' => $this->PVE->getPassword(),
