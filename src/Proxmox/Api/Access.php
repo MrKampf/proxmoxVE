@@ -15,6 +15,7 @@ use Proxmox\Api\Access\Roles;
 use Proxmox\Api\Access\Tfa;
 use Proxmox\Api\Access\Ticket;
 use Proxmox\Api\Access\Users;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -22,7 +23,7 @@ use Proxmox\PVE;
  * Class access
  * @package proxmox\api
  */
-class Access extends PVEPathClassBase
+class Access extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

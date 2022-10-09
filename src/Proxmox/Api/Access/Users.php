@@ -3,7 +3,7 @@
  * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
  */
 
-namespace Proxmox\Api\Access\Users;
+namespace Proxmox\Api\Access;
 
 use Proxmox\Api\Access\Users\UserId\Tfa;
 use Proxmox\Api\Access\Users\UserId\Token;
@@ -11,10 +11,10 @@ use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class UserId
+ * Class Users
  * @package proxmox\api\access\users
  */
-class UserId extends PVEPathClassBase
+class Users extends PVEPathClassBase
 {
 
     /**
