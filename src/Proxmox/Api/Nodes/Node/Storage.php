@@ -29,7 +29,7 @@ class Storage extends PVEPathClassBase
      * @param string $Storage
      * @return \Proxmox\Api\Nodes\Node\Storage\Storage
      */
-    public function zone(string $Storage): Storage\Storage
+    public function storage(string $Storage): Storage\Storage
     {
         return new Storage\Storage($this->getPve(), $this->getPathAdditional() . $Storage . '/');
     }
