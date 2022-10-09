@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Access\Users\UserId;
 
 use Proxmox\Api\Access\Users\UserId\Token\TokenId;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class token
  * @package proxmox\api\access\users\userid
  */
-class Token extends PVEPathClassBase
+class Token extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

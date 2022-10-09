@@ -5,8 +5,10 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Api\Access\Users\UserId;
 use Proxmox\Api\Access\Users\UserId\Tfa;
 use Proxmox\Api\Access\Users\UserId\Token;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -14,7 +16,7 @@ use Proxmox\PVE;
  * Class Users
  * @package proxmox\api\access\users
  */
-class Users extends PVEPathClassBase
+class Users extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
@@ -28,23 +30,12 @@ class Users extends PVEPathClassBase
     }
 
     /**
-     * Get user API tokens.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/token
-     * @return Token
+     * @param $userId
+     * @return \Proxmox\Api\Access\Users\UserId
      */
-    public function token(): Token
+    public function userId($userId): UserId
     {
-        return new Token($this->getPve(), $this->getPathAdditional());
-    }
-
-    /**
-     * Get user TFA types (Personal and Realm).
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/tfa
-     * @return Tfa
-     */
-    public function tfa(): Tfa
-    {
-        return new Tfa($this->getPve(), $this->getPathAdditional());
+        return new UserId($this->getPve(), $this->getPathAdditional() . $userId . '/');
     }
 
     /**
@@ -58,24 +49,12 @@ class Users extends PVEPathClassBase
     }
 
     /**
-     * Update user configuration.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
-    public function put(array $params = []): ?array
+    public function post(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->put($this->getPathAdditional(), $params);
-    }
-
-    /**
-     * Delete user.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
-     * @return array|null
-     */
-    public function delete(): ?array
-    {
-        return $this->getPve()->getApi()->delete($this->getPathAdditional());
+        return $this->getPve()->getApi()->post($this->getPathAdditional(), $params);
     }
 
 }
