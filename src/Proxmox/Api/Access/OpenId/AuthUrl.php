@@ -5,7 +5,7 @@
 
 namespace Proxmox\Api\Access\OpenId;
 
-
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +13,7 @@ use Proxmox\PVE;
  * Class AuthUrl
  * @package Proxmox\Api\Access\OpenId
  */
-class AuthUrl extends PVEPathClassBase
+class AuthUrl extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

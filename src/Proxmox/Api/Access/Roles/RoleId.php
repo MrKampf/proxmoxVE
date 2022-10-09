@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access\Roles;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class RoleId
  * @package Proxmox\Api\Access\Roles
  */
-class RoleId extends PVEPathClassBase
+class RoleId extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
