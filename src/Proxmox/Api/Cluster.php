@@ -21,6 +21,7 @@ use Proxmox\Api\Cluster\Resources;
 use Proxmox\Api\Cluster\Sdn;
 use Proxmox\Api\Cluster\Status;
 use Proxmox\Api\Cluster\Tasks;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -28,7 +29,7 @@ use Proxmox\PVE;
  * Class Cluster
  * @package Proxmox\Api
  */
-class Cluster extends PVEPathClassBase
+class Cluster extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

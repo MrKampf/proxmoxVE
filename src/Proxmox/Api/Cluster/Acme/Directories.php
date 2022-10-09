@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Acme;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Directories
  * @package Proxmox\Api\Cluster
  */
-class Directories extends PVEPathClassBase
+class Directories extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Directories constructor.

@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Cluster\Acme;
 
 use Proxmox\Api\Cluster\Acme\Plugins\Id;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Plugins
  * @package Proxmox\Api\Cluster
  */
-class Plugins extends PVEPathClassBase
+class Plugins extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Plugins constructor.
