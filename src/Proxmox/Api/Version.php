@@ -5,7 +5,7 @@
 
 namespace Proxmox\Api;
 
-
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +13,7 @@ use Proxmox\PVE;
  * Class Version
  * @package Proxmox\Api
  */
-class Version extends PVEPathClassBase
+class Version extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
