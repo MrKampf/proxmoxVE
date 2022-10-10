@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Acme;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class ChallengeSchema
  * @package Proxmox\Api\Cluster
  */
-class ChallengeSchema extends PVEPathClassBase
+class ChallengeSchema extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * ChallengeSchema constructor.

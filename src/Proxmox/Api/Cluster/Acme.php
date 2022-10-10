@@ -10,6 +10,7 @@ use Proxmox\Api\Cluster\Acme\ChallengeSchema;
 use Proxmox\Api\Cluster\Acme\Directories;
 use Proxmox\Api\Cluster\Acme\Plugins;
 use Proxmox\Api\Cluster\Acme\Tos;
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -17,7 +18,7 @@ use Proxmox\PVE;
  * Class Acme
  * @package Proxmox\Api\Cluster
  */
-class Acme extends PVEPathClassBase
+class Acme extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * Acme constructor.

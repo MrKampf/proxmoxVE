@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Cluster\Acme;
 
 use Proxmox\Api\Cluster\Acme\Account\Name;
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Account
  * @package Proxmox\Api\Cluster
  */
-class Account extends PVEPathClassBase
+class Account extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * Acme constructor.
