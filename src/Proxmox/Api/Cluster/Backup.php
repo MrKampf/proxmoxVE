@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Cluster;
 
 use Proxmox\Api\Cluster\Backup\Id;
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Backup
  * @package Proxmox\Api\Cluster
  */
-class Backup extends PVEPathClassBase
+class Backup extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * Backup constructor.
