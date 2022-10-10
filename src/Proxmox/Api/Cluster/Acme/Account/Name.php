@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Acme\Account;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Name
  * @package Proxmox\Api\Cluster\Acme\Account
  */
-class Name extends PVEPathClassBase
+class Name extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * Acme constructor.
@@ -48,11 +49,12 @@ class Name extends PVEPathClassBase
     /**
      * Deactivate existing ACME account at CA.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account/{name}
+     * @param array $params
      * @return array|null
      */
-    public function delete(): ?array
+    public function delete(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->delete($this->getPathAdditional());
+        return $this->getPve()->getApi()->delete($this->getPathAdditional(), $params);
     }
 
 }
