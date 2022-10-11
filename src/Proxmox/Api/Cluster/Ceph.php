@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster;
 use Proxmox\Api\Cluster\Ceph\Flags;
 use Proxmox\Api\Cluster\Ceph\MetaData;
 use Proxmox\Api\Cluster\Ceph\Status;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -15,7 +16,7 @@ use Proxmox\PVE;
  * Class Ceph
  * @package Proxmox\Api\Cluster
  */
-class Ceph extends PVEPathClassBase
+class Ceph extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Ceph constructor.

@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Config;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Join
  * @package Proxmox\Api\Cluster\Config
  */
-class Join extends PVEPathClassBase
+class Join extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

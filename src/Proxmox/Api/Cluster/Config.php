@@ -10,6 +10,7 @@ use Proxmox\Api\Cluster\Config\Join;
 use Proxmox\Api\Cluster\Config\Nodes;
 use Proxmox\Api\Cluster\Config\QDevice;
 use Proxmox\Api\Cluster\Config\Totem;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -17,7 +18,7 @@ use Proxmox\PVE;
  * Class Config
  * @package Proxmox\Api\Cluster
  */
-class Config extends PVEPathClassBase
+class Config extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Config constructor.

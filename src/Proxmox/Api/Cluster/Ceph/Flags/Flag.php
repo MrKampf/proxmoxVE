@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Ceph\Flags;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Flag
  * @package Proxmox\Api\Cluster\Ceph\Flags
  */
-class Flag extends PVEPathClassBase
+class Flag extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Flags constructor.
