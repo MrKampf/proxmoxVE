@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\BackupInfo;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class NotBackedUp
  * @package Proxmox\Api\Cluster\Backupinfo
  */
-class NotBackedUp extends PVEPathClassBase
+class NotBackedUp extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * NotBackedUp constructor.
