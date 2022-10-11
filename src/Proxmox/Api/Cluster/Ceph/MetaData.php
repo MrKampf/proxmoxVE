@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Ceph;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class MetaData
  * @package Proxmox\Api\Cluster\Ceph
  */
-class MetaData extends PVEPathClassBase
+class MetaData extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * MetaData constructor.

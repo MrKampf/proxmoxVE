@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Ceph;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Status
  * @package Proxmox\Api\Cluster\Ceph
  */
-class Status extends PVEPathClassBase
+class Status extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Status constructor.
