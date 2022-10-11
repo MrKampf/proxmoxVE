@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Nodes\Node;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Storage
  * @package Proxmox\Api\Nodes\Node
  */
-class Storage extends PVEPathClassBase
+class Storage extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Init constructor.
