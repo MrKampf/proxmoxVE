@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Config\Nodes;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Node
  * @package Proxmox\Api\Cluster\Config\Nodes
  */
-class Node extends PVEPathClassBase
+class Node extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
