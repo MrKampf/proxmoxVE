@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Access\Domains;
 
 use Proxmox\Api\Access\Domains\Realm\Sync;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Realm
  * @package Proxmox\Api\Access\Domains
  */
-class Realm extends PVEPathClassBase
+class Realm extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Domains constructor.

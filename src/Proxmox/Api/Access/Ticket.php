@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Ticket
  * @package Proxmox\Api\Access
  */
-class Ticket extends PVEPathClassBase
+class Ticket extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

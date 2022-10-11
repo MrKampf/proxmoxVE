@@ -5,6 +5,8 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Api\Access\Tfa\UserId;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +14,7 @@ use Proxmox\PVE;
  * Class Tfa
  * @package Proxmox\Api\Access
  */
-class Tfa extends PVEPathClassBase
+class Tfa extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
@@ -26,14 +28,20 @@ class Tfa extends PVEPathClassBase
     }
 
     /**
-     * Change user u2f authentication.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/tfa
-     * @param array $params
+     * @param string $userId
+     * @return \Proxmox\Api\Access\Tfa\UserId
+     */
+    public function userId(string $userId): UserId
+    {
+        return new UserId($this->getPve(), $this->getPathAdditional() . $userId . '/');
+    }
+
+    /**
      * @return array|null
      */
-    public function put(array $params = []): ?array
+    public function get(): ?array
     {
-        return $this->getPve()->getApi()->put($this->getPathAdditional(), $params);
+        return $this->getPve()->getApi()->get($this->getPathAdditional());
     }
 
     /**

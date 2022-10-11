@@ -6,6 +6,7 @@
 namespace Proxmox\Api;
 
 use Proxmox\Api\Pools\PoolId;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Pools
  * @package Proxmox\Api
  */
-class Pools extends PVEPathClassBase
+class Pools extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

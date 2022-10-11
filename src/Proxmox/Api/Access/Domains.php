@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Access;
 
 use Proxmox\Api\Access\Domains\Realm;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Domains
  * @package proxmox\api\access
  */
-class Domains extends PVEPathClassBase
+class Domains extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

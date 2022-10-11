@@ -1,33 +1,28 @@
 <?php
-/*
- * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
- */
 
-namespace Proxmox\Api\Access;
+namespace Proxmox\Api\Access\Tfa\UserId;
 
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Acl
- * @package Proxmox\Api\Access
+ * Class Id
+ * @package Proxmox\Api\Access\Tfa\UserId
  */
-class Acl extends PVEPathClassBase implements PVEPathEndpointInterface
+class Id extends PVEPathClassBase implements PVEPathEndpointInterface
 {
+
     /**
-     * Acl constructor.
-     * @param PVE $pve
+     * @param \Proxmox\PVE $pve
      * @param string $parentAdditional
      */
     public function __construct(PVE $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional . "acl/");
+        parent::__construct($pve, $parentAdditional);
     }
 
     /**
-     * Directory index.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
      * @return array|null
      */
     public function get(): ?array
@@ -36,8 +31,6 @@ class Acl extends PVEPathClassBase implements PVEPathEndpointInterface
     }
 
     /**
-     * Update Access Control List (add or remove permissions).
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/acl
      * @param array $params
      * @return array|null
      */
@@ -45,4 +38,14 @@ class Acl extends PVEPathClassBase implements PVEPathEndpointInterface
     {
         return $this->getPve()->getApi()->put($this->getPathAdditional(), $params);
     }
+
+    /**
+     * @param array $params
+     * @return array|null
+     */
+    public function delete(array $params = []): ?array
+    {
+        return $this->getPve()->getApi()->delete($this->getPathAdditional(), $params);
+    }
+
 }

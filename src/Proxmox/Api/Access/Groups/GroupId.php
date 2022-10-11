@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access\Groups;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class GroupId
  * @package Proxmox\Api\Access\Groups
  */
-class GroupId extends PVEPathClassBase
+class GroupId extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Access;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Permission
  * @package Proxmox\Api\Access
  */
-class Permission extends PVEPathClassBase
+class Permission extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

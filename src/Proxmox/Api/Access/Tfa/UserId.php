@@ -1,27 +1,21 @@
 <?php
-/**
- * @copyright 2020 Daniel Engelschalk <hello@mrkampf.com>
- */
 
-namespace Proxmox\Api\Access;
+namespace Proxmox\Api\Access\Tfa;
 
-use Proxmox\Api\Access\Users\UserId;
-use Proxmox\Api\Access\Users\UserId\Tfa;
-use Proxmox\Api\Access\Users\UserId\Token;
+use Proxmox\Api\Access\Tfa\UserId\Id;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
 /**
- * Class Users
- * @package proxmox\api\access\users
+ * Class UserId
+ * @package Proxmox\Api\Access\Tfa
  */
-class Users extends PVEPathClassBase implements PVEPathEndpointInterface
+class UserId extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
-     * UserId constructor.
-     * @param PVE $pve
+     * @param \Proxmox\PVE $pve
      * @param string $parentAdditional
      */
     public function __construct(PVE $pve, string $parentAdditional)
@@ -30,17 +24,15 @@ class Users extends PVEPathClassBase implements PVEPathEndpointInterface
     }
 
     /**
-     * @param $userId
-     * @return \Proxmox\Api\Access\Users\UserId
+     * @param string $id
+     * @return \Proxmox\Api\Access\Tfa\UserId\Id
      */
-    public function userId($userId): UserId
+    public function id(string $id): Id
     {
-        return new UserId($this->getPve(), $this->getPathAdditional() . $userId . '/');
+        return new Id($this->getPve(), $this->getPathAdditional() . $id . '/');
     }
 
     /**
-     * Get user configuration.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
      * @return array|null
      */
     public function get(): ?array
@@ -56,5 +48,4 @@ class Users extends PVEPathClassBase implements PVEPathEndpointInterface
     {
         return $this->getPve()->getApi()->post($this->getPathAdditional(), $params);
     }
-
 }

@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Storage;
 
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -13,7 +14,7 @@ use Proxmox\PVE;
  * Class Storage
  * @package Proxmox\Api\Storage
  */
-class Storage extends PVEPathClassBase
+class Storage extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Storage constructor.
