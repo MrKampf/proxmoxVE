@@ -15,7 +15,7 @@ Recommended installation is using **Composer**, if you do not have **Composer** 
 In the root of your project execute the following:
 
 ```sh
-composer require mrkampf/proxmox-ve
+$ composer require mrkampf/proxmox-ve
 ```
 
 Or add this to your `composer.json` file:
@@ -23,7 +23,7 @@ Or add this to your `composer.json` file:
 ```json
 {
     "require": {
-        "mrkampf/proxmox-ve": "^0.4.2"
+        "mrkampf/proxmox-ve": "^0.4.3"
     }
 }
 ```

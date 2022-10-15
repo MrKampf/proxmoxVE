@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Backup\Id;
 
+use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class IncludedVolumes
  * @package Proxmox\Api\Cluster\Backup\Id
  */
-class IncludedVolumes extends PVEPathClassBase
+class IncludedVolumes extends PVEPathClassBase implements PVEPathClassInterface
 {
 
     /**

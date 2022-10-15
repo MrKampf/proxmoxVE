@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api\Cluster\Config;
 
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -12,7 +13,7 @@ use Proxmox\PVE;
  * Class Totem
  * @package Proxmox\Api\Cluster\Config
  */
-class Totem extends PVEPathClassBase
+class Totem extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**

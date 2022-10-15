@@ -12,6 +12,7 @@ use Proxmox\Api\Cluster\Firewall\Macros;
 use Proxmox\Api\Cluster\Firewall\Options;
 use Proxmox\Api\Cluster\Firewall\Refs;
 use Proxmox\Api\Cluster\Firewall\Rules;
+use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
 
@@ -19,7 +20,7 @@ use Proxmox\PVE;
  * Class Firewall
  * @package Proxmox\Api\Cluster
  */
-class Firewall extends PVEPathClassBase
+class Firewall extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Firewall constructor.

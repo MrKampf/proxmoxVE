@@ -28,9 +28,10 @@ class Resources extends PVEPathClassBase
      * Resources index (cluster wide).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/resources
      * @params array $params
+     * @param array $params
      * @return array|null
      */
-    public function get($params = []): ?array
+    public function get(array $params = []): ?array
     {
         return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
