@@ -1,5 +1,5 @@
 # ProxmoxVE API
-This **PHP 8+** Proxmox library allow, to interact with your Proxmox PVE server and cluster via API.
+This **PHP 8+** Proxmox library allows, to interact with your Proxmox PVE server and cluster via API.
 
 [![Latest Stable Version](https://poser.pugx.org/mrkampf/proxmox-ve/v/stable)](https://packagist.org/packages/mrkampf/proxmox-ve)
 [![Total Downloads](https://poser.pugx.org/mrkampf/proxmox-ve/downloads)](https://packagist.org/packages/mrkampf/proxmox-ve)
@@ -10,9 +10,9 @@ This **PHP 8+** Proxmox library allow, to interact with your Proxmox PVE server 
 
 ## Getting Started
 
-Recommended installation is using **Composer**, if you do not have **Composer** what are you waiting?
+Recommended installation is using **Composer**. If you do not have **Composer**, what are you waiting for?
 
-In the root of your project execute the following:
+In the root of your project, execute the following:
 
 ```sh
 $ composer require mrkampf/proxmox-ve
@@ -48,15 +48,23 @@ use Proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new PVE("hostname", "username", "password", 8006, "pve", false);
+> Note: Use "pam" instead of "pve" if you're using Standard Linux PAM authentication.
 
 //Read all nodes
 print_r($proxmox->nodes()->get());
 
-//Read all lxc
+//Read all LXC
 print_r($proxmox->nodes()->lxc()->get());
+
+// Read all LXC for a node
+print_r($proxmox->nodes()->node("node_name")->lxc()->get());
 
 //Read all qemu
 print_r($proxmox->nodes()->qemu()->get());
+
+// Read all QEMU for a node
+print_r($proxmox->nodes()->node("node_name")->qemu()->get());
+
 ```
 
 ---
