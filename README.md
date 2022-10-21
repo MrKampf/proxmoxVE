@@ -48,18 +48,18 @@ use Proxmox\PVE;
 
 // Then simply pass your credentials when creating the API client object.
 $proxmox = new PVE("hostname", "username", "password", 8006, "pve", false);
-> Note: Use "pam" instead of "pve" if you're using Standard Linux PAM authentication.
+// Note: Use "pam" instead of "pve" if you're using Standard Linux PAM authentication.
 
-//Read all nodes
+// Read all nodes
 print_r($proxmox->nodes()->get());
 
-//Read all LXC
+// Read all LXC
 print_r($proxmox->nodes()->lxc()->get());
 
 // Read all LXC for a node
 print_r($proxmox->nodes()->node("node_name")->lxc()->get());
 
-//Read all qemu
+// Read all qemu
 print_r($proxmox->nodes()->qemu()->get());
 
 // Read all QEMU for a node
