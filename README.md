@@ -23,7 +23,7 @@ Or add this to your `composer.json` file:
 ```json
 {
     "require": {
-        "mrkampf/proxmox-ve": "^0.4.3"
+        "mrkampf/proxmox-ve": "^0.4.4"
     }
 }
 ```
