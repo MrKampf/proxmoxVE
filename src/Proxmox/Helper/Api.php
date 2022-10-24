@@ -181,7 +181,7 @@ class Api
                 'verify' => false,
                 'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => $this->defaultHeaders,
-                'form_params' => [
+                'json' => [
                     'username' => $this->PVE->getUsername(),
                     'password' => $this->PVE->getPassword(),
                     'realm' => $this->PVE->getAuthType(),
