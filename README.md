@@ -68,6 +68,49 @@ print_r($proxmox->nodes()->node("node_name")->qemu()->get());
 ```
 
 ---
+### Example for lazy login
+
+```php
+<?php
+// Require the autoloader
+require_once 'vendor/autoload.php';
+
+// Use the library namespace
+use Proxmox\PVE;
+
+//Example for lazy login
+$proxmox = new PVE("hostname", "username", "password", 8006, "pve", false, true);
+
+//Login
+$proxmox->getApi()->login();
+
+// Read all nodes
+print_r($proxmox->nodes()->get());
+
+```
+
+---
+### Example for custom http client
+
+```php
+<?php
+// Require the autoloader
+require_once 'vendor/autoload.php';
+
+// Use the library namespace
+use Proxmox\PVE;
+
+$customGuzzleHttpClient = new GuzzleHttp\Client();
+
+//Example for lazy login
+$proxmox = new PVE("hostname", "username", "password", 8006, "pve", false, false, $customGuzzleHttpClient);
+
+// Read all nodes
+print_r($proxmox->nodes()->get());
+
+```
+
+---
 ### For version 3.1
 
 | WARNING: The array options is after version 3.0 no longer supported! |

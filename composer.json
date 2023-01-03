@@ -37,7 +37,7 @@
     "source": "https://github.com/MrKampf/proxmoxVE"
   },
   "require": {
-    "php": "^8.0|7.4|^8.1",
+    "php": "^8.0|^8.1",
     "lib-curl": "*",
     "guzzlehttp/guzzle": "*",
     "ext-json": "*"
