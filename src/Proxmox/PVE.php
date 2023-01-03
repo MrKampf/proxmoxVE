@@ -61,8 +61,11 @@ class PVE
      * @param string $authType
      * @param bool $debug
      */
-    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false)
+    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, Client|NULL $httpClient = NULL)
     {
+        if($httpClient === NULL) {
+            $httpClient = new Client();
+        }
         $this->setHostname($hostname); //Save hostname in class variable
         $this->setUsername($username); //Save username in class variable
         $this->setPassword($password); //Save user password in class variable
@@ -71,7 +74,7 @@ class PVE
         $this->setDebug($debug); //Save the debug boolean variable
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
         $this->setApi(new Api($this)); //Create the api object
-        $this->setHttpClient(new Client()); //Create a new guzzle client
+        $this->setHttpClient($httpClient); //Create a new guzzle client
         $this->getApi()->login(); //Login to the api
     }
 
