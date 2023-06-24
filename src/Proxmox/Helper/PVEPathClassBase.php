@@ -22,9 +22,9 @@ class PVEPathClassBase implements PVEPathClassInterface
     private string $pathAdditional;
 
     /**
-     * @var PVE
+     * @var PVE|API
      */
-    private PVE $pve;
+    private PVE|API $pve;
 
     /**
      * Access constructor.
@@ -54,9 +54,9 @@ class PVEPathClassBase implements PVEPathClassInterface
     }
 
     /**
-     * @return PVE
+     * @return PVE|API
      */
-    public function getPve(): PVE
+    public function getPve(): PVE|API
     {
         return $this->pve;
     }
@@ -64,7 +64,7 @@ class PVEPathClassBase implements PVEPathClassInterface
     /**
      * @param PVE|API $pve
      */
-    public function setPve(PVE $pve): void
+    public function setPve(PVE|API $pve): void
     {
         $this->pve = $pve;
     }
