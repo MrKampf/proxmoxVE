@@ -30,13 +30,13 @@ interface PVEPathClassInterface
     public function setPathAdditional(string $pathAdditional): void;
 
     /**
-     * @return PVE
+     * @return PVE|API
      */
-    public function getPve(): PVE;
+    public function getPve(): PVE|API;
 
     /**
      * @param PVE|API $pve
      */
-    public function setPve(PVE $pve): void;
+    public function setPve(PVE|API $pve): void;
 
 }
