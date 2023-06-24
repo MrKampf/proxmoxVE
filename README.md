@@ -68,6 +68,37 @@ print_r($proxmox->nodes()->node("node_name")->qemu()->get());
 ```
 
 ---
+### API Token Support
+
+```php
+<?php
+// Require the autoloader
+require_once 'vendor/autoload.php';
+
+// Use the library namespace
+use Proxmox\API;
+
+// Then simply pass your credentials when creating the API client object.
+$proxmox = new API("hostname", "USER@REALM!TOKENID", "aaaaaaaaa-bbb-cccc-dddd-ef0123456789", 8006, false);
+
+// Read all nodes
+print_r($proxmox->nodes()->get());
+
+// Read all LXC
+print_r($proxmox->nodes()->lxc()->get());
+
+// Read all LXC for a node
+print_r($proxmox->nodes()->node("node_name")->lxc()->get());
+
+// Read all qemu
+print_r($proxmox->nodes()->qemu()->get());
+
+// Read all QEMU for a node
+print_r($proxmox->nodes()->node("node_name")->qemu()->get());
+
+```
+
+---
 ### Example for lazy login
 
 ```php
