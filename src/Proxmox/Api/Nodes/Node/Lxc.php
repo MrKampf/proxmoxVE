@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Lxc\VmId;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Lxc
@@ -17,10 +18,10 @@ class Lxc extends PVEPathClassBase
 {
     /**
      * Ceph constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'lxc/');
     }
@@ -29,7 +30,7 @@ class Lxc extends PVEPathClassBase
      * Directory index
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}
      * @param string $vmId
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId
+     * @return VmId
      */
     public function vmId(string $vmId): VmId
     {

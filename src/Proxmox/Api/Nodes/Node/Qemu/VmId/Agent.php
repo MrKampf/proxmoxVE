@@ -32,6 +32,7 @@ use Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SuspendHybrid;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SuspendRam;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Agent
@@ -41,10 +42,10 @@ class Agent extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'agent/');
     }
@@ -52,7 +53,7 @@ class Agent extends PVEPathClassBase
     /**
      * Executes the given command in the vm via the guest-agent and returns an object with the pid
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/exec
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\Exec
+     * @return Exec
      */
     public function exec(): Exec
     {
@@ -62,7 +63,7 @@ class Agent extends PVEPathClassBase
     /**
      * Gets the status of the given pid started by the guest-agent
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/exec-status
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\ExecStatus
+     * @return ExecStatus
      */
     public function execStatus(): ExecStatus
     {
@@ -72,7 +73,7 @@ class Agent extends PVEPathClassBase
     /**
      * Reads the given file via guest agent. Is limited to 16777216 bytes.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/file-read
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\FileRead
+     * @return FileRead
      */
     public function fileRead(): FileRead
     {
@@ -82,7 +83,7 @@ class Agent extends PVEPathClassBase
     /**
      * Writes the given file via guest agent.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/file-write
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\FileWrite
+     * @return FileWrite
      */
     public function fileWrite(): FileWrite
     {
@@ -92,7 +93,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute fsfreeze-freeze.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/fsfreeze-freeze
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\FsfreezeFreeze
+     * @return FsfreezeFreeze
      */
     public function fsfreezeFreeze(): FsfreezeFreeze
     {
@@ -102,7 +103,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute fsfreeze-status.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/fsfreeze-status
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\FsfreezeStatus
+     * @return FsfreezeStatus
      */
     public function fsfreezeStatus(): FsfreezeStatus
     {
@@ -112,7 +113,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute fsfreeze-thaw.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/fsfreeze-thaw
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\FsfreezeThaw
+     * @return FsfreezeThaw
      */
     public function fsfreezeThaw(): FsfreezeThaw
     {
@@ -122,7 +123,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute fstrim.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/fstrim
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\Fsstrim
+     * @return Fsstrim
      */
     public function fsstrim(): Fsstrim
     {
@@ -132,7 +133,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-fsinfo.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-fsinfo
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetFsinfo
+     * @return GetFsinfo
      */
     public function getFsinfo(): GetFsinfo
     {
@@ -142,7 +143,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-host-name.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-host-name
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetHostName
+     * @return GetHostName
      */
     public function getHostName(): GetHostName
     {
@@ -152,7 +153,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-memory-block-info.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-memory-block-info
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetMemoryBlockInfo
+     * @return GetMemoryBlockInfo
      */
     public function getMemoryBlockInfo(): GetMemoryBlockInfo
     {
@@ -162,7 +163,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-memory-blocks.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-memory-blocks
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetMemoryBlocks
+     * @return GetMemoryBlocks
      */
     public function getMemoryBlocks(): GetMemoryBlocks
     {
@@ -172,7 +173,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-osinfo.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-osinfo
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetOsinfo
+     * @return GetOsinfo
      */
     public function getOsinfo(): GetOsinfo
     {
@@ -182,7 +183,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-time.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-time
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetTime
+     * @return GetTime
      */
     public function getTime(): GetTime
     {
@@ -192,7 +193,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-timezone.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-timezone
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetTimezone
+     * @return GetTimezone
      */
     public function getTimezone(): GetTimezone
     {
@@ -202,7 +203,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-users.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-users
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetUsers
+     * @return GetUsers
      */
     public function getUsers(): GetUsers
     {
@@ -212,7 +213,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute get-vcpus.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/get-vcpus
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\GetVcpus
+     * @return GetVcpus
      */
     public function getVcpus(): GetVcpus
     {
@@ -222,7 +223,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute info.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/exec
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\Info
+     * @return Info
      */
     public function info(): Info
     {
@@ -232,7 +233,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute network-get-interfaces.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/network-get-interfaces
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\NetworkGetInterfaces
+     * @return NetworkGetInterfaces
      */
     public function networkGetInterfaces(): NetworkGetInterfaces
     {
@@ -242,7 +243,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute ping.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/ping
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\Ping
+     * @return Ping
      */
     public function ping(): Ping
     {
@@ -252,7 +253,7 @@ class Agent extends PVEPathClassBase
     /**
      * Sets the password for the given user to the given password
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/set-user-password
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SetUserPassword
+     * @return SetUserPassword
      */
     public function SetUserPassword(): SetUserPassword
     {
@@ -262,7 +263,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute shutdown.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/shutdown
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\Shutdown
+     * @return Shutdown
      */
     public function shutdown(): Shutdown
     {
@@ -272,7 +273,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute suspend-disk.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/suspend-disk
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SuspendDisk
+     * @return SuspendDisk
      */
     public function suspendDisk(): SuspendDisk
     {
@@ -282,7 +283,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute suspend-hybrid.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/suspend-hybrid
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SuspendHybrid
+     * @return SuspendHybrid
      */
     public function suspendHybrid(): SuspendHybrid
     {
@@ -292,7 +293,7 @@ class Agent extends PVEPathClassBase
     /**
      * Execute suspend-ram.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/suspend-ram
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent\SuspendRam
+     * @return SuspendRam
      */
     public function suspendRam(): SuspendRam
     {

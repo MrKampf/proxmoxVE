@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Storage
@@ -17,10 +18,10 @@ class Storage extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'storage/');
     }
@@ -28,7 +29,7 @@ class Storage extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}
      * @param string $Storage
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage
+     * @return Storage\Storage
      */
     public function storage(string $Storage): Storage\Storage
     {

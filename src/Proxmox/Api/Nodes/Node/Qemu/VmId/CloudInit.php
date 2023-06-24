@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\CloudInit\Dump;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class CloudInit
@@ -17,10 +18,10 @@ class CloudInit extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'cloudinit/');
     }
@@ -28,7 +29,7 @@ class CloudInit extends PVEPathClassBase
     /**
      * Get automatically generated cloudinit config.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/cloudinit/dump
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\CloudInit\Dump
+     * @return Dump
      */
     public function dump(): Dump
     {

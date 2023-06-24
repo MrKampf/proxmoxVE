@@ -8,6 +8,7 @@ namespace Proxmox\Api\Access\Users\UserId\Token;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class TokenId
@@ -18,10 +19,10 @@ class TokenId extends PVEPathClassBase implements PVEPathEndpointInterface
 
     /**
      * TokenId constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

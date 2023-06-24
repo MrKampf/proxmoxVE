@@ -13,6 +13,7 @@ use Proxmox\Api\Cluster\Config\Totem;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Config
@@ -22,10 +23,10 @@ class Config extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Config constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'config/');
     }

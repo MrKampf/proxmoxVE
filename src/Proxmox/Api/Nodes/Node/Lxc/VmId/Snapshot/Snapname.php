@@ -9,6 +9,7 @@ use Proxmox\Api\Nodes\Node\Lxc\VmId\Snapshot\Snapname\Config;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Snapshot\Snapname\Rollback;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Snapname
@@ -18,10 +19,10 @@ class Snapname extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -29,7 +30,7 @@ class Snapname extends PVEPathClassBase
     /**
      * Get snapshot configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/snapshot/{snapname}/config
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Snapshot\Snapname\Config
+     * @return Config
      */
     public function config(): Config
     {
@@ -39,7 +40,7 @@ class Snapname extends PVEPathClassBase
     /**
      * Rollback LXC state to specified snapshot.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/snapshot/{snapname}/rollback
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Snapshot\Snapname\Rollback
+     * @return Rollback
      */
     public function rollback(): Rollback
     {

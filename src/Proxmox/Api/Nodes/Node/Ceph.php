@@ -23,6 +23,7 @@ use Proxmox\Api\Nodes\Node\Ceph\Status;
 use Proxmox\Api\Nodes\Node\Ceph\Stop;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Ceph
@@ -32,10 +33,10 @@ class Ceph extends PVEPathClassBase
 {
     /**
      * Ceph constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'ceph/');
     }

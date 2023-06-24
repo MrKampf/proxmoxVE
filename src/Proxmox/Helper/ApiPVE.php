@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface;
  * Class api
  * @package proxmox\Helper
  */
-class Api
+class ApiPVE
 {
     /**
      * @var PVE

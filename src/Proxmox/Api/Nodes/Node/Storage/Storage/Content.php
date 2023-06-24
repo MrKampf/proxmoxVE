@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Storage\Storage;
 use Proxmox\Api\Nodes\Node\Storage\Storage\Content\Volume;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Content
@@ -17,10 +18,10 @@ class Content extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'content/');
     }
@@ -29,7 +30,7 @@ class Content extends PVEPathClassBase
      * Get volume attributes
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/content/{volume}
      * @param string $Volume
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Content\Volume
+     * @return Volume
      */
     public function volume(string $Volume): Volume
     {

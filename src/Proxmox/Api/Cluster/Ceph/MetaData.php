@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster\Ceph;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class MetaData
@@ -17,10 +18,10 @@ class MetaData extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * MetaData constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'metadata/');
     }

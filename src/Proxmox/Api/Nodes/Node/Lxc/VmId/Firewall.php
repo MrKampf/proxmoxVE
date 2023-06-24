@@ -13,6 +13,7 @@ use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Refs;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Rules;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Firewall
@@ -22,10 +23,10 @@ class Firewall extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'firewall/');
     }
@@ -33,7 +34,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/aliases
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Aliases
+     * @return Aliases
      */
     public function aliases(): Aliases
     {
@@ -43,7 +44,7 @@ class Firewall extends PVEPathClassBase
     /**
      * List IPSets
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/ipset
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\IpSet
+     * @return IpSet
      */
     public function ipSet(): IpSet
     {
@@ -53,7 +54,7 @@ class Firewall extends PVEPathClassBase
     /**
      * List rules.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/rules
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Rules
+     * @return Rules
      */
     public function rules(): Rules
     {
@@ -63,7 +64,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Read firewall log
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/log
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Log
+     * @return Log
      */
     public function log(): Log
     {
@@ -73,7 +74,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Get VM firewall options.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/options
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Options
+     * @return Options
      */
     public function options(): Options
     {
@@ -83,7 +84,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Read firewall log
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/log
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\Refs
+     * @return Refs
      */
     public function refs(): Refs
     {

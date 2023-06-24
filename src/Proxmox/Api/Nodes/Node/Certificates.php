@@ -10,6 +10,7 @@ use Proxmox\Api\Nodes\Node\Certificates\Custom;
 use Proxmox\Api\Nodes\Node\Certificates\Info;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Certificates
@@ -19,10 +20,10 @@ class Certificates extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'certificates/');
     }

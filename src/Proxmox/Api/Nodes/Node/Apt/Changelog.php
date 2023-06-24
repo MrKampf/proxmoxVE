@@ -7,6 +7,7 @@ namespace Proxmox\Api\Nodes\Node\Apt;
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Changelog
@@ -16,10 +17,10 @@ class Changelog extends PVEPathClassBase
 {
     /**
      * Changelog constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'changelog/');
     }

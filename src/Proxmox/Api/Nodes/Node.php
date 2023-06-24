@@ -46,6 +46,7 @@ use Proxmox\Api\Nodes\Node\Vncwebsocket;
 use Proxmox\Api\Nodes\Node\Vzdump;
 use Proxmox\Api\Nodes\Node\Wakeonlan;
 use Proxmox\Helper\PVEPathClassBase;
+use Proxmox\API;
 use Proxmox\PVE;
 
 /**
@@ -56,10 +57,10 @@ class Node extends PVEPathClassBase
 {
     /**
      * Node constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -117,7 +118,7 @@ class Node extends PVEPathClassBase
     /**
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/firewall
-     * @return \Proxmox\Api\Nodes\Node\Firewall
+     * @return Firewall
      */
     public function firewall(): Firewall
     {
@@ -127,7 +128,7 @@ class Node extends PVEPathClassBase
     /**
      * Index of hardware types
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware
-     * @return \Proxmox\Api\Nodes\Node\Hardware
+     * @return Hardware
      */
     public function hardware(): Hardware
     {
@@ -137,7 +138,7 @@ class Node extends PVEPathClassBase
     /**
      * LXC container index (per node).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc
-     * @return \Proxmox\Api\Nodes\Node\Lxc
+     * @return Lxc
      */
     public function lxc(): Lxc
     {
@@ -147,7 +148,7 @@ class Node extends PVEPathClassBase
     /**
      * List available networks
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network
-     * @return \Proxmox\Api\Nodes\Node\Network
+     * @return Network
      */
     public function network(): Network
     {
@@ -157,7 +158,7 @@ class Node extends PVEPathClassBase
     /**
      * Virtual machine index (per node).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu
-     * @return \Proxmox\Api\Nodes\Node\Qemu
+     * @return Qemu
      */
     public function qemu(): Qemu
     {
@@ -167,7 +168,7 @@ class Node extends PVEPathClassBase
     /**
      * List status of all replication jobs on this node.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication
-     * @return \Proxmox\Api\Nodes\Node\Replication
+     * @return Replication
      */
     public function replication(): Replication
     {
@@ -177,7 +178,7 @@ class Node extends PVEPathClassBase
     /**
      * Index of available scan methods
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan
-     * @return \Proxmox\Api\Nodes\Node\Scan
+     * @return Scan
      */
     public function scan(): Scan
     {
@@ -187,7 +188,7 @@ class Node extends PVEPathClassBase
     /**
      * SDN index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/sdn
-     * @return \Proxmox\Api\Nodes\Node\Sdn
+     * @return Sdn
      */
     public function sdn(): Sdn
     {
@@ -197,7 +198,7 @@ class Node extends PVEPathClassBase
     /**
      * Service list.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services
-     * @return \Proxmox\Api\Nodes\Node\Services
+     * @return Services
      */
     public function services(): Services
     {
@@ -207,7 +208,7 @@ class Node extends PVEPathClassBase
     /**
      * Get status for all datastores.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage
-     * @return \Proxmox\Api\Nodes\Node\Storage
+     * @return Storage
      */
     public function storage(): Storage
     {
@@ -217,7 +218,7 @@ class Node extends PVEPathClassBase
     /**
      * Read task list for one node (finished tasks).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/tasks
-     * @return \Proxmox\Api\Nodes\Node\Tasks
+     * @return Tasks
      */
     public function tasks(): Tasks
     {

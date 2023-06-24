@@ -12,6 +12,7 @@ use Proxmox\Api\Nodes\Node\Services\Service\State;
 use Proxmox\Api\Nodes\Node\Services\Service\Stop;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Service
@@ -21,10 +22,10 @@ class Service extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -32,7 +33,7 @@ class Service extends PVEPathClassBase
     /**
      * Reload service. Falls back to restart if service cannot be reloaded.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/reload
-     * @return \Proxmox\Api\Nodes\Node\Services\Service\Reload
+     * @return Reload
      */
     public function reload(): Reload
     {
@@ -42,7 +43,7 @@ class Service extends PVEPathClassBase
     /**
      * Hard restart service. Use reload if you want to reduce interruptions.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/restart
-     * @return \Proxmox\Api\Nodes\Node\Services\Service\Restart
+     * @return Restart
      */
     public function restart(): Restart
     {
@@ -52,7 +53,7 @@ class Service extends PVEPathClassBase
     /**
      * Start service.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/start
-     * @return \Proxmox\Api\Nodes\Node\Services\Service\Start
+     * @return Start
      */
     public function start(): Start
     {
@@ -62,7 +63,7 @@ class Service extends PVEPathClassBase
     /**
      * Read service properties
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/state
-     * @return \Proxmox\Api\Nodes\Node\Services\Service\State
+     * @return State
      */
     public function state(): State
     {
@@ -72,7 +73,7 @@ class Service extends PVEPathClassBase
     /**
      * Stop service.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/stop
-     * @return \Proxmox\Api\Nodes\Node\Services\Service\Stop
+     * @return Stop
      */
     public function stop(): Stop
     {

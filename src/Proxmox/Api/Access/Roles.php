@@ -9,6 +9,7 @@ use Proxmox\Api\Access\Roles\RoleId;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class roles
@@ -18,10 +19,10 @@ class Roles extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Roles constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'roles/');
     }

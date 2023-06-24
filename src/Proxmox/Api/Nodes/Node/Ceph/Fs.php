@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Api\Nodes\Node\Ceph\Fs\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Fs
@@ -17,10 +18,10 @@ class Fs extends PVEPathClassBase
 {
     /**
      * Fs constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'fs/');
     }

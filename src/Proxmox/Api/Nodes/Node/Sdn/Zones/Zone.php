@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Sdn\Zones;
 use Proxmox\Api\Nodes\Node\Sdn\Zones\Zone\Content;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Zone
@@ -17,10 +18,10 @@ class Zone extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -28,7 +29,7 @@ class Zone extends PVEPathClassBase
     /**
      * List zone content.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/sdn/zones/{zone}/content
-     * @return \Proxmox\Api\Nodes\Node\Sdn\Zones\Zone\Content
+     * @return Content
      */
     public function content(): Content
     {

@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\Aliases\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Aliases
@@ -17,10 +18,10 @@ class Aliases extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'aliases/');
     }
@@ -29,7 +30,7 @@ class Aliases extends PVEPathClassBase
      * Read alias.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/firewall/aliases/{name}
      * @param string $name
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\Aliases\Name
+     * @return Name
      */
     public function name(string $name): Name
     {

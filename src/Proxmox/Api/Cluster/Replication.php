@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster;
 use Proxmox\Api\Cluster\Replication\Id;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Replication
@@ -17,10 +18,10 @@ class Replication extends PVEPathClassBase
 {
     /**
      * Replication constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'replication/');
     }

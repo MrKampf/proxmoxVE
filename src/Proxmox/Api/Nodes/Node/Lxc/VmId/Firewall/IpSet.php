@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\IpSet\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class IpSet
@@ -17,10 +18,10 @@ class IpSet extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'ipset/');
     }
@@ -29,7 +30,7 @@ class IpSet extends PVEPathClassBase
      * List IPSets
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/firewall/ipset/{name}
      * @param string $name
-     * @return \Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall\IpSet\Name
+     * @return Name
      */
     public function name(string $name): Name
     {

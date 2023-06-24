@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster\Metrics;
 use Proxmox\Api\Cluster\Metrics\Server\Id;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Server
@@ -17,10 +18,10 @@ class Server extends PVEPathClassBase
 {
     /**
      * Server constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'server/');
     }

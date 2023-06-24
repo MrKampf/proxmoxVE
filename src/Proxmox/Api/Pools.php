@@ -5,6 +5,7 @@
 
 namespace Proxmox\Api;
 
+use Proxmox\API;
 use Proxmox\Api\Pools\PoolId;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
@@ -19,10 +20,10 @@ class Pools extends PVEPathClassBase implements PVEPathEndpointInterface
 
     /**
      * Pools constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'pools/');
     }

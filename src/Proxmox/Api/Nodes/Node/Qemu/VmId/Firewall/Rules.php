@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall;
 use Proxmox\Api\Nodes\Node\Firewall\Rules\Pos;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Rules
@@ -17,10 +18,10 @@ class Rules extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'rules/');
     }
@@ -29,7 +30,7 @@ class Rules extends PVEPathClassBase
      * Get single rule data.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/firewall/rules/{pos}
      * @param string $pos
-     * @return \Proxmox\Api\Nodes\Node\Firewall\Rules\Pos
+     * @return Pos
      */
     public function pos(string $pos): Pos
     {

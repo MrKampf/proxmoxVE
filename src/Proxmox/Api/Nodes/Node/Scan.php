@@ -15,6 +15,7 @@ use Proxmox\Api\Nodes\Node\Scan\Pbs;
 use Proxmox\Api\Nodes\Node\Scan\Zfs;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Scan
@@ -24,10 +25,10 @@ class Scan extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'scan/');
     }
@@ -35,7 +36,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan remote CIFS server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/cifs
-     * @return \Proxmox\Api\Nodes\Node\Scan\Cifs
+     * @return Cifs
      */
     public function cifs(): Cifs
     {
@@ -45,7 +46,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan remote GlusterFS server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/glusterfs
-     * @return \Proxmox\Api\Nodes\Node\Scan\Glusterfs
+     * @return Glusterfs
      */
     public function glusterfs(): Glusterfs
     {
@@ -55,7 +56,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan remote iSCSI server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/iscsi
-     * @return \Proxmox\Api\Nodes\Node\Scan\Iscsi
+     * @return Iscsi
      */
     public function iscsi(): Iscsi
     {
@@ -65,7 +66,7 @@ class Scan extends PVEPathClassBase
     /**
      * List local LVM volume groups.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/lvm
-     * @return \Proxmox\Api\Nodes\Node\Scan\Lvm
+     * @return Lvm
      */
     public function lvm(): Lvm
     {
@@ -75,7 +76,7 @@ class Scan extends PVEPathClassBase
     /**
      * List local LVM Thin Pools.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/lvmthin
-     * @return \Proxmox\Api\Nodes\Node\Scan\Lvmthin
+     * @return Lvmthin
      */
     public function lvmthin(): Lvmthin
     {
@@ -85,7 +86,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan remote NFS server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/nfs
-     * @return \Proxmox\Api\Nodes\Node\Scan\Nfs
+     * @return Nfs
      */
     public function nfs(): Nfs
     {
@@ -95,7 +96,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan remote Proxmox Backup Server.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/pbs
-     * @return \Proxmox\Api\Nodes\Node\Scan\Pbs
+     * @return Pbs
      */
     public function pbs(): Pbs
     {
@@ -105,7 +106,7 @@ class Scan extends PVEPathClassBase
     /**
      * Scan zfs pool list on local node.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/zfs
-     * @return \Proxmox\Api\Nodes\Node\Scan\Zfs
+     * @return Zfs
      */
     public function zfs(): Zfs
     {

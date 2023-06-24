@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster\Sdn\VNets;
 use Proxmox\Api\Cluster\Sdn\VNets\VNet\Subnets;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Vnet
@@ -18,10 +19,10 @@ class VNet extends PVEPathClassBase
 
     /**
      * Vnet constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

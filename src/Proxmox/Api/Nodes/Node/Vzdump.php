@@ -9,6 +9,7 @@ use Proxmox\Api\Nodes\Node\Vzdump\Defaults;
 use Proxmox\Api\Nodes\Node\Vzdump\Extraconfig;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Vzdump
@@ -18,10 +19,10 @@ class Vzdump extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'vzdump/');
     }
@@ -29,7 +30,7 @@ class Vzdump extends PVEPathClassBase
     /**
      * Get the currently configured vzdump defaults.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/disks/defaults
-     * @return \Proxmox\Api\Nodes\Node\Vzdump\Defaults
+     * @return Defaults
      */
     public function defaults(): Defaults
     {
@@ -39,7 +40,7 @@ class Vzdump extends PVEPathClassBase
     /**
      * Extract configuration from vzdump backup archive.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/disks/extraconfig
-     * @return \Proxmox\Api\Nodes\Node\Vzdump\Extraconfig
+     * @return Extraconfig
      */
     public function extraconfig(): Extraconfig
     {

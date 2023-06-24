@@ -9,6 +9,7 @@ use Proxmox\Api\Cluster\Backup\Id;
 use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Backup
@@ -18,10 +19,10 @@ class Backup extends PVEPathClassBase implements PVEPathClassInterface
 {
     /**
      * Backup constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'backup/');
     }

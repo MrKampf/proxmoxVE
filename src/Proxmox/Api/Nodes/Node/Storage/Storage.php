@@ -15,6 +15,7 @@ use Proxmox\Api\Nodes\Node\Storage\Storage\Status;
 use Proxmox\Api\Nodes\Node\Storage\Storage\Upload;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Storage
@@ -24,10 +25,10 @@ class Storage extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -35,7 +36,7 @@ class Storage extends PVEPathClassBase
     /**
      * List storage content.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/content
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Content
+     * @return Content
      */
     public function content(): Content
     {
@@ -44,7 +45,7 @@ class Storage extends PVEPathClassBase
 
     /**
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/file-restore
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\FileRestore
+     * @return FileRestore
      */
     public function fileRestore(): FileRestore
     {
@@ -54,7 +55,7 @@ class Storage extends PVEPathClassBase
     /**
      * Download templates and ISO images by using an URL.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/download-url
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\DownloadUrl
+     * @return DownloadUrl
      */
     public function downloadUrl(): DownloadUrl
     {
@@ -64,7 +65,7 @@ class Storage extends PVEPathClassBase
     /**
      * Get prune information for backups. NOTE: this is only a preview and might not be what a subsequent prune call does if backups are removed/added in the meantime.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/prunebackups
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Prunebackups
+     * @return Prunebackups
      */
     public function prunebackups(): Prunebackups
     {
@@ -74,7 +75,7 @@ class Storage extends PVEPathClassBase
     /**
      * Read storage RRD statistics (returns PNG).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/rrd
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Rrd
+     * @return Rrd
      */
     public function rrd(): Rrd
     {
@@ -84,7 +85,7 @@ class Storage extends PVEPathClassBase
     /**
      * Read storage RRD statistics.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/rrddata
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Rrddata
+     * @return Rrddata
      */
     public function rrddata(): Rrddata
     {
@@ -94,7 +95,7 @@ class Storage extends PVEPathClassBase
     /**
      * Read storage status.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/status
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Status
+     * @return Status
      */
     public function status(): Status
     {
@@ -104,7 +105,7 @@ class Storage extends PVEPathClassBase
     /**
      * Upload templates and ISO images.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/upload
-     * @return \Proxmox\Api\Nodes\Node\Storage\Storage\Upload
+     * @return Upload
      */
     public function upload(): Upload
     {

@@ -8,6 +8,7 @@ namespace Proxmox\Api\Access\OpenId;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class AuthUrl
@@ -18,11 +19,11 @@ class AuthUrl extends PVEPathClassBase implements PVEPathEndpointInterface
 
     /**
      * AuthUrl constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      * @param array $params
      */
-    public function __construct(PVE $pve, string $parentAdditional, array $params = [])
+    public function __construct(PVE|API $pve, string $parentAdditional, array $params = [])
     {
         parent::__construct($pve, $parentAdditional . 'auth-url/');
         return $this->post($params);

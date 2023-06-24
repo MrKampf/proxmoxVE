@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Ceph;
 use Proxmox\Api\Nodes\Node\Ceph\Osd\OsdId;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Osd
@@ -17,10 +18,10 @@ class Osd extends PVEPathClassBase
 {
 
     /**
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'osd/');
     }
