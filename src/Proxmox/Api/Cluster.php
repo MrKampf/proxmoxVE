@@ -23,6 +23,7 @@ use Proxmox\Api\Cluster\Status;
 use Proxmox\Api\Cluster\Tasks;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Cluster
@@ -33,10 +34,10 @@ class Cluster extends PVEPathClassBase
 
     /**
      * Cluster constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'cluster/');
     }

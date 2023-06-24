@@ -14,6 +14,7 @@ use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Stop;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Suspend;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Status
@@ -23,10 +24,10 @@ class Status extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'status/');
     }
@@ -34,7 +35,7 @@ class Status extends PVEPathClassBase
     /**
      * Get virtual machine status.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/current
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Current
+     * @return Current
      */
     public function current(): Current
     {
@@ -44,7 +45,7 @@ class Status extends PVEPathClassBase
     /**
      * Reboot the container by shutting it down, and starting it again. Applies pending changes.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/reboot
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Reboot
+     * @return Reboot
      */
     public function reboot(): Reboot
     {
@@ -54,7 +55,7 @@ class Status extends PVEPathClassBase
     /**
      * Resume the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/resume
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Resume
+     * @return Resume
      */
     public function resume(): Resume
     {
@@ -64,7 +65,7 @@ class Status extends PVEPathClassBase
     /**
      * Shutdown the container. This will trigger a clean shutdown of the container, see lxc-stop(1) for details.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/shutdown
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Shutdown
+     * @return Shutdown
      */
     public function shutdown(): Shutdown
     {
@@ -74,7 +75,7 @@ class Status extends PVEPathClassBase
     /**
      * Start the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/start
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Start
+     * @return Start
      */
     public function start(): Start
     {
@@ -84,7 +85,7 @@ class Status extends PVEPathClassBase
     /**
      * Stop the container. This will abruptly stop all processes running in the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/stop
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Stop
+     * @return Stop
      */
     public function stop(): Stop
     {
@@ -94,7 +95,7 @@ class Status extends PVEPathClassBase
     /**
      * Suspend the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/suspend
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Suspend
+     * @return Suspend
      */
     public function suspend(): Suspend
     {

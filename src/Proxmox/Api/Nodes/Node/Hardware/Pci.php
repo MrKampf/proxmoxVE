@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Hardware;
 use Proxmox\Api\Nodes\Node\Hardware\Pci\PciId;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Pci
@@ -17,10 +18,10 @@ class Pci extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'pci/');
     }
@@ -29,7 +30,7 @@ class Pci extends PVEPathClassBase
      * Index of available pci methods
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware/pci/{pciid}
      * @param string $pciId
-     * @return \Proxmox\Api\Nodes\Node\Hardware\Pci\PciId
+     * @return PciId
      */
     public function pciId(string $pciId): PciId
     {

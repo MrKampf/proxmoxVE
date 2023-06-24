@@ -7,6 +7,7 @@ namespace Proxmox\Api\Cluster\Ha\Groups;
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Group
@@ -16,10 +17,10 @@ class Group extends PVEPathClassBase
 {
     /**
      * Group constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

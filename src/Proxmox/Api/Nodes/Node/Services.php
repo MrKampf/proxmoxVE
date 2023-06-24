@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Services\Service;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Services
@@ -17,10 +18,10 @@ class Services extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'services/');
     }
@@ -29,7 +30,7 @@ class Services extends PVEPathClassBase
      * Directory index
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}
      * @param string $service
-     * @return \Proxmox\Api\Nodes\Node\Services\Service
+     * @return Service
      */
     public function service(string $service): Service
     {

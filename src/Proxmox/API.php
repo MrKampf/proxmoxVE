@@ -1,7 +1,4 @@
 <?php
-/*
- * @copyright 2021 Daniel Engelschalk <hello@mrkampf.com>
- */
 
 namespace Proxmox;
 
@@ -13,13 +10,9 @@ use Proxmox\Api\Nodes;
 use Proxmox\Api\Pools;
 use Proxmox\Api\Storage;
 use Proxmox\Api\Version;
-use Proxmox\Helper\ApiPVE;
+use Proxmox\Helper\ApiToken;
 
-/**
- * Class pve
- * @package proxmox
- */
-class PVE
+class API
 {
 
     /**
@@ -28,9 +21,9 @@ class PVE
     private Client $httpClient;
 
     /**
-     * @var ApiPVE
+     * @var ApiToken
      */
-    private ApiPVE $api;
+    private ApiToken $api;
 
     /**
      * @var CookieJar
@@ -40,7 +33,7 @@ class PVE
     /**
      * @var string
      */
-    private string $hostname, $apiURL, $username, $password, $authType, $CSRFPreventionToken, $ticket;
+    private string $hostname, $apiURL, $user, $secret;
 
     /**
      * @var int
@@ -55,57 +48,40 @@ class PVE
     /**
      * pve constructor.
      * @param string $hostname
-     * @param string $username
-     * @param string $password
+     * @param string $user
+     * @param string $secret
      * @param int $port
-     * @param string $authType
      * @param bool $debug
-     * @param bool $lazyLogin
      * @param Client|null $httpClient
      */
-    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, bool $lazyLogin = false, Client|null $httpClient = null)
+    public function __construct(string $hostname, string $user, string $secret, int $port = 8006, bool $debug = false, Client|null $httpClient = null)
     {
         if ($httpClient === NULL) {
             $httpClient = new Client();
         }
 
         $this->setHostname($hostname); //Save hostname in class variable
-        $this->setUsername($username); //Save username in class variable
-        $this->setPassword($password); //Save user password in class variable
         $this->setPort($port); //Save port in class variable
-        $this->setAuthType($authType); //Save auth type in class variable
         $this->setDebug($debug); //Save the debug boolean variable
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
-        $this->setApi(new ApiPVE($this)); //Create the api object
+        $this->setApi(new ApiToken($this)); //Create the api object
         $this->setHttpClient($httpClient); //Create a new guzzle client
-
-        if (!$lazyLogin) {
-            $this->getApi()->login(); //Login to the api
-        }
     }
 
     /**
-     * @param string $username
+     * @param string $user
      */
-    public function setUsername(string $username): void
+    public function setUser(string $user): void
     {
-        $this->username = $username;
+        $this->user = $user;
     }
 
     /**
-     * @param string $password
+     * @param string $secret
      */
-    public function setPassword(string $password): void
+    public function setSecret(string $secret): void
     {
-        $this->password = $password;
-    }
-
-    /**
-     * @param string $authType
-     */
-    public function setAuthType(string $authType): void
-    {
-        $this->authType = $authType;
+        $this->secret = $secret;
     }
 
     /**
@@ -149,17 +125,17 @@ class PVE
     }
 
     /**
-     * @return ApiPVE
+     * @return ApiToken
      */
-    public function getApi(): ApiPVE
+    public function getApi(): ApiToken
     {
         return $this->api;
     }
 
     /**
-     * @param ApiPVE $api
+     * @param ApiToken $api
      */
-    public function setApi(ApiPVE $api): void
+    public function setApi(ApiToken $api): void
     {
         $this->api = $api;
     }
@@ -191,57 +167,17 @@ class PVE
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getUser(): string
     {
-        return $this->username;
+        return $this->user;
     }
 
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getSecret(): string
     {
-        return $this->password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthType(): string
-    {
-        return $this->authType;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCSRFPreventionToken(): string
-    {
-        return $this->CSRFPreventionToken;
-    }
-
-    /**
-     * @param string $CSRFPreventionToken
-     */
-    public function setCSRFPreventionToken(string $CSRFPreventionToken): void
-    {
-        $this->CSRFPreventionToken = $CSRFPreventionToken;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTicket(): string
-    {
-        return $this->ticket;
-    }
-
-    /**
-     * @param string $ticket
-     */
-    public function setTicket(string $ticket): void
-    {
-        $this->ticket = $ticket;
+        return $this->secret;
     }
 
     /**

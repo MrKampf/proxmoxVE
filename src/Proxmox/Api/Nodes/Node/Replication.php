@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Replication\Id;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Replication
@@ -17,10 +18,10 @@ class Replication extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'replication/');
     }
@@ -29,7 +30,7 @@ class Replication extends PVEPathClassBase
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication/{id}
      * @param string $id
-     * @return \Proxmox\Api\Nodes\Node\Replication\Id
+     * @return Id
      */
     public function id(string $id): Id
     {

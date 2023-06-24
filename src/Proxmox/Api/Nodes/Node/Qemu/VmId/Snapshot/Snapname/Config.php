@@ -7,6 +7,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId\Snapshot\Snapname;
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Config
@@ -16,10 +17,10 @@ class Config extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'config/');
     }

@@ -6,6 +6,7 @@
 namespace Proxmox\Helper\Interfaces;
 
 
+use Proxmox\API;
 use Proxmox\PVE;
 
 interface PVEPathClassInterface
@@ -13,10 +14,10 @@ interface PVEPathClassInterface
 
     /**
      * Domains constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional);
+    public function __construct(PVE|API $pve, string $parentAdditional);
 
     /**
      * @return string
@@ -34,7 +35,7 @@ interface PVEPathClassInterface
     public function getPve(): PVE;
 
     /**
-     * @param PVE $pve
+     * @param PVE|API $pve
      */
     public function setPve(PVE $pve): void;
 

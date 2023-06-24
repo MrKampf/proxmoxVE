@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Tasks\UpId;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Tasks
@@ -17,10 +18,10 @@ class Tasks extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'tasks/');
     }

@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Sdn\Zones;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Sdn
@@ -17,10 +18,10 @@ class Sdn extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'sdn/');
     }
@@ -28,7 +29,7 @@ class Sdn extends PVEPathClassBase
     /**
      * Get status for all zones.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/sdn/zones
-     * @return \Proxmox\Api\Nodes\Node\Sdn\Zones
+     * @return Zones
      */
     public function zones(): Zones
     {

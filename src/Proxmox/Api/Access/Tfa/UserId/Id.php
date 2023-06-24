@@ -5,6 +5,7 @@ namespace Proxmox\Api\Access\Tfa\UserId;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Id
@@ -14,10 +15,10 @@ class Id extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
-     * @param \Proxmox\PVE $pve
+     * @param PVE $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

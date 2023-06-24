@@ -10,6 +10,7 @@ use Proxmox\Api\Nodes\Node\Ceph\Osd\OsdId\Out;
 use Proxmox\Api\Nodes\Node\Ceph\Osd\OsdId\Scrub;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class OsdId
@@ -19,10 +20,10 @@ class OsdId extends PVEPathClassBase
 {
 
     /**
-     * @param \Proxmox\PVE $pve
+     * @param PVE $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

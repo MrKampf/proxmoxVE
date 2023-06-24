@@ -8,6 +8,7 @@ namespace Proxmox\Api\Access\Domains\Realm;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Sync
@@ -17,11 +18,11 @@ class Sync extends PVEPathClassBase implements PVEPathEndpointInterface
 {
     /**
      * Domains constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      * @param array $params
      */
-    public function __construct(PVE $pve, string $parentAdditional, array $params = [])
+    public function __construct(PVE|API $pve, string $parentAdditional, array $params = [])
     {
         parent::__construct($pve, $parentAdditional . 'sync/');
         return $this->post($params);

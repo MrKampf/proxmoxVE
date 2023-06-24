@@ -9,6 +9,7 @@ use Proxmox\Api\Nodes\Node\Tasks\UpId\Log;
 use Proxmox\Api\Nodes\Node\Tasks\UpId\Status;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class UpId
@@ -18,10 +19,10 @@ class UpId extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -29,7 +30,7 @@ class UpId extends PVEPathClassBase
     /**
      * Read task log.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/tasks/{upid}/log
-     * @return \Proxmox\Api\Nodes\Node\Tasks\UpId\Log
+     * @return Log
      */
     public function log(): Log
     {
@@ -39,7 +40,7 @@ class UpId extends PVEPathClassBase
     /**
      * Read task status.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/tasks/{upid}/status
-     * @return \Proxmox\Api\Nodes\Node\Tasks\UpId\Status
+     * @return Status
      */
     public function status(): Status
     {

@@ -6,6 +6,7 @@
 namespace Proxmox\Api\Nodes\Node;
 
 use Proxmox\Helper\PVEPathClassBase;
+use Proxmox\API;
 use Proxmox\PVE;
 
 /**
@@ -16,10 +17,10 @@ class Vncshell extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'vncshell/');
     }

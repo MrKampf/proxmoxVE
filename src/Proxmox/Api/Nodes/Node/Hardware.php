@@ -9,6 +9,7 @@ use Proxmox\Api\Nodes\Node\Hardware\Pci;
 use Proxmox\Api\Nodes\Node\Hardware\Usb;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Hardware
@@ -18,10 +19,10 @@ class Hardware extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'hardware/');
     }
@@ -29,7 +30,7 @@ class Hardware extends PVEPathClassBase
     /**
      * List local USB devices.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware/usb
-     * @return \Proxmox\Api\Nodes\Node\Hardware\Usb
+     * @return Usb
      */
     public function usb(): Usb
     {
@@ -39,7 +40,7 @@ class Hardware extends PVEPathClassBase
     /**
      * List local PCI devices.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware/pci
-     * @return \Proxmox\Api\Nodes\Node\Hardware\Pci
+     * @return Pci
      */
     public function pci(): Pci
     {

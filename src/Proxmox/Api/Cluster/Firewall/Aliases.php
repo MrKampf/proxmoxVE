@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster\Firewall;
 use Proxmox\Api\Cluster\Firewall\Aliases\Name;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Aliases
@@ -18,10 +19,10 @@ class Aliases extends PVEPathClassBase
 
     /**
      * Aliases constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'aliases/');
     }

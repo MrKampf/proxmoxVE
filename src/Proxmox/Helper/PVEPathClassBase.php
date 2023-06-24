@@ -7,6 +7,7 @@ namespace Proxmox\Helper;
 
 use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class PVEPathClassBase
@@ -27,10 +28,10 @@ class PVEPathClassBase implements PVEPathClassInterface
 
     /**
      * Access constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         $this->setPve($pve); //Save PVE in variable $this->pve
         $this->setPathAdditional($parentAdditional);
@@ -61,7 +62,7 @@ class PVEPathClassBase implements PVEPathClassInterface
     }
 
     /**
-     * @param PVE $pve
+     * @param PVE|API $pve
      */
     public function setPve(PVE $pve): void
     {

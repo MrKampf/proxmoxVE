@@ -10,6 +10,7 @@ use Proxmox\Api\Nodes\Node\Firewall\Options;
 use Proxmox\Api\Nodes\Node\Firewall\Rules;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Firewall
@@ -19,10 +20,10 @@ class Firewall extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'firewall/');
     }
@@ -30,7 +31,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Read firewall log
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/firewall/log
-     * @return \Proxmox\Api\Nodes\Node\Firewall\Log
+     * @return Log
      */
     public function log(): Log
     {
@@ -40,7 +41,7 @@ class Firewall extends PVEPathClassBase
     /**
      * Get host firewall options.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/firewall/options
-     * @return \Proxmox\Api\Nodes\Node\Firewall\Options
+     * @return Options
      */
     public function options(): Options
     {
@@ -50,7 +51,7 @@ class Firewall extends PVEPathClassBase
     /**
      * List rules.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/firewall/rules
-     * @return \Proxmox\Api\Nodes\Node\Firewall\Rules
+     * @return Rules
      */
     public function rules(): Rules
     {

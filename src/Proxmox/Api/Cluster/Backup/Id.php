@@ -10,6 +10,7 @@ use Proxmox\Api\Cluster\Backup\Id\IncludedVolumes;
 use Proxmox\Helper\Interfaces\PVEPathClassInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Id
@@ -20,10 +21,10 @@ class Id extends PVEPathClassBase implements PVEPathClassInterface
 
     /**
      * Id constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

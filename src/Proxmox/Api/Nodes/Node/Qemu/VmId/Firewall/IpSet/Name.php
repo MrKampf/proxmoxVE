@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\IpSet;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\IpSet\Name\Cidr;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Name
@@ -17,10 +18,10 @@ class Name extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -29,7 +30,7 @@ class Name extends PVEPathClassBase
      * Read IP or Network settings from IPSet.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/firewall/ipset/{name}/{cidr}
      * @param string $cidr
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall\IpSet\Name\Cidr
+     * @return Cidr
      */
     public function cidr(string $cidr): Cidr
     {

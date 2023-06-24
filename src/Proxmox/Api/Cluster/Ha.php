@@ -10,6 +10,7 @@ use Proxmox\Api\Cluster\Ha\Resources;
 use Proxmox\Api\Cluster\Ha\Status;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Ha
@@ -19,10 +20,10 @@ class Ha extends PVEPathClassBase
 {
     /**
      * Ha constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'ha/');
     }

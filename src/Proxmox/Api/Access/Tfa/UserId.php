@@ -6,6 +6,7 @@ use Proxmox\Api\Access\Tfa\UserId\Id;
 use Proxmox\Helper\Interfaces\PVEPathEndpointInterface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class UserId
@@ -15,17 +16,17 @@ class UserId extends PVEPathClassBase implements PVEPathEndpointInterface
 {
 
     /**
-     * @param \Proxmox\PVE $pve
+     * @param PVE $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
 
     /**
      * @param string $id
-     * @return \Proxmox\Api\Access\Tfa\UserId\Id
+     * @return Id
      */
     public function id(string $id): Id
     {

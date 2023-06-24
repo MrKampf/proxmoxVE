@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Hardware\Pci;
 use Proxmox\Api\Nodes\Node\Hardware\Pci\PciId\Mdev;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class PciId
@@ -17,10 +18,10 @@ class PciId extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -28,7 +29,7 @@ class PciId extends PVEPathClassBase
     /**
      * List mediated device types for given PCI device.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware/pci/{pciid}/mdev
-     * @return \Proxmox\Api\Nodes\Node\Hardware\Pci\PciId\Mdev
+     * @return Mdev
      */
     public function hardware(): Mdev
     {

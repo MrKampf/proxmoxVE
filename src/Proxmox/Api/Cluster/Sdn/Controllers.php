@@ -8,6 +8,7 @@ namespace Proxmox\Api\Cluster\Sdn;
 use Proxmox\Api\Cluster\Sdn\Controllers\Controller;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Controllers
@@ -17,10 +18,10 @@ class Controllers extends PVEPathClassBase
 {
     /**
      * Controllers constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'controllers/');
     }

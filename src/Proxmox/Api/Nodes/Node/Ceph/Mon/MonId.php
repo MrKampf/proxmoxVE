@@ -7,6 +7,7 @@ namespace Proxmox\Api\Nodes\Node\Ceph\Mon;
 
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class MonId
@@ -16,10 +17,10 @@ class MonId extends PVEPathClassBase
 {
 
     /**
-     * @param \Proxmox\PVE $pve
+     * @param PVE $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }

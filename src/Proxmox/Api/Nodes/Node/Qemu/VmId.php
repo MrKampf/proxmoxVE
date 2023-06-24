@@ -29,6 +29,7 @@ use Proxmox\Api\Nodes\Node\Qemu\VmId\VncProxy;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\VncWebsocket;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class VmId
@@ -38,10 +39,10 @@ class VmId extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -49,7 +50,7 @@ class VmId extends PVEPathClassBase
     /**
      * Qemu Agent command index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Agent
+     * @return Agent
      */
     public function agent(): Agent
     {
@@ -59,7 +60,7 @@ class VmId extends PVEPathClassBase
     /**
      * Get the virtual machine configuration with pending configuration changes applied. Set the 'current' parameter to get the current configuration instead.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/cloudinit
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\CloudInit
+     * @return CloudInit
      */
     public function cloudinit(): CloudInit
     {
@@ -69,7 +70,7 @@ class VmId extends PVEPathClassBase
     /**
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/firewall
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall
+     * @return Firewall
      */
     public function firewall(): Firewall
     {
@@ -79,7 +80,7 @@ class VmId extends PVEPathClassBase
     /**
      * List all snapshots.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/snapshot
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Snapshot
+     * @return Snapshot
      */
     public function snapshot(): Snapshot
     {
@@ -89,7 +90,7 @@ class VmId extends PVEPathClassBase
     /**
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Status
+     * @return Status
      */
     public function status(): Status
     {
@@ -99,7 +100,7 @@ class VmId extends PVEPathClassBase
     /**
      * Create a container clone/copy
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/clone
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\CloneVm
+     * @return CloneVm
      */
     public function clone(): CloneVm
     {
@@ -109,7 +110,7 @@ class VmId extends PVEPathClassBase
     /**
      * Get container configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/config
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Config
+     * @return Config
      */
     public function config(): Config
     {
@@ -119,7 +120,7 @@ class VmId extends PVEPathClassBase
     /**
      * Check if feature for virtual machine is available.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/feature
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Feature
+     * @return Feature
      */
     public function feature(): Feature
     {
@@ -129,7 +130,7 @@ class VmId extends PVEPathClassBase
     /**
      * Migrate the container to another node. Creates a new migration task.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/migration
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Migration
+     * @return Migration
      */
     public function migration(): Migration
     {
@@ -139,7 +140,7 @@ class VmId extends PVEPathClassBase
     /**
      * Execute Qemu monitor commands.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/monitor
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Monitor
+     * @return Monitor
      */
     public function monitor(): Monitor
     {
@@ -149,7 +150,7 @@ class VmId extends PVEPathClassBase
     /**
      * Move a rootfs-/mp-volume to a different storage
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/move_disk
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\MoveDisk
+     * @return MoveDisk
      */
     public function move_disk(): MoveDisk
     {
@@ -159,7 +160,7 @@ class VmId extends PVEPathClassBase
     /**
      * Get container configuration, including pending changes.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/pending
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Pending
+     * @return Pending
      */
     public function pending(): Pending
     {
@@ -169,7 +170,7 @@ class VmId extends PVEPathClassBase
     /**
      * Resize a container mount point.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/resize
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Resize
+     * @return Resize
      */
     public function resize(): Resize
     {
@@ -179,7 +180,7 @@ class VmId extends PVEPathClassBase
     /**
      * Read VM RRD statistics (returns PNG)
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/rrd
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Rrd
+     * @return Rrd
      */
     public function rrd(): Rrd
     {
@@ -189,7 +190,7 @@ class VmId extends PVEPathClassBase
     /**
      * Read VM RRD statistics
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/rrddata
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\RrdData
+     * @return RrdData
      */
     public function rrddata(): RrdData
     {
@@ -199,7 +200,7 @@ class VmId extends PVEPathClassBase
     /**
      * Send key event to virtual machine.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/sendkey
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\SendKey
+     * @return SendKey
      */
     public function sendkey(): SendKey
     {
@@ -209,7 +210,7 @@ class VmId extends PVEPathClassBase
     /**
      * Returns a SPICE configuration to connect to the CT.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/spiceProxy
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\SpiceProxy
+     * @return SpiceProxy
      */
     public function spiceproxy(): SpiceProxy
     {
@@ -219,7 +220,7 @@ class VmId extends PVEPathClassBase
     /**
      * Create a Template.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/template
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Template
+     * @return Template
      */
     public function template(): Template
     {
@@ -229,7 +230,7 @@ class VmId extends PVEPathClassBase
     /**
      * Creates a TCP proxy connection.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/termproxy
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Termproxy
+     * @return Termproxy
      */
     public function termproxy(): Termproxy
     {
@@ -239,7 +240,7 @@ class VmId extends PVEPathClassBase
     /**
      * Unlink/delete disk images.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/unlink
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\Unlink
+     * @return Unlink
      */
     public function unlink(): Unlink
     {
@@ -249,7 +250,7 @@ class VmId extends PVEPathClassBase
     /**
      * Creates a TCP VNC proxy connections.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/vncproxy
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\VncProxy
+     * @return VncProxy
      */
     public function vncproxy(): VncProxy
     {
@@ -259,7 +260,7 @@ class VmId extends PVEPathClassBase
     /**
      * Opens a weksocket for VNC traffic.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/vncwebsocket
-     * @return \Proxmox\Api\Nodes\Node\Qemu\VmId\VncWebsocket
+     * @return VncWebsocket
      */
     public function vncwebsocket(): VncWebsocket
     {

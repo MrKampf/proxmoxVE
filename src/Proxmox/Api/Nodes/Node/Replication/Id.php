@@ -10,6 +10,7 @@ use Proxmox\Api\Nodes\Node\Replication\Id\ScheduleNow;
 use Proxmox\Api\Nodes\Node\Replication\Id\Status;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Id
@@ -19,10 +20,10 @@ class Id extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional);
     }
@@ -30,7 +31,7 @@ class Id extends PVEPathClassBase
     /**
      * Read replication job log.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication/{id}/log
-     * @return \Proxmox\Api\Nodes\Node\Replication\Id\Log
+     * @return Log
      */
     public function log(): Log
     {
@@ -40,7 +41,7 @@ class Id extends PVEPathClassBase
     /**
      * Schedule replication job to start as soon as possible.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication/{id}/schedule_now
-     * @return \Proxmox\Api\Nodes\Node\Replication\Id\ScheduleNow
+     * @return ScheduleNow
      */
     public function scheduleNow(): ScheduleNow
     {
@@ -50,7 +51,7 @@ class Id extends PVEPathClassBase
     /**
      * Get replication job status.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication/{id}/status
-     * @return \Proxmox\Api\Nodes\Node\Replication\Id\Status
+     * @return Status
      */
     public function status(): Status
     {

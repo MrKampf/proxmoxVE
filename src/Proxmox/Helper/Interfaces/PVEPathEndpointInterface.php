@@ -2,6 +2,7 @@
 
 namespace Proxmox\Helper\Interfaces;
 
+use Proxmox\API;
 use Proxmox\PVE;
 
 /**
@@ -11,6 +12,6 @@ use Proxmox\PVE;
 interface PVEPathEndpointInterface
 {
 
-    public function __construct(PVE $pve, string $parentAdditional);
+    public function __construct(PVE|API $pve, string $parentAdditional);
 
 }

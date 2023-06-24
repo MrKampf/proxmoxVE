@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node;
 use Proxmox\Api\Nodes\Node\Network\Iface;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Network
@@ -17,10 +18,10 @@ class Network extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'network/');
     }
@@ -29,7 +30,7 @@ class Network extends PVEPathClassBase
      * Read network device configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network/{iface}
      * @param string $pciId
-     * @return \Proxmox\Api\Nodes\Node\Network\Iface
+     * @return Iface
      */
     public function iface(string $pciId): Iface
     {

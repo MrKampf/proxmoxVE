@@ -11,6 +11,7 @@ use Proxmox\Api\Nodes\Node\Apt\Update;
 use Proxmox\Api\Nodes\Node\Apt\Versions;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Apt
@@ -20,10 +21,10 @@ class Apt extends PVEPathClassBase
 {
     /**
      * Apt constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'apt/');
     }

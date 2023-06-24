@@ -8,6 +8,7 @@ namespace Proxmox\Api\Nodes\Node\Sdn;
 use Proxmox\Api\Cluster\Sdn\Zones\Zone;
 use Proxmox\Helper\PVEPathClassBase;
 use Proxmox\PVE;
+use Proxmox\API;
 
 /**
  * Class Zones
@@ -17,10 +18,10 @@ class Zones extends PVEPathClassBase
 {
     /**
      * Init constructor.
-     * @param PVE $pve
+     * @param PVE|API $pve
      * @param string $parentAdditional
      */
-    public function __construct(PVE $pve, string $parentAdditional)
+    public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'zones/');
     }
@@ -29,7 +30,7 @@ class Zones extends PVEPathClassBase
      * Index of available pci methods
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/hardware/pci/{pciid}
      * @param string $zone
-     * @return \Proxmox\Api\Cluster\Sdn\Zones\Zone
+     * @return Zone
      */
     public function zone(string $zone): Zone
     {
