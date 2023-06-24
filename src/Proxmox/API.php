@@ -61,6 +61,8 @@ class API
         }
 
         $this->setHostname($hostname); //Save hostname in class variable
+        $this->setUser($user); //Save user in class variable
+        $this->setSecret($secret); //Save secret in class variable
         $this->setPort($port); //Save port in class variable
         $this->setDebug($debug); //Save the debug boolean variable
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
