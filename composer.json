@@ -15,7 +15,7 @@
     "PHP 8",
     "PHP 7"
   ],
-  "version": "0.5.1",
+  "version": "0.5.2",
   "minimum-stability": "stable",
   "prefer-stable": true,
   "authors": [
