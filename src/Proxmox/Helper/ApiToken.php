@@ -144,7 +144,7 @@ class ApiToken
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                 ]),
                 'exceptions' => false,
-                'json' => (count($params) > 0) ? $params : null,
+                'query' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->API->getDebug()) {

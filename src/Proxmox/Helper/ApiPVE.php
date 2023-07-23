@@ -149,7 +149,7 @@ class ApiPVE
                 ]),
                 'exceptions' => false,
                 'cookies' => $this->PVE->getCookie(),
-                'json' => (count($params) > 0) ? $params : null,
+                'query' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
             if ($this->PVE->getDebug()) {
