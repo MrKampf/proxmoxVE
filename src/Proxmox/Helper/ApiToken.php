@@ -57,9 +57,10 @@ class ApiToken
             ]));
         } catch (GuzzleException $exception) {
             if ($this->API->getDebug()) {
-                print_r($exception->getMessage());
+                throw $exception;
+            } else {
+                return null;
             }
-            return null;
         }
     }
 
@@ -94,9 +95,10 @@ class ApiToken
             ]));
         } catch (GuzzleException $exception) {
             if ($this->API->getDebug()) {
-                print_r($exception->getMessage());
+                throw $exception;
+            } else {
+                return null;
             }
-            return null;
         }
     }
 
@@ -121,9 +123,10 @@ class ApiToken
             ]));
         } catch (GuzzleException $exception) {
             if ($this->API->getDebug()) {
-                print_r($exception->getMessage());
+                throw $exception;
+            } else {
+                return null;
             }
-            return null;
         }
     }
 
@@ -148,9 +151,10 @@ class ApiToken
             ]));
         } catch (GuzzleException $exception) {
             if ($this->API->getDebug()) {
-                print_r($exception->getMessage());
+                throw $exception;
+            } else {
+                return null;
             }
-            return null;
         }
     }
 
