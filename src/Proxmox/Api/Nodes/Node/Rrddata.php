@@ -28,10 +28,19 @@ class Rrddata extends PVEPathClassBase
     /**
      * Read node RRD statistics
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/rrddata
+     * @param array $params An array specifying the time intervals for which statistics should be retrieved.
+     * Supported keys:
+     * ['timeframe' =>
+     * - 'hour': Retrieve statistics for the last hour.
+     * - 'day': Retrieve statistics for the last day.
+     * - 'week': Retrieve statistics for the last week.
+     * - 'month': Retrieve statistics for the last month.
+     * - 'year': Retrieve statistics for the last year.
+     * ]
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }
