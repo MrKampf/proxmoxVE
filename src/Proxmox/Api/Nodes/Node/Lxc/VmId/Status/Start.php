@@ -28,7 +28,7 @@ class Start extends PVEPathClassBase
     /**
      * Start the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/status/start
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

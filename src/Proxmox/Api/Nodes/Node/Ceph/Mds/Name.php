@@ -24,7 +24,7 @@ class Name extends PVEPathClassBase
     /**
      * Create a Ceph filesystem
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mds/{name}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

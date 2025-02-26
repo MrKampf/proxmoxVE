@@ -28,7 +28,7 @@ class State extends PVEPathClassBase
     /**
      * Read service properties
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/state
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

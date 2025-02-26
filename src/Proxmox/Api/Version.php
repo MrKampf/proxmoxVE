@@ -30,10 +30,11 @@ class Version extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * API version details. The result also includes the global datacenter confguration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/version
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

@@ -29,10 +29,11 @@ class Directories extends PVEPathClassBase implements PVEPathClassInterface
     /**
      * Get named known ACME directory endpoints.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/directories
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

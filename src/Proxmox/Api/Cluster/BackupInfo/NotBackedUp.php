@@ -29,11 +29,12 @@ class NotBackedUp extends PVEPathClassBase implements PVEPathClassInterface
     /**
      * Shows all guests which are not covered by any backup job.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup-info/not-backed-up
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }

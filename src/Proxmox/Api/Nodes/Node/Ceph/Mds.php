@@ -40,10 +40,11 @@ class Mds extends PVEPathClassBase
     /**
      * MDS directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mds
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

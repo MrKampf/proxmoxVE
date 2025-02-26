@@ -30,10 +30,11 @@ class Permission extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Retrieve effective permissions of given user/token.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/permissions
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

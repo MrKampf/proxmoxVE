@@ -28,7 +28,7 @@ class Spiceshell extends PVEPathClassBase
     /**
      * Creates a SPICE shell.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/spiceshell
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

@@ -28,7 +28,7 @@ class Ping extends PVEPathClassBase
     /**
      * Execute ping.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/ping
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

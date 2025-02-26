@@ -29,17 +29,18 @@ class Ipam extends PVEPathClassBase
     /**
      * Read sdn ipam configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams/{ipam}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update sdn ipam object configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/sdn/ipams/{ipam}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

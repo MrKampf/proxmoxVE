@@ -28,7 +28,7 @@ class SpiceProxy extends PVEPathClassBase
     /**
      * Returns a SPICE configuration to connect to the CT.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/spiceProxy
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

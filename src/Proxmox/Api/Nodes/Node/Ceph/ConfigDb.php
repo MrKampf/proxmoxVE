@@ -28,10 +28,11 @@ class ConfigDb extends PVEPathClassBase
     /**
      * Get Ceph configuration database.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/configdb
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

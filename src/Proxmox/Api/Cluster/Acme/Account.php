@@ -41,17 +41,18 @@ class Account extends PVEPathClassBase implements PVEPathClassInterface
     /**
      * ACMEAccount index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Register a new ACME account with CA.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

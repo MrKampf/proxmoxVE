@@ -28,7 +28,7 @@ class Suspend extends PVEPathClassBase
     /**
      * Suspend the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/suspend
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

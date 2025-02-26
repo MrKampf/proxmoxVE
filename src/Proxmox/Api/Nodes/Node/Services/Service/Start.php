@@ -28,7 +28,7 @@ class Start extends PVEPathClassBase
     /**
      * Start service.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/start
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

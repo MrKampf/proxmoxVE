@@ -28,17 +28,18 @@ class Repositories extends PVEPathClassBase
     /**
      * Get APT repository information.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Add a standard repository to the configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array
@@ -49,7 +50,7 @@ class Repositories extends PVEPathClassBase
     /**
      * Change the properties of a repository. Currently only allows enabling/disabling.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/repositories
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

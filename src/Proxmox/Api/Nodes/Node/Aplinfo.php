@@ -28,17 +28,18 @@ class Aplinfo extends PVEPathClassBase
     /**
      * Get list of appliances.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/aplinfo
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Download appliance templates.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/aplinfo
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

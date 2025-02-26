@@ -28,7 +28,7 @@ class Termproxy extends PVEPathClassBase
     /**
      * Creates a TCP proxy connection.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/termproxy
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

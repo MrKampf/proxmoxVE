@@ -28,7 +28,7 @@ class Stopall extends PVEPathClassBase
     /**
      * Stop all VMs and Containers.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/stopall
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

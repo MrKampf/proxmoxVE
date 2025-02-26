@@ -28,7 +28,7 @@ class MoveVolume extends PVEPathClassBase
     /**
      * Move a rootfs-/mp-volume to a different storage
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/move_volume
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

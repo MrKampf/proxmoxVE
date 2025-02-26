@@ -28,12 +28,12 @@ class Prunebackups extends PVEPathClassBase
     /**
      * Get prune information for backups. NOTE: this is only a preview and might not be what a subsequent prune call does if backups are removed/added in the meantime.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/prunebackups
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
-
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**

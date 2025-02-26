@@ -41,17 +41,18 @@ class Realm extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get auth server configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}
-     * @return mixed|null
+     * @param array $params
+     * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update authentication server settings.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}
-     * @param $params array
+     * @param array $params
      * @return mixed|null
      */
     public function put(array $params = []): ?array

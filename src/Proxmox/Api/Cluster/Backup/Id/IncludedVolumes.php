@@ -30,11 +30,12 @@ class IncludedVolumes extends PVEPathClassBase implements PVEPathClassInterface
     /**
      * Returns included guests and the backup status of their disks. Optimized to be used in ExtJS tree views.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/backup/{id}/included_volumes
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }

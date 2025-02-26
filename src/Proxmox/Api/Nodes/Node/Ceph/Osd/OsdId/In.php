@@ -28,7 +28,7 @@ class In extends PVEPathClassBase
     /**
      * ceph osd in
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/in
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

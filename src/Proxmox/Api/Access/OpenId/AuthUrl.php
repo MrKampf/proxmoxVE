@@ -32,7 +32,7 @@ class AuthUrl extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get the OpenId Authorization Url for the specified realm.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/auth-url
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

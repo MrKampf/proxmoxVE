@@ -28,7 +28,7 @@ class Stop extends PVEPathClassBase
     /**
      * Stop the container. This will abruptly stop all processes running in the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/stop
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

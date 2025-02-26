@@ -41,17 +41,18 @@ class Flags extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get the status of all ceph flags
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Set/Unset multiple ceph flags at once.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/ceph/flags
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

@@ -30,17 +30,18 @@ class Join extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get information needed to join this cluster over the connected node.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/join
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Joins this node into an existing cluster. If no links are given, default to IP resolved by node's hostname on single link (fallback fails for clusters with multiple links).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/join
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

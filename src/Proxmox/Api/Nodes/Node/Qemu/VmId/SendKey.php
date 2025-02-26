@@ -28,7 +28,7 @@ class SendKey extends PVEPathClassBase
     /**
      * Send key event to virtual machine.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/sendkey
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

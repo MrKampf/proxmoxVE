@@ -30,10 +30,11 @@ class Tfa extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get user TFA types (Personal and Realm).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}/tfa
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

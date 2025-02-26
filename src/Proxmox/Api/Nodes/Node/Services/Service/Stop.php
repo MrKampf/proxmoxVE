@@ -28,7 +28,7 @@ class Stop extends PVEPathClassBase
     /**
      * Stop service.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/stop
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

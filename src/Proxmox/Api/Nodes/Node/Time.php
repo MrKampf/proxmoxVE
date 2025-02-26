@@ -28,17 +28,18 @@ class Time extends PVEPathClassBase
     /**
      * Read server time and time zone settings.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/time
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Set time zone.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/time
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

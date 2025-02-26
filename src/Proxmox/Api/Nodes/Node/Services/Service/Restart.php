@@ -28,7 +28,7 @@ class Restart extends PVEPathClassBase
     /**
      * Hard restart service. Use reload if you want to reduce interruptions.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/restart
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

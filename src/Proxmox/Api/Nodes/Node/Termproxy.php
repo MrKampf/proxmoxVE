@@ -28,7 +28,7 @@ class Termproxy extends PVEPathClassBase
     /**
      * Creates a VNC Shell proxy.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/termproxy
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

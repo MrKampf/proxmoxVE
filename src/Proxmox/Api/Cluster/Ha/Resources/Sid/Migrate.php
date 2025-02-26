@@ -28,7 +28,7 @@ class Migrate extends PVEPathClassBase
     /**
      * Request resource migration (online) to another node.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/resources/{sid}/migrate
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

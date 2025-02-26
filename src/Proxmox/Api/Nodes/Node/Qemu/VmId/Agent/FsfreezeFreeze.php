@@ -28,7 +28,7 @@ class FsfreezeFreeze extends PVEPathClassBase
     /**
      * Execute fsfreeze-freeze.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/fsfreeze-freeze
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

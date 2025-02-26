@@ -28,7 +28,7 @@ class SetUserPassword extends PVEPathClassBase
     /**
      * Sets the password for the given user to the given password
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/set-user-password
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

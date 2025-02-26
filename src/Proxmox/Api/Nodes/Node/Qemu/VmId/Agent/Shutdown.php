@@ -28,7 +28,7 @@ class Shutdown extends PVEPathClassBase
     /**
      * Execute shutdown.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/shutdown
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

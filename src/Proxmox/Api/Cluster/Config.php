@@ -84,17 +84,18 @@ class Config extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Directory index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Generate new cluster configuration. If no links given, default to local IP address as link0.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

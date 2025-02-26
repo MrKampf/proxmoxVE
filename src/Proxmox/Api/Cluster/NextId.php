@@ -28,11 +28,12 @@ class NextId extends PVEPathClassBase
     /**
      * Get next free VMID. If you pass an VMID it will raise an error if the ID is already used.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/nextid
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }
