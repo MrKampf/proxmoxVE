@@ -30,17 +30,18 @@ class GroupId extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get group configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update group data.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/groups/{groupid}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

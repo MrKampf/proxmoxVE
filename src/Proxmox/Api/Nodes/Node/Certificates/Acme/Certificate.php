@@ -28,7 +28,7 @@ class Certificate extends PVEPathClassBase
     /**
      * Order a new certificate from ACME-compatible CA.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/certificate
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array
@@ -39,7 +39,7 @@ class Certificate extends PVEPathClassBase
     /**
      * Renew existing certificate from CA.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/certificate
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

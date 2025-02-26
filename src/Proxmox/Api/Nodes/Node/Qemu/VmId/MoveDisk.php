@@ -28,7 +28,7 @@ class MoveDisk extends PVEPathClassBase
     /**
      * Move volume to different storage.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/move_disk
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

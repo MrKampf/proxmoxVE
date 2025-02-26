@@ -41,17 +41,18 @@ class Plugins extends PVEPathClassBase implements PVEPathClassInterface
     /**
      * ACME plugin index.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Add ACME plugin configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/cluster/acme/account
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

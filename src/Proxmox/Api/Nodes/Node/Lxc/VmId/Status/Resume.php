@@ -28,7 +28,7 @@ class Resume extends PVEPathClassBase
     /**
      * Resume the container.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/status/reboot
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

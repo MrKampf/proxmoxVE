@@ -28,7 +28,7 @@ class Startall extends PVEPathClassBase
     /**
      * Start all VMs and containers located on this node (by default only those with onboot=1).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/startall
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

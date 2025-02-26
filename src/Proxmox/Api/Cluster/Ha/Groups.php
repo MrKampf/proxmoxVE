@@ -40,17 +40,18 @@ class Groups extends PVEPathClassBase
     /**
      * Get HA groups.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Create a new HA group.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/ha/groups
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

@@ -28,17 +28,18 @@ class Id extends PVEPathClassBase
     /**
      * Read replication job configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication/{id}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update replication job configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/replication/{id}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

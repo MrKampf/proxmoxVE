@@ -72,11 +72,12 @@ class Apt extends PVEPathClassBase
     /**
      * Directory index for apt (Advanced Package Tool).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }

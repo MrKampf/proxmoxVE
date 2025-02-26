@@ -50,7 +50,7 @@ class Content extends PVEPathClassBase
     /**
      * Allocate disk images.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/content
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

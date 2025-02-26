@@ -28,17 +28,18 @@ class Subscription extends PVEPathClassBase
     /**
      * Read subscription info
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/subscription
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update subscription info.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/subscription
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array
@@ -49,7 +50,7 @@ class Subscription extends PVEPathClassBase
     /**
      * Set subscription key.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/subscription
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

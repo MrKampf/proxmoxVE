@@ -28,7 +28,7 @@ class Reload extends PVEPathClassBase
     /**
      * Reload service. Falls back to restart if service cannot be reloaded.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/services/{service}/reload
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

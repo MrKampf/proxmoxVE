@@ -28,7 +28,7 @@ class Id extends PVEPathClassBase
     /**
      * Create Ceph Manager
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mgr/{id}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

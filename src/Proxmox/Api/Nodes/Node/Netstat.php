@@ -28,10 +28,11 @@ class Netstat extends PVEPathClassBase
     /**
      * Read tap/vm network device interface counters
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/netstat
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

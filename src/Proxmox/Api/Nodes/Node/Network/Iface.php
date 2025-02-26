@@ -28,18 +28,18 @@ class Iface extends PVEPathClassBase
     /**
      * Read network device configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network/{iface}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
-
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update network device configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network/{iface}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

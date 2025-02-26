@@ -30,11 +30,12 @@ class QDevice extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get QDevice status
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/config/qdevice
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }

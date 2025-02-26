@@ -32,7 +32,7 @@ class Login extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Verify OpenID authorization code and create a ticket.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/openid/login
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

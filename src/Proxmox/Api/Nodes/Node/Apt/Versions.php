@@ -28,11 +28,12 @@ class Versions extends PVEPathClassBase
     /**
      * Get package information for important Proxmox packages.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/versions
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
 }

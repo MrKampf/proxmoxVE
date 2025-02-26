@@ -28,7 +28,7 @@ class Reboot extends PVEPathClassBase
     /**
      * Reboot the container by shutting it down, and starting it again. Applies pending changes.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/reboot
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

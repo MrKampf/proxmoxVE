@@ -28,7 +28,7 @@ class MonId extends PVEPathClassBase
     /**
      * Create Ceph Monitor and Manager
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/mon/{monid}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

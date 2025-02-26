@@ -28,7 +28,7 @@ class Monitor extends PVEPathClassBase
     /**
      * Execute Qemu monitor commands.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/monitor
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

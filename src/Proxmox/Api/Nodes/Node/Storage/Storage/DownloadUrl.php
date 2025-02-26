@@ -28,7 +28,7 @@ class DownloadUrl extends PVEPathClassBase
     /**
      * Download templates and ISO images by using an URL.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/download-url
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

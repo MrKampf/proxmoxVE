@@ -30,17 +30,18 @@ class PoolId extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get pool configuration.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update pool data.
      * @url https://pve.proxmox.com/pve-docs/api-viewer/index.html#/pools/{poolid}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

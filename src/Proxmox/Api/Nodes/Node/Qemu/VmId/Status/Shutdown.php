@@ -28,7 +28,7 @@ class Shutdown extends PVEPathClassBase
     /**
      * Shutdown the container. This will trigger a clean shutdown of the container, see lxc-stop(1) for details.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/shutdown
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

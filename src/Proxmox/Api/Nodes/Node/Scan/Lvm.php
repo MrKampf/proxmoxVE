@@ -28,10 +28,11 @@ class Lvm extends PVEPathClassBase
     /**
      * List local LVM volume groups.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/scan/lvm
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

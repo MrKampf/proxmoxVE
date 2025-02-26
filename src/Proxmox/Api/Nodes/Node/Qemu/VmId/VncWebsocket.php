@@ -28,11 +28,12 @@ class VncWebsocket extends PVEPathClassBase
     /**
      * Opens a weksocket for VNC traffic.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/vncwebsocket
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     public function getWebsocketEndpoint(): string

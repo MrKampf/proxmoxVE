@@ -28,7 +28,7 @@ class Resize extends PVEPathClassBase
     /**
      * Resize a container mount point.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/resize
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

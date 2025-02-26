@@ -28,7 +28,7 @@ class Template extends PVEPathClassBase
     /**
      * Create a Template.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/template
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

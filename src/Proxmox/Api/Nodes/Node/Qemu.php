@@ -40,17 +40,18 @@ class Qemu extends PVEPathClassBase
     /**
      * Virtual machine index (per node).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Create or restore a virtual machine.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

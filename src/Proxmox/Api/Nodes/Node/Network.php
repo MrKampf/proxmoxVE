@@ -40,18 +40,18 @@ class Network extends PVEPathClassBase
     /**
      * List available networks
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
-
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Create network device configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array
@@ -62,7 +62,7 @@ class Network extends PVEPathClassBase
     /**
      * Reload network configuration
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/network
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

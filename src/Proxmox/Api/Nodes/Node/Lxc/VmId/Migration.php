@@ -28,7 +28,7 @@ class Migration extends PVEPathClassBase
     /**
      * Migrate the container to another node. Creates a new migration task.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/migration
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

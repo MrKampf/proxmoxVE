@@ -28,17 +28,18 @@ class Update extends PVEPathClassBase
     /**
      * List available updates.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/update
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * This is used to resynchronize the package index files from their sources (apt-get update).
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/apt/update
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

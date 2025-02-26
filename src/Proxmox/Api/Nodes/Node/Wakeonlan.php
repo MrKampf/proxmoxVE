@@ -28,7 +28,7 @@ class Wakeonlan extends PVEPathClassBase
     /**
      * Download appliance templates.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/wakeonlan
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

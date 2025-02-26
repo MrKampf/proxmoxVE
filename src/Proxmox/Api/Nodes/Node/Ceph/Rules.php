@@ -28,10 +28,11 @@ class Rules extends PVEPathClassBase
     /**
      * List ceph rules.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/rules
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 }

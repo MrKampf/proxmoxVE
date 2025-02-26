@@ -28,7 +28,7 @@ class Scrub extends PVEPathClassBase
     /**
      * Instruct the OSD to scrub.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/ceph/osd/{osdid}/scrub
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

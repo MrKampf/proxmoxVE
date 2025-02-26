@@ -28,7 +28,7 @@ class Wipedisk extends PVEPathClassBase
     /**
      * Wipe a disk or partition.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/disks/wipedisk
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array

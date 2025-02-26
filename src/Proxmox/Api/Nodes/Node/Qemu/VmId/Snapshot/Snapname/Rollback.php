@@ -28,7 +28,7 @@ class Rollback extends PVEPathClassBase
     /**
      * Rollback LXC state to specified snapshot.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/snapshot/{snapname}/rollback
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

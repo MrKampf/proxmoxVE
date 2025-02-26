@@ -28,7 +28,7 @@ class ScheduleNow extends PVEPathClassBase
     /**
      * Schedule replication job to start as soon as possible.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/replication/{id}/schedule_now
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

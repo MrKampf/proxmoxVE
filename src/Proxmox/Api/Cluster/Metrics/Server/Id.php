@@ -28,17 +28,18 @@ class Id extends PVEPathClassBase
     /**
      * Read metric server configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**
      * Update metric server configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function put(array $params = []): ?array
@@ -49,7 +50,7 @@ class Id extends PVEPathClassBase
     /**
      * Create a new external metric server config
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/cluster/metrics/server/{id}
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

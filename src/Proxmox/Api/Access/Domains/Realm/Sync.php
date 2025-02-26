@@ -31,7 +31,7 @@ class Sync extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Syncs users and/or groups from the configured LDAP to user.cfg. NOTE: Synced groups will have the name 'name-$realm', so make sure those groups do not exist to prevent overwriting.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains/{realm}/sync
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

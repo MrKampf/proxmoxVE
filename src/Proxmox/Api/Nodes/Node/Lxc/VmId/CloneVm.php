@@ -28,7 +28,7 @@ class CloneVm extends PVEPathClassBase
     /**
      * Create a container clone/copy
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/clone
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

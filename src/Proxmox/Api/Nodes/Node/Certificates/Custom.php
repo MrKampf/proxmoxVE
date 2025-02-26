@@ -28,7 +28,7 @@ class Custom extends PVEPathClassBase
     /**
      * Upload or update custom certificate chain and key.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/certificates/custom
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

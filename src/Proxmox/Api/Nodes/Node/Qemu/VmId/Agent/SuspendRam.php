@@ -28,7 +28,7 @@ class SuspendRam extends PVEPathClassBase
     /**
      * Execute suspend-ram.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/suspend-ram
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

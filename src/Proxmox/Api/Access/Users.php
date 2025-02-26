@@ -42,11 +42,12 @@ class Users extends PVEPathClassBase implements PVEPathEndpointInterface
     /**
      * Get user configuration.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/Users/{userid}
+     * @param array $params
      * @return array|null
      */
-    public function get(): ?array
+    public function get(array $params = []): ?array
     {
-        return $this->getPve()->getApi()->get($this->getPathAdditional());
+        return $this->getPve()->getApi()->get($this->getPathAdditional(), $params);
     }
 
     /**

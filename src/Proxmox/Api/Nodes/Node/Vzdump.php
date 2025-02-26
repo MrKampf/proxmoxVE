@@ -50,7 +50,7 @@ class Vzdump extends PVEPathClassBase
     /**
      * Create backup.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/vzdump
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

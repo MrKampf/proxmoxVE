@@ -28,7 +28,7 @@ class FileWrite extends PVEPathClassBase
     /**
      * Writes the given file via guest agent.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/agent/file-write
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

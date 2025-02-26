@@ -28,7 +28,7 @@ class Upload extends PVEPathClassBase
     /**
      * Upload templates and ISO images.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/storage/{storage}/upload
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

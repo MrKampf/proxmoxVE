@@ -28,7 +28,7 @@ class Migrateall extends PVEPathClassBase
     /**
      * Migrate all VMs and Containers.
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/migrateall
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array

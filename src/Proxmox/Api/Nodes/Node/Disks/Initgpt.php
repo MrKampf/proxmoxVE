@@ -28,7 +28,7 @@ class Initgpt extends PVEPathClassBase
     /**
      * Initialize Disk with GPT
      * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/disks/initgpt
-     * @param $params array
+     * @param array $params
      * @return array|null
      */
     public function post(array $params = []): ?array
