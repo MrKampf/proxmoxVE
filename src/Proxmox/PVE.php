@@ -38,9 +38,9 @@ class PVE
     private CookieJar $cookie;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private string $hostname, $apiURL, $username, $password, $authType, $CSRFPreventionToken, $ticket;
+    private ?string $hostname, $apiURL, $username, $password, $authType, $CSRFPreventionToken = null, $ticket = null;
 
     /**
      * @var int
@@ -213,9 +213,9 @@ class PVE
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCSRFPreventionToken(): string
+    public function getCSRFPreventionToken(): ?string
     {
         return $this->CSRFPreventionToken;
     }
@@ -229,9 +229,9 @@ class PVE
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTicket(): string
+    public function getTicket(): ?string
     {
         return $this->ticket;
     }

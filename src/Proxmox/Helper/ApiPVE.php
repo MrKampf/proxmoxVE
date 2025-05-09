@@ -162,12 +162,19 @@ class ApiPVE
     /**
      * Login to proxmox ve
      */
-    public function login()
+    public function login(): bool
     {
         $requestResult = $this->getCSRFToken();
+
+        if (!is_array($requestResult)) {
+            return false;
+        }
+
         $this->PVE->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
         $this->PVE->setTicket($requestResult['ticket']);
         $this->PVE->setCookie($this->getCookies());
+
+        return true;
     }
 
     /**
