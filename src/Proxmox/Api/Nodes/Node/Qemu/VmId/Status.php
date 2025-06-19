@@ -7,6 +7,7 @@ namespace Proxmox\Api\Nodes\Node\Qemu\VmId;
 
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Current;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Reboot;
+use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Reset;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Resume;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Shutdown;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Status\Start;
@@ -50,6 +51,16 @@ class Status extends PVEPathClassBase
     public function reboot(): Reboot
     {
         return new Reboot($this->getPve(), $this->getPathAdditional());
+    }
+
+    /**
+     * Reset the container by doing a stop, and starting it again. Does not apply pending changes.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/status/reset
+     * @return Reset
+     */
+    public function reset(): Reset
+    {
+        return new Reset($this->getPve(), $this->getPathAdditional());
     }
 
     /**
