@@ -35,7 +35,6 @@ class Access extends PVEPathClassBase implements PVEPathEndpointInterface
     public function __construct(PVE|API $pve, string $parentAdditional)
     {
         parent::__construct($pve, $parentAdditional . 'access/');
-        return $this->get();
     }
 
     /**
