@@ -14,12 +14,19 @@ use Psr\Http\Message\ResponseInterface;
  * Class api
  * @package proxmox\Helper
  */
+use Proxmox\Helper\Interfaces\CookieJarFactoryInterface;
+
 class ApiPVE
 {
     /**
      * @var PVE
      */
-    private PVE $PVE;
+    private PVE $pve;
+
+    /**
+     * @var CookieJarFactoryInterface
+     */
+    private CookieJarFactoryInterface $cookieJarFactory;
 
     /**
      * @var array|string[] $defaultHeaders
@@ -31,11 +38,13 @@ class ApiPVE
 
     /**
      * Api constructor.
-     * @param PVE $PVE
+     * @param PVE $pve
+     * @param CookieJarFactoryInterface|null $cookieJarFactory
      */
-    public function __construct(PVE $PVE)
+    public function __construct(PVE $pve, CookieJarFactoryInterface $cookieJarFactory = null)
     {
-        $this->PVE = $PVE;
+        $this->pve = $pve;
+        $this->cookieJarFactory = $cookieJarFactory ?? new CookieJarFactory();
     }
 
     /**
@@ -47,18 +56,18 @@ class ApiPVE
     public function get(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody($this->PVE->getHttpClient()->request('GET', $this->PVE->getApiURL() . $path, [
+            return $this->getBody($this->pve->getHttpClient()->request('GET', $this->pve->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
+                'debug' => $this->pve->isDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => array_merge($this->defaultHeaders, [
-                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken()
+                    'CSRFPreventionToken' => $this->pve->getCsrfPreventionToken()
                 ]),
                 'query' => $params,
                 'exceptions' => false,
-                'cookies' => $this->PVE->getCookie(),
+                'cookies' => $this->pve->getCookie(),
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
+            if ($this->pve->isDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -84,19 +93,19 @@ class ApiPVE
     public function post(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . $path, [
+            return $this->getBody($this->pve->getHttpClient()->request('POST', $this->pve->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
+                'debug' => $this->pve->isDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => array_merge($this->defaultHeaders, [
-                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->pve->getCsrfPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                 ]),
                 'exceptions' => false,
-                'cookies' => $this->PVE->getCookie(),
+                'cookies' => $this->pve->getCookie(),
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
+            if ($this->pve->isDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -112,19 +121,19 @@ class ApiPVE
     public function put(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody($this->PVE->getHttpClient()->request('PUT', $this->PVE->getApiURL() . $path, [
+            return $this->getBody($this->pve->getHttpClient()->request('PUT', $this->pve->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
+                'debug' => $this->pve->isDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => array_merge($this->defaultHeaders, [
-                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->pve->getCsrfPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                 ]),
                 'exceptions' => false,
-                'cookies' => $this->PVE->getCookie(),
+                'cookies' => $this->pve->getCookie(),
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
+            if ($this->pve->isDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -140,19 +149,19 @@ class ApiPVE
     public function delete(string $path, array $params = []): ?array
     {
         try {
-            return $this->getBody($this->PVE->getHttpClient()->request('DELETE', $this->PVE->getApiURL() . $path, [
+            return $this->getBody($this->pve->getHttpClient()->request('DELETE', $this->pve->getApiURL() . $path, [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
+                'debug' => $this->pve->isDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => array_merge($this->defaultHeaders, [
-                    'CSRFPreventionToken' => $this->PVE->getCSRFPreventionToken(),
+                    'CSRFPreventionToken' => $this->pve->getCsrfPreventionToken(),
                     'Content-Type' => (count($params) > 0) ? 'application/json' : null,
                 ]),
                 'exceptions' => false,
-                'cookies' => $this->PVE->getCookie(),
+                'cookies' => $this->pve->getCookie(),
                 'query' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
+            if ($this->pve->isDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -164,31 +173,31 @@ class ApiPVE
      */
     public function login()
     {
-        $requestResult = $this->getCSRFToken();
-        $this->PVE->setCSRFPreventionToken($requestResult['CSRFPreventionToken']);
-        $this->PVE->setTicket($requestResult['ticket']);
-        $this->PVE->setCookie($this->getCookies());
+        $requestResult = $this->getCsrfToken();
+        $this->pve->setCsrfPreventionToken($requestResult['CSRFPreventionToken']);
+        $this->pve->setTicket($requestResult['ticket']);
+        $this->pve->setCookie($this->getCookies());
     }
 
     /**
      * Get CSRF token data from proxmox api for api auth
      * @return array | null
      */
-    public function getCSRFToken(): ?array
+    public function getCsrfToken(): ?array
     {
         try {
-            return $this->getBody($this->PVE->getHttpClient()->request('POST', $this->PVE->getApiURL() . 'access/ticket', [
+            return $this->getBody($this->pve->getHttpClient()->request('POST', $this->pve->getApiURL() . 'access/ticket', [
                 'verify' => false,
-                'debug' => $this->PVE->getDebug() ? fopen('php://stderr', 'w') : null,
+                'debug' => $this->pve->isDebug() ? fopen('php://stderr', 'w') : null,
                 'headers' => $this->defaultHeaders,
                 'json' => [
-                    'username' => $this->PVE->getUsername(),
-                    'password' => $this->PVE->getPassword(),
-                    'realm' => $this->PVE->getAuthType(),
+                    'username' => $this->pve->getUsername(),
+                    'password' => $this->pve->getPassword(),
+                    'realm' => $this->pve->getAuthType(),
                 ],
             ]))['data'];
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
+            if ($this->pve->isDebug()) {
                 print_r($exception->getMessage());
             }
             return null;
@@ -201,9 +210,9 @@ class ApiPVE
      */
     public function getCookies(): CookieJar
     {
-        return CookieJar::fromArray([
-            'PVEAuthCookie' => $this->PVE->getTicket(),
-        ], $this->PVE->getHostname());
+        return $this->cookieJarFactory->create([
+            'PVEAuthCookie' => $this->pve->getTicket(),
+        ], $this->pve->getHostname());
     }
 
 }

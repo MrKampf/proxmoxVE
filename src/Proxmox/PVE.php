@@ -14,6 +14,7 @@ use Proxmox\Api\Pools;
 use Proxmox\Api\Storage;
 use Proxmox\Api\Version;
 use Proxmox\Helper\ApiPVE;
+use Proxmox\Helper\Interfaces\CookieJarFactoryInterface;
 
 /**
  * Class pve
@@ -40,7 +41,7 @@ class PVE
     /**
      * @var string
      */
-    private string $hostname, $apiURL, $username, $password, $authType, $CSRFPreventionToken, $ticket;
+    private string $hostname, $apiURL, $username, $password, $authType, $csrfPreventionToken, $ticket;
 
     /**
      * @var int
@@ -63,7 +64,7 @@ class PVE
      * @param bool $lazyLogin
      * @param Client|null $httpClient
      */
-    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, bool $lazyLogin = false, Client|null $httpClient = null)
+    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, bool $lazyLogin = false, Client|null $httpClient = null, CookieJarFactoryInterface $cookieJarFactory = null)
     {
         if ($httpClient === NULL) {
             $httpClient = new Client();
@@ -76,7 +77,7 @@ class PVE
         $this->setAuthType($authType); //Save auth type in class variable
         $this->setDebug($debug); //Save the debug boolean variable
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
-        $this->setApi(new ApiPVE($this)); //Create the api object
+        $this->setApi(new ApiPVE($this, $cookieJarFactory)); //Create the api object
         $this->setHttpClient($httpClient); //Create a new guzzle client
 
         if (!$lazyLogin) {
@@ -215,17 +216,17 @@ class PVE
     /**
      * @return string
      */
-    public function getCSRFPreventionToken(): string
+    public function getCsrfPreventionToken(): string
     {
-        return $this->CSRFPreventionToken;
+        return $this->csrfPreventionToken;
     }
 
     /**
-     * @param string $CSRFPreventionToken
+     * @param string $csrfPreventionToken
      */
-    public function setCSRFPreventionToken(string $CSRFPreventionToken): void
+    public function setCsrfPreventionToken(string $csrfPreventionToken): void
     {
-        $this->CSRFPreventionToken = $CSRFPreventionToken;
+        $this->csrfPreventionToken = $csrfPreventionToken;
     }
 
     /**
@@ -247,7 +248,7 @@ class PVE
     /**
      * @return bool
      */
-    public function getDebug(): bool
+    public function isDebug(): bool
     {
         return $this->debug;
     }
