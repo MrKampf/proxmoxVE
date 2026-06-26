@@ -6,7 +6,9 @@
 namespace Proxmox\Helper;
 
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
 use Proxmox\API;
+use Proxmox\Exception\ProxmoxApiException;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -42,6 +44,7 @@ class ApiToken
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function get(string $path, array $params = []): ?array
     {
@@ -56,11 +59,7 @@ class ApiToken
                 'exceptions' => false,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->API->getDebug()) {
-                throw $exception;
-            } else {
-                return null;
-            }
+            return $this->handleRequestException($exception, 'GET', $path);
         }
     }
 
@@ -79,6 +78,7 @@ class ApiToken
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function post(string $path, array $params = []): ?array
     {
@@ -94,11 +94,7 @@ class ApiToken
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->API->getDebug()) {
-                throw $exception;
-            } else {
-                return null;
-            }
+            return $this->handleRequestException($exception, 'POST', $path);
         }
     }
 
@@ -107,6 +103,7 @@ class ApiToken
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function put(string $path, array $params = []): ?array
     {
@@ -122,11 +119,7 @@ class ApiToken
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->API->getDebug()) {
-                throw $exception;
-            } else {
-                return null;
-            }
+            return $this->handleRequestException($exception, 'PUT', $path);
         }
     }
 
@@ -135,6 +128,7 @@ class ApiToken
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function delete(string $path, array $params = []): ?array
     {
@@ -150,12 +144,47 @@ class ApiToken
                 'query' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->API->getDebug()) {
-                throw $exception;
-            } else {
-                return null;
-            }
+            return $this->handleRequestException($exception, 'DELETE', $path);
         }
     }
 
+    /**
+     * Centralised handling for a failed Guzzle request.
+     *
+     * Surfaces the failure through the configured PSR-3 logger (always, so
+     * production sees the real Proxmox error instead of a silent null) and,
+     * when the client was built with throwOnError, raises a
+     * {@see ProxmoxApiException} carrying the HTTP status + response body.
+     * Otherwise the library's historic behaviour is preserved: re-throw in
+     * debug mode, swallow to null in normal operation.
+     *
+     * @param GuzzleException $exception
+     * @param string $method
+     * @param string $path
+     * @return array|null
+     * @throws ProxmoxApiException|GuzzleException
+     */
+    private function handleRequestException(GuzzleException $exception, string $method, string $path): ?array
+    {
+        $response = $exception instanceof RequestException ? $exception->getResponse() : null;
+        $statusCode = $response?->getStatusCode();
+        $body = $response !== null ? (string)$response->getBody() : null;
+
+        $this->API->getLogger()?->error('Proxmox API ' . $method . ' ' . $path . ' failed: ' . $exception->getMessage(), [
+            'method' => $method,
+            'path' => $path,
+            'status' => $statusCode,
+            'body' => $body,
+        ]);
+
+        if ($this->API->getThrowOnError()) {
+            throw new ProxmoxApiException($exception->getMessage(), $method, $path, $statusCode, $body, $exception);
+        }
+
+        if ($this->API->getDebug()) {
+            throw $exception;
+        }
+
+        return null;
+    }
 }

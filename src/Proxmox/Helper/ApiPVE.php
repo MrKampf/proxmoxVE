@@ -7,6 +7,8 @@ namespace Proxmox\Helper;
 
 use GuzzleHttp\Cookie\CookieJar;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\RequestException;
+use Proxmox\Exception\ProxmoxApiException;
 use Proxmox\PVE;
 use Psr\Http\Message\ResponseInterface;
 
@@ -43,6 +45,7 @@ class ApiPVE
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function get(string $path, array $params = []): ?array
     {
@@ -58,10 +61,7 @@ class ApiPVE
                 'cookies' => $this->PVE->getCookie(),
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
+            return $this->handleRequestException($exception, 'GET', $path);
         }
     }
 
@@ -80,6 +80,7 @@ class ApiPVE
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function post(string $path, array $params = []): ?array
     {
@@ -96,10 +97,7 @@ class ApiPVE
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
+            return $this->handleRequestException($exception, 'POST', $path);
         }
     }
 
@@ -108,6 +106,7 @@ class ApiPVE
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function put(string $path, array $params = []): ?array
     {
@@ -124,10 +123,7 @@ class ApiPVE
                 'json' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
+            return $this->handleRequestException($exception, 'PUT', $path);
         }
     }
 
@@ -136,6 +132,7 @@ class ApiPVE
      * @param string $path
      * @param array $params
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function delete(string $path, array $params = []): ?array
     {
@@ -152,10 +149,7 @@ class ApiPVE
                 'query' => (count($params) > 0) ? $params : null,
             ]));
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
+            return $this->handleRequestException($exception, 'DELETE', $path);
         }
     }
 
@@ -173,6 +167,7 @@ class ApiPVE
     /**
      * Get CSRF token data from proxmox api for api auth
      * @return array | null
+     * @throws ProxmoxApiException|GuzzleException
      */
     public function getCSRFToken(): ?array
     {
@@ -188,10 +183,7 @@ class ApiPVE
                 ],
             ]))['data'];
         } catch (GuzzleException $exception) {
-            if ($this->PVE->getDebug()) {
-                print_r($exception->getMessage());
-            }
-            return null;
+            return $this->handleRequestException($exception, 'POST', 'access/ticket');
         }
     }
 
@@ -206,4 +198,43 @@ class ApiPVE
         ], $this->PVE->getHostname());
     }
 
+    /**
+     * Centralised handling for a failed Guzzle request.
+     *
+     * Surfaces the failure through the configured PSR-3 logger (always, so
+     * production sees the real Proxmox error instead of a silent null) and,
+     * when the client was built with throwOnError, raises a
+     * {@see ProxmoxApiException} carrying the HTTP status + response body.
+     * Otherwise the library's historic behaviour is preserved: print the
+     * message in debug mode, swallow to null in normal operation.
+     *
+     * @param GuzzleException $exception
+     * @param string $method
+     * @param string $path
+     * @return array|null
+     * @throws ProxmoxApiException
+     */
+    private function handleRequestException(GuzzleException $exception, string $method, string $path): ?array
+    {
+        $response = $exception instanceof RequestException ? $exception->getResponse() : null;
+        $statusCode = $response?->getStatusCode();
+        $body = $response !== null ? (string)$response->getBody() : null;
+
+        $this->PVE->getLogger()?->error('Proxmox API ' . $method . ' ' . $path . ' failed: ' . $exception->getMessage(), [
+            'method' => $method,
+            'path' => $path,
+            'status' => $statusCode,
+            'body' => $body,
+        ]);
+
+        if ($this->PVE->getThrowOnError()) {
+            throw new ProxmoxApiException($exception->getMessage(), $method, $path, $statusCode, $body, $exception);
+        }
+
+        if ($this->PVE->getDebug()) {
+            print_r($exception->getMessage());
+        }
+
+        return null;
+    }
 }
