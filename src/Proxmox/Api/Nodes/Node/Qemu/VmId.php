@@ -11,7 +11,7 @@ use Proxmox\Api\Nodes\Node\Qemu\VmId\CloudInit;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Config;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Feature;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Firewall;
-use Proxmox\Api\Nodes\Node\Qemu\VmId\Migration;
+use Proxmox\Api\Nodes\Node\Qemu\VmId\Migrate;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Monitor;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\MoveDisk;
 use Proxmox\Api\Nodes\Node\Qemu\VmId\Pending;
@@ -128,13 +128,13 @@ class VmId extends PVEPathClassBase
     }
 
     /**
-     * Migrate the container to another node. Creates a new migration task.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/Qemu/{vmid}/migration
-     * @return Migration
+     * Migrate the virtual machine to another node. Creates a new migration task.
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/qemu/{vmid}/migrate
+     * @return Migrate
      */
-    public function migration(): Migration
+    public function migrate(): Migrate
     {
-        return new Migration($this->getPve(), $this->getPathAdditional());
+        return new Migrate($this->getPve(), $this->getPathAdditional());
     }
 
     /**
