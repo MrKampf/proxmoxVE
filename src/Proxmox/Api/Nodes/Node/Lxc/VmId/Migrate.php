@@ -10,10 +10,10 @@ use Proxmox\PVE;
 use Proxmox\API;
 
 /**
- * Class Migration
+ * Class Migrate
  * @package Proxmox\Api\Nodes\Node\Lxc\VmId
  */
-class Migration extends PVEPathClassBase
+class Migrate extends PVEPathClassBase
 {
     /**
      * Init constructor.
@@ -22,12 +22,12 @@ class Migration extends PVEPathClassBase
      */
     public function __construct(PVE|API $pve, string $parentAdditional)
     {
-        parent::__construct($pve, $parentAdditional . 'migration/');
+        parent::__construct($pve, $parentAdditional . 'migrate/');
     }
 
     /**
      * Migrate the container to another node. Creates a new migration task.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/migration
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/migrate
      * @param array $params
      * @return array|null
      */

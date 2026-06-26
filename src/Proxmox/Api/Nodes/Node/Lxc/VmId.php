@@ -9,7 +9,7 @@ use Proxmox\Api\Nodes\Node\Lxc\VmId\CloneVm;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Config;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Feature;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Firewall;
-use Proxmox\Api\Nodes\Node\Lxc\VmId\Migration;
+use Proxmox\Api\Nodes\Node\Lxc\VmId\Migrate;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\MoveVolume;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Pending;
 use Proxmox\Api\Nodes\Node\Lxc\VmId\Resize;
@@ -104,12 +104,12 @@ class VmId extends PVEPathClassBase
 
     /**
      * Migrate the container to another node. Creates a new migration task.
-     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/migration
-     * @return Migration
+     * @link https://pve.proxmox.com/pve-docs/api-viewer/#/nodes/{node}/lxc/{vmid}/migrate
+     * @return Migrate
      */
-    public function migration(): Migration
+    public function migrate(): Migrate
     {
-        return new Migration($this->getPve(), $this->getPathAdditional());
+        return new Migrate($this->getPve(), $this->getPathAdditional());
     }
 
     /**
