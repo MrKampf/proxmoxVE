@@ -7,6 +7,9 @@ namespace Proxmox;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\CookieJar;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\MessageFormatter;
+use GuzzleHttp\Middleware;
 use Proxmox\Api\Access;
 use Proxmox\Api\Cluster;
 use Proxmox\Api\Nodes;
@@ -14,6 +17,8 @@ use Proxmox\Api\Pools;
 use Proxmox\Api\Storage;
 use Proxmox\Api\Version;
 use Proxmox\Helper\ApiPVE;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 /**
  * Class pve
@@ -53,6 +58,16 @@ class PVE
     private bool $debug;
 
     /**
+     * @var LoggerInterface|null
+     */
+    private ?LoggerInterface $logger;
+
+    /**
+     * @var boolean
+     */
+    private bool $throwOnError;
+
+    /**
      * pve constructor.
      * @param string $hostname
      * @param string $username
@@ -62,26 +77,75 @@ class PVE
      * @param bool $debug
      * @param bool $lazyLogin
      * @param Client|null $httpClient
+     * @param LoggerInterface|null $logger Optional PSR-3 logger. When set, API
+     *        errors are logged (always, independent of $debug) and request/
+     *        response info is mirrored to it at debug level instead of
+     *        php://stderr.
+     * @param bool $throwOnError When true a failed request raises a
+     *        ProxmoxApiException (carrying the HTTP status + response body)
+     *        instead of returning null. Defaults to false for backwards
+     *        compatibility.
      */
-    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, bool $lazyLogin = false, Client|null $httpClient = null)
+    public function __construct(string $hostname, string $username, string $password, int $port = 8006, string $authType = "pam", bool $debug = false, bool $lazyLogin = false, Client|null $httpClient = null, ?LoggerInterface $logger = null, bool $throwOnError = false)
     {
-        if ($httpClient === NULL) {
-            $httpClient = new Client();
-        }
-
         $this->setHostname($hostname); //Save hostname in class variable
         $this->setUsername($username); //Save username in class variable
         $this->setPassword($password); //Save user password in class variable
         $this->setPort($port); //Save port in class variable
         $this->setAuthType($authType); //Save auth type in class variable
         $this->setDebug($debug); //Save the debug boolean variable
+        $this->logger = $logger; //Optional PSR-3 logger
+        $this->throwOnError = $throwOnError; //Opt-in: throw instead of returning null
         $this->setApiURL('https://' . $this->getHostname() . ':' . $this->getPort() . '/api2/json/'); //Create the basic api url
         $this->setApi(new ApiPVE($this)); //Create the api object
-        $this->setHttpClient($httpClient); //Create a new guzzle client
+
+        if ($httpClient === NULL) {
+            $httpClient = new Client(['handler' => $this->buildHandlerStack()]); //Create a new guzzle client
+        }
+
+        $this->setHttpClient($httpClient); //Save the guzzle client
 
         if (!$lazyLogin) {
             $this->getApi()->login(); //Login to the api
         }
+    }
+
+    /**
+     * Build the Guzzle handler stack, attaching a PSR-3 logging middleware
+     * when a logger has been supplied. Logged at debug level so it stays
+     * quiet in production until the consumer raises the relevant channel.
+     *
+     * @return HandlerStack
+     */
+    private function buildHandlerStack(): HandlerStack
+    {
+        $stack = HandlerStack::create();
+
+        if ($this->logger !== null) {
+            $stack->push(Middleware::log(
+                $this->logger,
+                new MessageFormatter('Proxmox API {method} {target} HTTP {code} {error}'),
+                LogLevel::DEBUG
+            ));
+        }
+
+        return $stack;
+    }
+
+    /**
+     * @return LoggerInterface|null
+     */
+    public function getLogger(): ?LoggerInterface
+    {
+        return $this->logger;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getThrowOnError(): bool
+    {
+        return $this->throwOnError;
     }
 
     /**
